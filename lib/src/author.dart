@@ -12,7 +12,7 @@ class Author {
 
     if (map['comment_author'] != null) name = map['comment_author'];
     if (map['comment_author_email'] != null) email = map['comment_author_email'];
-    if (map['comment_author_url'] != null) url= Uri.parse(map['comment_author_url']);
+    if (map['comment_author_url'] != null) url = Uri.parse(map['comment_author_url']);
     if (map['user_agent'] != null) userAgent = map['user_agent'];
     if (map['user_ip'] != null) ipAddress = map['user_ip'];
     if (map['user_role'] != null) role = map['user_role'];
