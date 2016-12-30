@@ -10,9 +10,9 @@ environment:
   sdk: '>=1.21.0 <2.0.0'
 
 dependencies:
-  args: ^0.13.7
-  path: ^1.4.1
+  http: ^0.11.3
 
 dev_dependencies:
   coverage: ^0.8.0
-  test: ^0.12.17
+  grinder: ^0.8.0
+  test: ^0.12.18
