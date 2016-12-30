@@ -1,4 +1,4 @@
-/// Prevent comment spam using the Akismet service.
+/// Prevent comment spam using the [Akismet](https://akismet.com) service.
 library akismet;
 
 import 'dart:async';
