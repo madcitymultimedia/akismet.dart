@@ -4,7 +4,9 @@ part of akismet;
 class Blog {
 
   /// Creates a new blog.
-  Blog([this.url]);
+  Blog([url]) {
+    if (url != null) this.url = url is Uri ? url : Uri.parse(url.toString());
+  }
 
   /// Creates a new blog from the specified [map] in JSON format.
   Blog.fromJson(Map<String, String> map) {
@@ -26,7 +28,7 @@ class Blog {
 
   /// Converts this object to a map in JSON format.
   Map<String, String> toJson() {
-    var map = {};
+    var map = <String, String>{};
     if (url != null) map['blog'] = url.toString();
     if (charset != null) map['blog_charset'] = charset;
     if (language != null) map['blog_lang'] = language;
@@ -34,5 +36,6 @@ class Blog {
   }
 
   /// Returns a string representation of this object.
-  @override String toString() => '${runtimeType} ${JSON.encode(this)}';
+  @override
+  String toString() => '$runtimeType ${JSON.encode(this)}';
 }
