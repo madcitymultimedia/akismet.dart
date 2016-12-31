@@ -8,5 +8,5 @@ void main() {
   author_test.main();
   blog_test.main();
   //client_test.main();
-  //comment_test.main();
+  comment_test.main();
 }
