@@ -27,7 +27,7 @@ void main() => group('Blog', () {
         'blog_charset': 'UTF-8',
         'blog_lang': 'en'
       });
-print(blog);
+
       expect(blog.charset, equals('UTF-8'));
       expect(blog.language, equals('en'));
       expect(blog.url, equals(Uri.parse('https://github.com/cedx/akismet.dart')));

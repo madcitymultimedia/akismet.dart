@@ -5,8 +5,8 @@ import 'comment_test.dart' as comment_test;
 
 /// Tests all the features of the package.
 void main() {
-  author_test.main();
+  //author_test.main();
   blog_test.main();
-  client_test.main();
-  comment_test.main();
+  //client_test.main();
+  //comment_test.main();
 }
