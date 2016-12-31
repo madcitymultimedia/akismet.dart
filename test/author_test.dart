@@ -1,74 +1,46 @@
+import 'dart:io';
+
 import 'package:akismet/akismet.dart';
 import 'package:test/test.dart';
 
 /// Tests the features of the [Author] class.
 void main() => group('Author', () {
-  group('.toJson()', () {
-    test('should return a map with the same public values', () {
-      var data = new Client('anonymous', 'secret').toJson();
-      expect(data, isMap);
-      expect(data, hasLength(2));
-      expect(data['password'], equals('secret'));
-      expect(data['username'], equals('anonymous'));
-    });
-  });
-});
-/*
-group('Author', () {
-
-  group('constructor', () {
-    test('should initialize the existing properties', () {
-      var author = new Author({email: 'cedric@belin.io', ipAddress: '192.168.0.1', name: 'Cédric Belin'});
-      expect(author.email, 'cedric@belin.io');
-      expect(author.ipAddress, '192.168.0.1');
-      expect(author.name, 'Cédric Belin');
-    });
-
-    test('should not create new properties', () {
-      expect(!('foo' in new Author({foo: 'bar'})));
-    });
-  });
-
   group('.fromJson()', () {
-    test('should return a null reference with a non-object JSON string', () {
-      expect(Author.fromJson('foo'), null);
+    test('should return an empty instance with an empty map', () {
+      var author = new Author.fromJson({});
+      expect(author.email, isNull);
+      expect(author.ipAddress, isNull);
     });
 
-    test('should return an empty instance with an empty JSON object', () {
-      var author = Author.fromJson({});
-      expect(author.email.length, 0);
-      expect(author.url.length, 0);
-    });
-
-    test('should return an initialized instance with a non-empty JSON object', () {
-      var author = Author.fromJson({
-        comment_author_email: 'cedric@belin.io',
-        comment_author_url: 'https://belin.io'
+    test('should return an initialized instance with a non-empty map', () {
+      var author = new Author.fromJson({
+        'comment_author_email': 'cedric@belin.io',
+        'comment_author_url': 'https://belin.io',
+        'user_ip': '127.0.0.1'
       });
 
-      expect(author.email, 'cedric@belin.io');
-      expect(author.url, 'https://belin.io');
+      expect(author.email, equals('cedric@belin.io'));
+      expect(author.ipAddress, equals(new InternetAddress('127.0.0.1')));
+      expect(author.url, equals(Uri.parse('https://belin.io')));
     });
   });
 
-  group('#toJson()', () {
-    test('should return an empty JSON object with a newly created instance', () {
-      expect(Object.keys(new Author().toJson()).length, 0);
+  group('.toJson()', () {
+    test('should return an empty map with a newly created instance', () {
+      expect(new Author().toJson(), allOf(isMap, hasLength(0)));
     });
 
-    test('should return a non-empty JSON object with a initialized instance', () {
-      var data = new Author({
-        email: 'cedric@belin.io',
-        ipAddress: '127.0.0.1',
-        name: 'Cédric Belin',
-        url: 'https://belin.io'
-      }).toJson();
+    test('should return a non-empty map with a initialized instance', () {
+      var data = (new Author('Cédric Belin', 'cedric@belin.io')
+        ..ipAddress = new InternetAddress('127.0.0.1')
+        ..url = Uri.parse('https://belin.io')
+      ).toJson();
 
-      expect(data.comment_author, 'Cédric Belin');
-      expect(data.comment_author_email, 'cedric@belin.io');
-      expect(data.comment_author_url, 'https://belin.io');
-      expect(data.user_ip, '127.0.0.1');
+      expect(data, allOf(isMap, hasLength(4)));
+      expect(data['comment_author'], equals('Cédric Belin'));
+      expect(data['comment_author_email'], equals('cedric@belin.io'));
+      expect(data['comment_author_url'], equals('https://belin.io'));
+      expect(data['user_ip'], equals('127.0.0.1'));
     });
   });
 });
-*/

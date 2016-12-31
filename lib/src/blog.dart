@@ -4,9 +4,7 @@ part of akismet;
 class Blog {
 
   /// Creates a new blog.
-  Blog([url]) {
-    if (url != null) this.url = url is Uri ? url : Uri.parse(url.toString());
-  }
+  Blog([this.url]);
 
   /// Creates a new blog from the specified [map] in JSON format.
   Blog.fromJson(Map<String, String> map) {
