@@ -43,7 +43,7 @@ class Comment {
 
   /// Converts this object to a map in JSON format.
   Map<String, String> toJson() {
-    var map = author != null ? author.toJson() : {};
+    var map = author != null ? author.toJson() : <String, String>{};
     if (content != null) map['comment_content'] = content;
     if (date != null) map['comment_date_gmt'] = date.toIso8601String();
     if (postModified != null) map['comment_post_modified_gmt'] = postModified.toIso8601String();
@@ -54,5 +54,6 @@ class Comment {
   }
 
   /// Returns a string representation of this object.
-  @override String toString() => '${runtimeType} ${JSON.encode(this)}';
+  @override
+  String toString() => '$runtimeType ${JSON.encode(this)}';
 }
