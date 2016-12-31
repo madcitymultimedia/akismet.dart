@@ -14,7 +14,7 @@ class Author {
     if (map['comment_author_email'] != null) email = map['comment_author_email'];
     if (map['comment_author_url'] != null) url = Uri.parse(map['comment_author_url']);
     if (map['user_agent'] != null) userAgent = map['user_agent'];
-    if (map['user_ip'] != null) ipAddress = map['user_ip'];
+    if (map['user_ip'] != null) ipAddress = new InternetAddress(map['user_ip']);
     if (map['user_role'] != null) role = map['user_role'];
   }
 
@@ -22,7 +22,7 @@ class Author {
   String email;
 
   /// The author's IP address.
-  String ipAddress;
+  InternetAddress ipAddress;
 
   /// The author's name.
   String name;
@@ -39,16 +39,17 @@ class Author {
 
   /// Converts this object to a map in JSON format.
   Map<String, String> toJson() {
-    var map = {};
+    var map = <String, String>{};
     if (name != null) map['comment_author'] = name;
     if (email != null) map['comment_author_email'] = email;
     if (url != null) map['comment_author_url'] = url.toString();
     if (userAgent != null) map['user_agent'] = userAgent;
-    if (ipAddress != null) map['user_ip'] = ipAddress;
+    if (ipAddress != null) map['user_ip'] = ipAddress.address;
     if (role != null) map['user_role'] = role;
     return map;
   }
 
   /// Returns a string representation of this object.
-  @override String toString() => '${runtimeType} ${JSON.encode(this)}';
+  @override
+  String toString() => '$runtimeType ${JSON.encode(this)}';
 }
