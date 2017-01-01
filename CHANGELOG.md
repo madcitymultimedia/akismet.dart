@@ -1,8 +1,29 @@
 # Changelog
 This file contains highlights of what changes on each version of the [Akismet for Dart](https://github.com/cedx/akismet.dart) library.
 
-#### Version 0.6.1
-- Fixed bugs in `async` / `await` implementation.
+## Version 1.0.0
+- Breaking change: changed the `Blog.language` string property for the `languages` array property.
+- Breaking change: dropped the [dart:html](https://api.dartlang.org/stable/dart-html/dart-html-library.html) client.
+- Breaking change: dropped the embedded server and the command line interface.
+- Breaking change: merged all the libraries (e.g. `core`, `html` and `io`) into the sole `akismet` one.
+- Breaking change: most of the constructors are now using optional named parameters.
+- Breaking change: removed the `DEFAULT_SERVICE` constant, `serviceUrl` property and `queryService()` method from the `Client` class.
+- Breaking change: removed the `EndPoints` and `HttpHeaders` enumerations.
+- Breaking change: removed the `VERSION` constant.
+- Breaking change: using lowercase for all constant names.
+- Added the `Client.toJson()` method.
+- Added the `onRequest` and `onResponse` event streams to the `Client` class.
+- The parameters of the `Client` constructor are now optional.
+- Added support for the [Travis CI](https://travis-ci.org) continuous integration.
+- Changed the build system for [Grinder](http://google.github.io/grinder.dart).
+- Changed the documentation system for [Dartdoc](https://github.com/dart-lang/dartdoc).
+- Changed the licensing for the [Apache License Version 2.0](http://www.apache.org/licenses/LICENSE-2.0).
+- Dropped the development dependencies based on [Node.js](https://nodejs.org).
+- Removed the info suffix from the Dart version number in the `Client.userAgent` property.
+- Updated the package dependencies.
+
+## Version 0.6.1
+- Fixed bugs in `async`/`await` implementation.
 - Fixed bugs in JSON serialization.
 
 ## Version 0.6.0
