@@ -20,7 +20,7 @@ class Blog {
   /// The character encoding for the values included in comments.
   String charset;
 
-  /// The language(s) in use on the blog or site, in ISO 639-1 format, comma-separated.
+  /// The languages in use on the blog or site, in ISO 639-1 format, comma-separated.
   List<String> languages = [];
 
   /// The blog or site URL.
