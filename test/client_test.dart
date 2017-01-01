@@ -78,7 +78,7 @@ void main() => group('Client', () {
       expect(data['isTest'], isTrue);
 
       var version = 'Dart/${Platform.version.substring(0, 5)}';
-      expect(data['userAgent'].substr(0, version.length), equals(version));
+      expect(data['userAgent'].substring(0, version.length), equals(version));
     });
   });
 
