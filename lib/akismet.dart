@@ -14,7 +14,7 @@ part 'src/comment.dart';
 part 'src/comment_type.dart';
 
 /// The version number of the Dart runtime.
-final String _dartVersion = Platform.version.replaceFirstMapped(new RegExp(r'^(\d+(\.\d+){2}).*'), (match) => match[1]);
+final String _dartVersion = Platform.version.substring(0, Platform.version.indexOf(' '));
 
 /// The version number of the package.
 const String _packageVersion = '1.0.0';
