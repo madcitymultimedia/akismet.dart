@@ -5,7 +5,7 @@ import 'package:test/test.dart';
 void main() => group('Comment', () {
   group('.fromJson()', () {
     test('should return an empty instance with an empty map', () {
-      var comment = new Comment.fromJson({});
+      var comment = new Comment.fromJson(const {});
       expect(comment.author, isNull);
       expect(comment.content, isNull);
       expect(comment.date, isNull);
@@ -14,7 +14,7 @@ void main() => group('Comment', () {
     });
 
     test('should return an initialized instance with a non-empty map', () {
-      var comment = new Comment.fromJson({
+      var comment = new Comment.fromJson(const {
         'comment_author': 'Cédric Belin',
         'comment_content': 'A user comment.',
         'comment_date_gmt': '2000-01-01T00:00:00.000Z',
@@ -37,9 +37,11 @@ void main() => group('Comment', () {
     });
 
     test('should return a non-empty map with a initialized instance', () {
-      var data = (new Comment('A user comment.', new Author('Cédric Belin'))
-        ..referrer = Uri.parse('https://belin.io')
-        ..type = CommentType.pingback
+      var data = new Comment(
+        author: new Author(name:  'Cédric Belin'),
+        content: 'A user comment.',
+        referrer: 'https://belin.io',
+        type: CommentType.pingback
       ).toJson();
 
       expect(data, allOf(isMap, hasLength(4)));

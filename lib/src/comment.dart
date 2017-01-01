@@ -4,12 +4,17 @@ part of akismet;
 class Comment {
 
   /// Creates a new comment.
-  Comment([this.content, this.author]);
+  Comment({author, this.content, date, permalink, postModified, referrer, this.type}) {
+    if (author != null) this.author = author is Author ? author : new Author(name: author.toString());
+    if (date != null) this.date = date is DateTime ? date : DateTime.parse(date.toString());
+    if (permalink != null) this.permalink = permalink is Uri ? permalink : Uri.parse(permalink.toString());
+    if (postModified != null) this.postModified = postModified is DateTime ? postModified : DateTime.parse(postModified.toString());
+    if (referrer != null) this.referrer = referrer is Uri ? referrer : Uri.parse(referrer.toString());
+  }
 
   /// Creates a new comment from the specified [map] in JSON format.
   Comment.fromJson(Map<String, String> map) {
     assert(map != null);
-
     if (map.keys.any((key) => key.startsWith('comment_author') || key.startsWith('user'))) author = new Author.fromJson(map);
     if (map['comment_content'] != null) content = map['comment_content'];
     if (map['comment_date_gmt'] != null) date = DateTime.parse(map['comment_date_gmt']);

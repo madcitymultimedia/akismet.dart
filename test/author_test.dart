@@ -1,26 +1,34 @@
-import 'dart:io';
-
 import 'package:akismet/akismet.dart';
 import 'package:test/test.dart';
 
 /// Tests the features of the [Author] class.
 void main() => group('Author', () {
+  group('constructor', () {
+    test('should properly initialize the `url` property', () {
+      expect(new Author().url, isNull);
+
+      var url = Uri.parse('https://belin.io');
+      expect(new Author(url: url).url, same(url));
+      expect(new Author(url: url.toString()).url, equals(url));
+    });
+  });
+
   group('.fromJson()', () {
     test('should return an empty instance with an empty map', () {
-      var author = new Author.fromJson({});
+      var author = new Author.fromJson(const {});
       expect(author.email, isNull);
       expect(author.ipAddress, isNull);
     });
 
     test('should return an initialized instance with a non-empty map', () {
-      var author = new Author.fromJson({
+      var author = new Author.fromJson(const {
         'comment_author_email': 'cedric@belin.io',
         'comment_author_url': 'https://belin.io',
         'user_ip': '127.0.0.1'
       });
 
       expect(author.email, equals('cedric@belin.io'));
-      expect(author.ipAddress, equals(new InternetAddress('127.0.0.1')));
+      expect(author.ipAddress, equals('127.0.0.1'));
       expect(author.url, equals(Uri.parse('https://belin.io')));
     });
   });
@@ -31,9 +39,11 @@ void main() => group('Author', () {
     });
 
     test('should return a non-empty map with a initialized instance', () {
-      var data = (new Author('Cédric Belin', 'cedric@belin.io')
-        ..ipAddress = new InternetAddress('127.0.0.1')
-        ..url = Uri.parse('https://belin.io')
+      var data = new Author(
+        email: 'cedric@belin.io',
+        ipAddress: '127.0.0.1',
+        name: 'Cédric Belin',
+        url: 'https://belin.io'
       ).toJson();
 
       expect(data, allOf(isMap, hasLength(4)));

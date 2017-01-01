@@ -1,121 +1,95 @@
+import 'dart:io';
 import 'package:akismet/akismet.dart';
 import 'package:test/test.dart';
 
-/// The client used to query the service database.
-//final Client _client = new Client({
-//  apiKey: process.env.AKISMET_API_KEY,
-//  blog: 'https://github.com/cedx/akismet.dart',
-//  isTest: true
-//});
-
-/// A comment with content marked as ham.
-//final Comment _ham = new Comment({
-//  author: new Author({
-//    ipAddress: '192.168.0.1',
-//    name: 'Akismet',
-//    role: 'administrator',
-//    url: 'https://github.com/cedx/akismet.dart',
-//    userAgent: 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0'
-//  }),
-//  content: 'I\'m testing out the Service API.',
-//  referrer: 'https://pub.dartlang.org/packages/akismet',
-//  type: CommentType.COMMENT
-//});
-
-/// A comment with content marked as spam.
-//final Comment _spam = new Comment({
-//  author: new Author({
-//    ipAddress: '127.0.0.1',
-//    name: 'viagra-test-123',
-//    userAgent: 'Spam Bot/6.6.6'
-//  }),
-//  content: 'Spam!',
-//  type: CommentType.TRACKBACK
-//});
-
 /// Tests the features of the [Client] class.
 void main() => group('Client', () {
-  group('.toJson()', () {
-    test('should return a map with the same public values', () {
-      var data = new Client('anonymous', 'secret').toJson();
-      expect(data, isMap);
-      expect(data, hasLength(2));
-      expect(data['password'], equals('secret'));
-      expect(data['username'], equals('anonymous'));
-    });
-  });
-});
+  final _client = new Client(Platform.environment['AKISMET_API_KEY'], 'https://github.com/cedx/akismet.dart')
+    ..isTest = true;
 
-/*
-group('Client', function() {
-  timeout(15000);
+  final _ham = new Comment(
+    author: new Author(
+      ipAddress: '192.168.0.1',
+      name: 'Akismet',
+      role: 'administrator',
+      url: 'https://github.com/cedx/akismet.dart',
+      userAgent: 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0'
+    ),
+    content: 'I\'m testing out the Service API.',
+    referrer: 'https://pub.dartlang.org/packages/akismet',
+    type: CommentType.comment
+  );
+
+  final _spam = new Comment(
+    author: new Author(
+      ipAddress: '127.0.0.1',
+      name: 'viagra-test-123',
+      userAgent: 'Spam Bot/6.6.6'
+    ),
+    content: 'Spam!',
+    type: CommentType.trackback
+  );
 
   group('constructor', () {
-    test('should initialize the existing properties', () {
-      var client = new Client({apiKey: '0123456789-ABCDEF', blog: 'https://github.com/cedx/akismet.dart', userAgent: 'FooBar/6.6.6'});
-      expect(client.apiKey, '0123456789-ABCDEF');
-      expect(client.userAgent, 'FooBar/6.6.6');
+    test('should properly initialize the `blog` property', () {
+      expect(new Client().blog, isNull);
 
-      expect(client.blog instanceof Blog);
-      expect(client.blog.url, 'https://github.com/cedx/akismet.dart');
-    });
-
-    test('should not create new properties', () {
-      expect(!('foo' in new Client({foo: 'bar'})));
+      var blog = new Blog(url: 'https://github.com/cedx/akismet.dart');
+      expect(new Client('', blog).blog, same(blog));
+      expect(new Client('', blog.url.toString()).blog.url, equals(blog.url));
     });
   });
 
-  group('#checkComment()', () {
-    test('should return `false` for valid comment (e.g. ham)' , done => {
-      _client.checkComment(_ham).subscribe(res => expect(res, false), done, done);
+  group('.checkComment()', () {
+    test('should return `false` for valid comment (e.g. ham)', () async {
+      expect(await _client.checkComment(_ham), isFalse);
     });
 
-    test('should return `true` for invalid comment (e.g. spam)' , done => {
-      _client.checkComment(_spam).subscribe(res => expect(res, true), done, done);
-    });
-  });
-
-  group('#submitHam()', () {
-    test('should complete without error' , done => {
-      _client.submitHam(_ham).subscribe(null, done, done);
+    test('should return `true` for invalid comment (e.g. spam)', () async {
+      expect(await _client.checkComment(_spam), isTrue);
     });
   });
 
-  group('#submitSpam()', () {
-    test('should complete without error' , done => {
-      _client.submitSpam(_spam).subscribe(null, done, done);
+  group('.submitHam()', () {
+    test('should complete without error', () {
+      expect(_client.submitHam(_ham), completes);
     });
   });
 
-  group('#toJson()', () {
-    test('should return the right values for an incorrectly configured client' , () {
-      var data = new Client({apiKey: '0123456789-ABCDEF', userAgent: 'FooBar/6.6.6'}).toJson();
-      expect(data.apiKey, '0123456789-ABCDEF');
-      expect(data.blog, null);
-      expect(!data.isTest);
-      expect(data.userAgent, 'FooBar/6.6.6');
+  group('.submitSpam()', () {
+    test('should complete without error', () {
+      expect(_client.submitSpam(_spam), completes);
+    });
+  });
+
+  group('.toJson()', () {
+    test('should return the right values for an incorrectly configured client', () {
+      var data = (new Client('0123456789-ABCDEF')..userAgent = 'FooBar/6.6.6').toJson();
+      expect(data['apiKey'], equals('0123456789-ABCDEF'));
+      expect(data['blog'], isNull);
+      expect(data['isTest'], isFalse);
+      expect(data['userAgent'], equals('FooBar/6.6.6'));
     });
 
-    test('should return the right values for a properly configured client' , () {
+    test('should return the right values for a properly configured client', () {
       var data = _client.toJson();
-      expect(data.apiKey, process.env.AKISMET_API_KEY);
-      expect(data.blog, 'Blog');
-      expect(data.isTest);
+      expect(data['apiKey'], equals(Platform.environment['AKISMET_API_KEY']));
+      expect(data['blog'], equals('Blog'));
+      expect(data['isTest'], isTrue);
 
-      var version = 'Dart/${process.version}';
-      expect(data.userAgent.substr(0, version.length), version);
+      var version = 'Dart/${Platform.version.substring(0, 5)}';
+      expect(data['userAgent'].substr(0, version.length), equals(version));
     });
   });
 
-  group('#verifyKey()', () {
-    test('should return `true` for a valid API key' , done => {
-      _client.verifyKey().subscribe(res => expect(res, true), done, done);
+  group('.verifyKey()', () {
+    test('should return `true` for a valid API key', () async {
+      expect(await _client.verifyKey(), isTrue);
     });
 
-    test('should return `false` for an invalid API key' , done => {
-      var client = new Client({apiKey: '0123456789-ABCDEF', blog: _client.blog, test: _client.isTest});
-      client.verifyKey().subscribe(res => expect(res, false), done, done);
+    test('should return `false` for an invalid API key', () async {
+      var client = new Client('0123456789-ABCDEF', _client.blog)..isTest = _client.isTest;
+      expect(await client.verifyKey(), isFalse);
     });
   });
 });
-*/

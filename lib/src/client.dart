@@ -10,12 +10,8 @@ class Client {
   static final Uri serviceUrl = Uri.parse('https://rest.akismet.com');
 
   /// Creates a new client.
-  Client(this.apiKey, blog) {
-    assert(apiKey != null);
-    assert(blog != null);
-
-    blog = blog is Blog ? blog : new Blog(blog);
-    userAgent = 'Dart/$_dartVersion | Akismet/$_packageVersion';
+  Client([this.apiKey, blog]) {
+    if (blog != null) this.blog = blog is Blog ? blog : new Blog(url: blog.toString());
   }
 
   /// The Akismet API key.
@@ -36,7 +32,7 @@ class Client {
 
   /// The user agent string to use when making requests.
   /// If possible, the user agent string should always have the following format: `Application Name/Version | Plugin Name/Version`.
-  String userAgent;
+  String userAgent = 'Dart/$_dartVersion | Akismet/$_packageVersion';
 
   /// The handler of "request" events.
   final StreamController<http.Request> _onRequest = new StreamController<http.Request>.broadcast();
@@ -47,27 +43,27 @@ class Client {
   /// Checks the specified [comment] against the service database, and returns a value indicating whether it is spam.
   Future<bool> checkComment(Comment comment) async {
     assert(comment != null);
-    var endPoint = '${serviceUrl.scheme}://$apiKey.${serviceUrl.host}/1.1/comment-check';
+    var endPoint = Uri.parse('${serviceUrl.scheme}://$apiKey.${serviceUrl.host}/1.1/comment-check');
     return await _fetch(endPoint, comment.toJson()) == 'true';
   }
 
   /// Submits the specified [comment] that was incorrectly marked as spam but should not have been.
   Future submitHam(Comment comment) async {
     assert(comment != null);
-    var endPoint = '${serviceUrl.scheme}://$apiKey.${serviceUrl.host}/1.1/submit-ham';
+    var endPoint = Uri.parse('${serviceUrl.scheme}://$apiKey.${serviceUrl.host}/1.1/submit-ham');
     return await _fetch(endPoint, comment.toJson());
   }
 
   /// Submits the specified [comment] that was not marked as spam but should have been.
   Future submitSpam(Comment comment) async {
     assert(comment != null);
-    var endPoint = '${serviceUrl.scheme}://$apiKey.${serviceUrl.host}/1.1/submit-spam';
+    var endPoint = Uri.parse('${serviceUrl.scheme}://$apiKey.${serviceUrl.host}/1.1/submit-spam');
     return await _fetch(endPoint, comment.toJson());
   }
 
   /// Checks the API key against the service database, and returns a value indicating whether it is valid.
   Future<bool> verifyKey() async {
-    var endPoint = '$serviceUrl/1.1/verify-key';
+    var endPoint = Uri.parse('$serviceUrl/1.1/verify-key');
     return await _fetch(endPoint, {'key': apiKey}) == 'valid';
   }
 
@@ -75,7 +71,7 @@ class Client {
   Map<String, dynamic> toJson() => {
     'apiKey': apiKey,
     'blog': blog != null ? blog.runtimeType.toString() : null,
-    'test': isTest,
+    'isTest': isTest,
     'userAgent': userAgent
   };
 
@@ -83,33 +79,24 @@ class Client {
   @override
   String toString() => '$runtimeType ${JSON.encode(this)}';
 
-  /// Queries the service by posting the specified fields to a given end point, and returns the response as a string.
-  Future<String> _fetch(endPoint, Map<String, String> params) async {
-    /*
-    if (!apiKey.length || !blog) return Observable.throw(new Error('The API key or the blog URL is empty.'));
+  /// Queries the service by posting the specified [fields] to a given end point, and returns the response as a string.
+  Future<String> _fetch(Uri endPoint, Map<String, String> fields) async {
+    if (apiKey == null || apiKey.isEmpty) throw new ArgumentError('The API key is empty.');
+    if (blog == null) throw new ArgumentError('The blog URL is empty.');
 
-    var bodyParams = Object.assign(blog.toJson(), params);
-    if (test) bodyParams.is_test = '1';
+    var bodyFields = blog.toJson();
+    bodyFields.addAll(fields);
+    if (isTest) bodyFields['is_test'] = '1';
 
-    return new Observable(observer => {
-      var req = superagent.post(endPoint)
-        .type('form')
-        .set('User-Agent', userAgent)
-        .send(bodyParams);
+    var request = new http.Request('POST', endPoint)
+      ..bodyFields = bodyFields
+      ..headers[HttpHeaders.USER_AGENT] = userAgent;
 
-      _onRequest.next(req);
-      req.end((err, res) => {
-        if (err) observer.error(err);
-        else if (Client.DEBUG_HEADER in res.header) observer.error(new Error(res.header[Client.DEBUG_HEADER]));
-        else {
-          _onResponse.next(res);
-          observer.next(res.text);
-          observer.complete();
-        }
-      });
-    });
-    */
+    _onRequest.add(request);
+    var response = await http.post(request.url, body: request.bodyFields, headers: request.headers);
+    _onResponse.add(response);
 
-    return null;
+    if (response.headers.containsKey(debugHeader)) throw new http.ClientException(response.headers[debugHeader]);
+    return response.body;
   }
 }
