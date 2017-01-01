@@ -7,6 +7,6 @@ import 'comment_test.dart' as comment_test;
 void main() {
   author_test.main();
   blog_test.main();
-  //client_test.main();
+  client_test.main();
   comment_test.main();
 }

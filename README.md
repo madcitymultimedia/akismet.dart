@@ -13,6 +13,62 @@ Prevent comment spam using the [Akismet](https://akismet.com) service, in [Dart]
 The latest [Dart SDK](https://www.dartlang.org) and [Pub](https://pub.dartlang.org) versions.
 If you plan to play with the sources, you will also need the latest [Grinder](http://google.github.io/grinder.dart) version.
 
+## Installing via [Pub](https://pub.dartlang.org)
+
+### 1. Depend on it
+Add this to your package's `pubspec.yaml` file:
+
+```yaml
+dependencies:
+  akismet: *
+```
+
+### 2. Install it
+Install this package and its dependencies from a command prompt:
+
+```shell
+$ pub get
+```
+
+### 3. Import it
+Now in your [Dart](https://www.dartlang.org) code, you can use:
+
+```dart
+import 'package:akismet/akismet.dart';
+```
+
+## Usage
+
+### Key verification
+
+```dart
+var client = new Client('your API key', 'http://your.blog.url');
+var isValid = await client.verifyKey();
+print(isValid ? 'Your API key is valid.' : 'Your API key is invalid.');
+```
+
+### Comment check
+
+```dart
+var comment = new Comment(
+  author: new Author(ipAddress: '127.0.0.1', userAgent: 'Mozilla/5.0'),
+  content: 'A comment.'
+);
+
+var isSpam = await client.checkComment(comment);
+print(isSpam ? 'The comment is marked as spam.' : 'The comment is marked as ham.');
+```
+
+### Submit spam/ham
+
+```dart
+await client.submitSpam(comment);
+print('Spam submitted.');
+
+await client.submitHam(comment);
+print('Ham submitted.');
+```
+
 ## Events
 The `Client` class triggers some events during its life cycle:
 
