@@ -100,7 +100,7 @@ Then, you can run the `test` script from the command prompt:
 $ pub run test
 ```
 
-## See Also
+## See also
 - [API reference](https://cedx.github.io/akismet.dart)
 - [Continuous integration](https://travis-ci.org/cedx/akismet.dart)
 
