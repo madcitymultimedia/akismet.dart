@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:grinder/grinder.dart';
+import 'package:grinder_coveralls/grinder_coveralls.dart';
 
 /// The list of source directories.
 const List<String> _sources = const ['lib', 'test', 'tool'];
@@ -8,40 +9,25 @@ const List<String> _sources = const ['lib', 'test', 'tool'];
 Future main(List<String> args) => grind(args);
 
 /// Deletes all generated files and reset any saved state.
-@Task()
+@Task('Delete the generated files')
 void clean() => defaultClean();
 
-/// Sends the results of the code coverage.
-@Task()
-void coverage() {
-  // TODO
-}
+/// Uploads the code coverage report.
+@Task('Upload the code coverage')
+void coverage() => uploadCoverage('var/lcov.info');
 
 /// Builds the documentation.
-@Task()
+@Task('Build the documentation')
 void doc() => DartDoc.doc();
 
 /// Fixes the coding standards issues.
-@Task()
+@Task('Fix the coding issues')
 void fix() => DartFmt.format(_sources);
 
 /// Performs static analysis of source code.
-@Task()
+@Task('Perform the static analysis')
 void lint() => Analyzer.analyze(_sources);
 
-/// Runs the unit tests.
-@Task()
-Future test() async {
-  await Future.wait([
-    Dart.runAsync('test/all.dart', vmArgs: const ['--checked', '--enable-vm-service', '--pause-isolates-on-exit']),
-    Pub.runAsync('coverage', script: 'collect_coverage', arguments: const ['--out=var/coverage.json', '--resume-isolates'])
-  ]);
-
-  await Pub.runAsync('coverage', script: 'format_coverage', arguments: const [
-    '--in=var/coverage.json',
-    '--lcov',
-    '--packages=.packages',
-    '--out=var/coverage.lcov',
-    '--report-on=lib'
-  ]);
-}
+/// Runs all the test suites.
+@Task('Run the tests')
+void test() => collectCoverage('test/all.dart', 'var/lcov.info');
