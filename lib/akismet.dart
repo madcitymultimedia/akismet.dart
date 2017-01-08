@@ -10,7 +10,6 @@ part 'src/author.dart';
 part 'src/blog.dart';
 part 'src/client.dart';
 part 'src/comment.dart';
-part 'src/comment_type.dart';
 
 /// The version number of the Dart runtime.
 final String _dartVersion = Platform.version.substring(0, Platform.version.indexOf(' '));
