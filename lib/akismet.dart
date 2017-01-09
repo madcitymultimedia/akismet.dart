@@ -15,4 +15,4 @@ part 'src/comment.dart';
 final String _dartVersion = Platform.version.substring(0, Platform.version.indexOf(' '));
 
 /// The version number of the package.
-const String _packageVersion = '1.0.0';
+const String _packageVersion = '1.1.0';

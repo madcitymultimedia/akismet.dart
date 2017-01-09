@@ -1,4 +1,6 @@
 import 'dart:async';
+import 'dart:io';
+
 import 'package:grinder/grinder.dart';
 import 'package:grinder_coveralls/grinder_coveralls.dart';
 
@@ -14,7 +16,7 @@ void clean() => defaultClean();
 
 /// Uploads the code coverage report.
 @Task('Upload the code coverage')
-void coverage() => uploadCoverage('var/lcov.info');
+Future coverage() => uploadCoverage('var/lcov.info');
 
 /// Builds the documentation.
 @Task('Build the documentation')
@@ -30,4 +32,7 @@ void lint() => Analyzer.analyze(_sources);
 
 /// Runs all the test suites.
 @Task('Run the tests')
-void test() => collectCoverage('test/all.dart', 'var/lcov.info');
+Future test() async {
+  if (!Platform.environment.containsKey('AKISMET_API_KEY')) fail('AKISMET_API_KEY environment variable not set.');
+  await collectCoverage('test/all.dart', 'var/lcov.info');
+}
