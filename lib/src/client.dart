@@ -51,14 +51,14 @@ class Client {
   Future submitHam(Comment comment) async {
     assert(comment != null);
     var endPoint = Uri.parse('${serviceUrl.scheme}://$apiKey.${serviceUrl.host}/1.1/submit-ham');
-    return await _fetch(endPoint, comment.toJson());
+    return _fetch(endPoint, comment.toJson());
   }
 
   /// Submits the specified [comment] that was not marked as spam but should have been.
   Future submitSpam(Comment comment) async {
     assert(comment != null);
     var endPoint = Uri.parse('${serviceUrl.scheme}://$apiKey.${serviceUrl.host}/1.1/submit-spam');
-    return await _fetch(endPoint, comment.toJson());
+    return _fetch(endPoint, comment.toJson());
   }
 
   /// Checks the API key against the service database, and returns a value indicating whether it is valid.
