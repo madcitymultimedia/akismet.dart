@@ -70,7 +70,7 @@ class Client {
   /// Converts this object to a map in JSON format.
   Map<String, dynamic> toJson() => {
     'apiKey': apiKey,
-    'blog': blog != null ? blog.runtimeType.toString() : null,
+    'blog': blog?.runtimeType.toString(),
     'isTest': isTest,
     'userAgent': userAgent
   };
