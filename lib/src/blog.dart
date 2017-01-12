@@ -10,12 +10,10 @@ class Blog {
   }
 
   /// Creates a new blog from the specified [map] in JSON format.
-  Blog.fromJson(Map<String, String> map) {
-    assert(map != null);
-    if (map['blog'] != null) url = Uri.parse(map['blog']);
-    if (map['blog_charset'] != null) charset = map['blog_charset'];
-    if (map['blog_lang'] != null) languages = _parseLanguages(map['blog_lang']);
-  }
+  Blog.fromJson(Map<String, String> map):
+    charset = map['blog_charset'],
+    languages = map['blog_lang'] != null ? _parseLanguages(map['blog_lang']) : [],
+    url = map['blog'] != null ? Uri.parse(map['blog']) : null;
 
   /// The character encoding for the values included in comments.
   String charset;
@@ -40,7 +38,7 @@ class Blog {
   String toString() => '$runtimeType ${JSON.encode(this)}';
 
   /// Parses the specified comma-separated list of [languages] into a [List] object.
-  List<String> _parseLanguages(String languages) => languages
+  static List<String> _parseLanguages(String languages) => languages
     .split(',')
     .map((language) => language.trim())
     .where((language) => language.isNotEmpty)

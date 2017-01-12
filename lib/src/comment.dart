@@ -13,16 +13,14 @@ class Comment {
   }
 
   /// Creates a new comment from the specified [map] in JSON format.
-  Comment.fromJson(Map<String, String> map) {
-    assert(map != null);
-    if (map.keys.any((key) => key.startsWith('comment_author') || key.startsWith('user'))) author = new Author.fromJson(map);
-    if (map['comment_content'] != null) content = map['comment_content'];
-    if (map['comment_date_gmt'] != null) date = DateTime.parse(map['comment_date_gmt']);
-    if (map['comment_post_modified_gmt'] != null) postModified = DateTime.parse(map['comment_post_modified_gmt']);
-    if (map['comment_type'] != null) type = map['comment_type'];
-    if (map['permalink'] != null) permalink = Uri.parse(map['permalink']);
-    if (map['referrer'] != null) referrer = Uri.parse(map['referrer']);
-  }
+  Comment.fromJson(Map<String, String> map):
+    author = map.keys.any((key) => key.startsWith('comment_author') || key.startsWith('user')) ? new Author.fromJson(map) : null,
+    content = map['comment_content'],
+    date = map['comment_date_gmt'] != null ? DateTime.parse(map['comment_date_gmt']) : null,
+    permalink = map['permalink'] != null ? Uri.parse(map['permalink']) : null,
+    postModified = map['comment_post_modified_gmt'] != null ? DateTime.parse(map['comment_post_modified_gmt']) : null,
+    referrer = map['referrer'] != null ? Uri.parse(map['referrer']) : null,
+    type = map['comment_type'];
 
   /// The comment's author.
   Author author;

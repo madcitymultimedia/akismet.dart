@@ -9,15 +9,13 @@ class Author {
   }
 
   /// Creates a new author from the specified [map] in JSON format.
-  Author.fromJson(Map<String, String> map) {
-    assert(map != null);
-    if (map['comment_author'] != null) name = map['comment_author'];
-    if (map['comment_author_email'] != null) email = map['comment_author_email'];
-    if (map['comment_author_url'] != null) url = Uri.parse(map['comment_author_url']);
-    if (map['user_agent'] != null) userAgent = map['user_agent'];
-    if (map['user_ip'] != null) ipAddress = map['user_ip'];
-    if (map['user_role'] != null) role = map['user_role'];
-  }
+  Author.fromJson(Map<String, String> map):
+    email = map['comment_author_email'],
+    ipAddress = map['user_ip'],
+    name = map['comment_author'],
+    role = map['user_role'],
+    url = map['comment_author_url'] != null ? Uri.parse(map['comment_author_url']) : null,
+    userAgent = map['user_agent'];
 
   /// The author's mail address.
   String email;
