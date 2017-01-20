@@ -17,7 +17,7 @@ void main() => group('Blog', () {
     test('should return an empty instance with an empty map', () {
       var blog = new Blog.fromJson(const {});
       expect(blog.charset, isNull);
-      expect(blog.languages, allOf(isList, hasLength(0)));
+      expect(blog.languages, allOf(isList, isEmpty));
       expect(blog.url, isNull);
     });
 
@@ -37,7 +37,7 @@ void main() => group('Blog', () {
 
   group('.toJson()', () {
     test('should return an empty map with a newly created instance', () {
-      expect(new Blog().toJson(), allOf(isMap, hasLength(0)));
+      expect(new Blog().toJson(), allOf(isMap, isEmpty));
     });
 
     test('should return a non-empty map with a initialized instance', () {

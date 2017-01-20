@@ -35,7 +35,7 @@ void main() => group('Author', () {
 
   group('.toJson()', () {
     test('should return an empty map with a newly created instance', () {
-      expect(new Author().toJson(), allOf(isMap, hasLength(0)));
+      expect(new Author().toJson(), allOf(isMap, isEmpty));
     });
 
     test('should return a non-empty map with a initialized instance', () {
