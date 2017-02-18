@@ -16,7 +16,9 @@ void clean() => defaultClean();
 
 /// Uploads the code coverage report.
 @Task('Upload the code coverage')
-Future coverage() => uploadCoverage('var/lcov.info');
+void coverage() {
+  Pub.run('coveralls', arguments: ['--file=var/lcov.info']);
+}
 
 /// Builds the documentation.
 @Task('Build the documentation')
@@ -34,5 +36,12 @@ void lint() => Analyzer.analyze(_sources);
 @Task('Run the tests')
 Future test() async {
   if (!Platform.environment.containsKey('AKISMET_API_KEY')) fail('AKISMET_API_KEY environment variable not set.');
-  await collectCoverage('test/all.dart', 'var/lcov.info');
+
+  await Future.wait([
+    Dart.runAsync('test/all.dart', vmArgs: const ['--checked', '--enable-vm-service', '--pause-isolates-on-exit']),
+    Pub.runAsync('coverage', script: 'collect_coverage', arguments: const ['--out=var/coverage.json', '--resume-isolates'])
+  ]);
+
+  var args = const ['--in=var/coverage.json', '--lcov', '--out=var/lcov.info', '--packages=.packages', '--report-on=lib'];
+  return Pub.runAsync('coverage', script: 'format_coverage', arguments: args);
 }
