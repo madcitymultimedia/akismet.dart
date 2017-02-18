@@ -4,13 +4,7 @@ part of akismet;
 class Comment {
 
   /// Creates a new comment.
-  Comment({author, this.content, date, permalink, postModified, referrer, this.type}) {
-    if (author != null) this.author = author is Author ? author : new Author(name: author.toString());
-    if (date != null) this.date = date is DateTime ? date : DateTime.parse(date.toString());
-    if (permalink != null) this.permalink = permalink is Uri ? permalink : Uri.parse(permalink.toString());
-    if (postModified != null) this.postModified = postModified is DateTime ? postModified : DateTime.parse(postModified.toString());
-    if (referrer != null) this.referrer = referrer is Uri ? referrer : Uri.parse(referrer.toString());
-  }
+  Comment([this.author, this.content = '', this.type = '']);
 
   /// Creates a new comment from the specified [map] in JSON format.
   Comment.fromJson(Map<String, String> map):
@@ -47,10 +41,10 @@ class Comment {
   /// Converts this object to a map in JSON format.
   Map<String, String> toJson() {
     var map = author != null ? author.toJson() : <String, String>{};
-    if (content != null) map['comment_content'] = content;
+    if (content.isNotEmpty) map['comment_content'] = content;
     if (date != null) map['comment_date_gmt'] = date.toIso8601String();
     if (postModified != null) map['comment_post_modified_gmt'] = postModified.toIso8601String();
-    if (type != null) map['comment_type'] = type;
+    if (type.isNotEmpty) map['comment_type'] = type;
     if (permalink != null) map['permalink'] = permalink.toString();
     if (referrer != null) map['referrer'] = referrer.toString();
     return map;

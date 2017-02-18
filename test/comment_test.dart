@@ -37,13 +37,13 @@ void main() => group('Comment', () {
     });
 
     test('should return a non-empty map with a initialized instance', () {
-      var data = new Comment(
-        author: new Author(name:  'Cédric Belin'),
-        content: 'A user comment.',
-        referrer: 'https://belin.io',
-        type: CommentType.pingback
-      ).toJson();
+      var comment = new Comment(
+        new Author()..name = 'Cédric Belin',
+        'A user comment.',
+        CommentType.pingback
+      )..referrer = Uri.parse('https://belin.io');
 
+      var data = comment.toJson();
       expect(data, allOf(isMap, hasLength(4)));
       expect(data['comment_author'], 'Cédric Belin');
       expect(data['comment_content'], 'A user comment.');
