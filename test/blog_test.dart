@@ -38,4 +38,18 @@ void main() => group('Blog', () {
       expect(data['blog_lang'], equals('en,fr'));
     });
   });
+
+  group('.toString()', () {
+    var data = new Blog('https://github.com/cedx/akismet.dart', 'UTF-8', ['en', 'fr']).toString();
+
+    test('should start with the constructor name', () {
+      expect(data, contains('Blog {'));
+    });
+
+    test('should contain the instance properties', () {
+      expect(data, contains('"blog":"https://github.com/cedx/akismet.dart"'));
+      expect(data, contains('"blog_charset":"UTF-8"'));
+      expect(data, contains('"blog_lang":"en,fr"'));
+    });
+  });
 });
