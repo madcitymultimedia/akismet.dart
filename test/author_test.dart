@@ -3,16 +3,6 @@ import 'package:test/test.dart';
 
 /// Tests the features of the [Author] class.
 void main() => group('Author', () {
-  group('constructor', () {
-    test('should properly initialize the `url` property', () {
-      expect(new Author().url, isNull);
-
-      var url = Uri.parse('https://belin.io');
-      expect(new Author(url: url).url, same(url));
-      expect(new Author(url: url.toString()).url, equals(url));
-    });
-  });
-
   group('.fromJson()', () {
     test('should return an empty instance with an empty map', () {
       var author = new Author.fromJson(const {});

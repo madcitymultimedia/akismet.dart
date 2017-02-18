@@ -51,7 +51,7 @@ print(isValid ? 'Your API key is valid.' : 'Your API key is invalid.');
 
 ```dart
 var comment = new Comment(
-  author: new Author(ipAddress: '127.0.0.1', userAgent: 'Mozilla/5.0'),
+  author: new Author('127.0.0.1', 'Mozilla/5.0'),
   content: 'A comment.'
 );
 
