@@ -1,8 +1,6 @@
 import 'dart:async';
 import 'dart:io';
-
 import 'package:grinder/grinder.dart';
-import 'package:grinder_coveralls/grinder_coveralls.dart';
 
 /// The list of source directories.
 const List<String> _sources = const ['lib', 'test', 'tool'];
@@ -16,6 +14,7 @@ void clean() => defaultClean();
 
 /// Uploads the code coverage report.
 @Task('Upload the code coverage')
+@Depends(test)
 void coverage() {
   Pub.run('coveralls', arguments: ['--file=var/lcov.info']);
 }
