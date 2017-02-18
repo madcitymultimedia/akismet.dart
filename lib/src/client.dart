@@ -6,12 +6,12 @@ class Client {
   /// The HTTP header containing the Akismet error messages.
   static const String debugHeader = 'x-akismet-debug-help';
 
-  /// The URL of the remote service.
+  /// The URL of the default API end point.
   static final Uri defaultEndPoint = Uri.parse('https://rest.akismet.com');
 
   /// Creates a new client.
-  Client([this.apiKey, blog]) {
-    if (blog != null) this.blog = blog is Blog ? blog : new Blog(url: blog.toString());
+  Client([this.apiKey = '', blog]) {
+    if (blog != null) this.blog = blog is Blog ? blog : new Blog(blog.toString());
   }
 
   /// The Akismet API key.
@@ -19,6 +19,9 @@ class Client {
 
   /// The front page or home URL of the instance making requests.
   Blog blog;
+
+  /// The URL of the API end point.
+  Uri endPoint = defaultEndPoint;
 
   /// Value indicating whether the client operates in test mode.
   /// You can use it when submitting test queries to Akismet.
@@ -43,34 +46,33 @@ class Client {
   /// Checks the specified [comment] against the service database, and returns a value indicating whether it is spam.
   Future<bool> checkComment(Comment comment) async {
     assert(comment != null);
-    var endPoint = Uri.parse('${serviceUrl.scheme}://$apiKey.${serviceUrl.host}/1.1/comment-check');
-    return await _fetch(endPoint, comment.toJson()) == 'true';
+    var url = Uri.parse('${endPoint.scheme}://$apiKey.${endPoint.host}/1.1/comment-check');
+    return await _fetch(url, comment.toJson()) == 'true';
   }
 
   /// Submits the specified [comment] that was incorrectly marked as spam but should not have been.
   Future submitHam(Comment comment) async {
     assert(comment != null);
-    var endPoint = Uri.parse('${serviceUrl.scheme}://$apiKey.${serviceUrl.host}/1.1/submit-ham');
-    return _fetch(endPoint, comment.toJson());
+    var url = Uri.parse('${endPoint.scheme}://$apiKey.${endPoint.host}/1.1/submit-ham');
+    return _fetch(url, comment.toJson());
   }
 
   /// Submits the specified [comment] that was not marked as spam but should have been.
   Future submitSpam(Comment comment) async {
     assert(comment != null);
-    var endPoint = Uri.parse('${serviceUrl.scheme}://$apiKey.${serviceUrl.host}/1.1/submit-spam');
-    return _fetch(endPoint, comment.toJson());
+    var url = Uri.parse('${endPoint.scheme}://$apiKey.${endPoint.host}/1.1/submit-spam');
+    return _fetch(url, comment.toJson());
   }
 
   /// Checks the API key against the service database, and returns a value indicating whether it is valid.
   Future<bool> verifyKey() async {
-    var endPoint = Uri.parse('$serviceUrl/1.1/verify-key');
-    return await _fetch(endPoint, {'key': apiKey}) == 'valid';
+    return await _fetch(Uri.parse('$endPoint/1.1/verify-key'), {'key': apiKey}) == 'valid';
   }
 
   /// Converts this object to a map in JSON format.
   Map<String, dynamic> toJson() => {
     'apiKey': apiKey,
-    'blog': blog?.runtimeType.toString(),
+    'blog': blog != null ? blog.runtimeType.toString() : null,
     'isTest': isTest,
     'userAgent': userAgent
   };

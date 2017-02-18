@@ -6,7 +6,7 @@ void main() => group('Blog', () {
   group('.fromJson()', () {
     test('should return an empty instance with an empty map', () {
       var blog = new Blog.fromJson(const {});
-      expect(blog.charset, isNull);
+      expect(blog.charset, isEmpty);
       expect(blog.languages, allOf(isList, isEmpty));
       expect(blog.url, isNull);
     });

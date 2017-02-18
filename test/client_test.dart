@@ -7,58 +7,36 @@ void main() => group('Client', () {
   final _client = new Client(Platform.environment['AKISMET_API_KEY'], 'https://github.com/cedx/akismet.dart')
     ..isTest = true;
 
-  final _ham = new Comment(
-    author: new Author(
-      ipAddress: '192.168.0.1',
-      name: 'Akismet',
-      role: 'administrator',
-      url: 'https://github.com/cedx/akismet.dart',
-      userAgent: 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0'
-    ),
-    content: 'I\'m testing out the Service API.',
-    referrer: 'https://pub.dartlang.org/packages/akismet',
-    type: CommentType.comment
-  );
+  var author = new Author('192.168.0.1', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0')
+    ..name = 'Akismet'
+    ..role = 'administrator'
+    ..url = Uri.parse('https://github.com/cedx/akismet.dart');
 
-  final _spam = new Comment(
-    author: new Author(
-      ipAddress: '127.0.0.1',
-      name: 'viagra-test-123',
-      userAgent: 'Spam Bot/6.6.6'
-    ),
-    content: 'Spam!',
-    type: CommentType.trackback
-  );
+  final ham = new Comment(author, 'I\'m testing out the Service API.', CommentType.comment)
+    ..referrer = Uri.parse('https://pub.dartlang.org/packages/akismet');
 
-  group('constructor', () {
-    test('should properly initialize the `blog` property', () {
-      expect(new Client().blog, isNull);
-
-      var blog = new Blog(url: 'https://github.com/cedx/akismet.dart');
-      expect(new Client('', blog).blog, same(blog));
-      expect(new Client('', blog.url.toString()).blog.url, equals(blog.url));
-    });
-  });
+  author = new Author('127.0.0.1', 'Spam Bot/6.6.6')..name = 'viagra-test-123';
+  final spam = new Comment(author, 'Spam!', CommentType.trackback);
 
   group('.checkComment()', () {
     test('should return `false` for valid comment (e.g. ham)', () async {
-      expect(await _client.checkComment(_ham), isFalse);
+      expect(await _client.checkComment(ham), isFalse);
     });
 
     test('should return `true` for invalid comment (e.g. spam)', () async {
-      expect(await _client.checkComment(_spam), isTrue);
+      expect(await _client.checkComment(spam), isTrue);
     });
   });
 
   group('.submitHam()', () {
     test('should complete without error', () {
-      expect(_client.submitHam(_ham), completes);
+      expect(_client.submitHam(ham), completes);
     });
   });
 
   group('.submitSpam()', () {
     test('should complete without error', () {
-      expect(_client.submitSpam(_spam), completes);
+      expect(_client.submitSpam(spam), completes);
     });
   });
 
