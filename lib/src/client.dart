@@ -7,7 +7,7 @@ class Client {
   static const String debugHeader = 'x-akismet-debug-help';
 
   /// The URL of the remote service.
-  static final Uri serviceUrl = Uri.parse('https://rest.akismet.com');
+  static final Uri defaultEndPoint = Uri.parse('https://rest.akismet.com');
 
   /// Creates a new client.
   Client([this.apiKey, blog]) {
