@@ -3,16 +3,6 @@ import 'package:test/test.dart';
 
 /// Tests the features of the [Blog] class.
 void main() => group('Blog', () {
-  group('constructor', () {
-    test('should properly initialize the `url` property', () {
-      expect(new Blog().url, isNull);
-
-      var url = Uri.parse('https://github.com/cedx/akismet.dart');
-      expect(new Blog(url: url).url, same(url));
-      expect(new Blog(url: url.toString()).url, equals(url));
-    });
-  });
-
   group('.fromJson()', () {
     test('should return an empty instance with an empty map', () {
       var blog = new Blog.fromJson(const {});
@@ -41,12 +31,7 @@ void main() => group('Blog', () {
     });
 
     test('should return a non-empty map with a initialized instance', () {
-      var data = new Blog(
-        charset: 'UTF-8',
-        languages: 'en, fr',
-        url: 'https://github.com/cedx/akismet.dart'
-      ).toJson();
-
+      var data = new Blog('https://github.com/cedx/akismet.dart', 'UTF-8', ['en', 'fr']).toJson();
       expect(data, allOf(isMap, hasLength(3)));
       expect(data['blog'], equals('https://github.com/cedx/akismet.dart'));
       expect(data['blog_charset'], equals('UTF-8'));

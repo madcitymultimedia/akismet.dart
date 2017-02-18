@@ -4,22 +4,21 @@ part of akismet;
 class Blog {
 
   /// Creates a new blog.
-  Blog({this.charset, languages, url}) {
-    if (languages != null) this.languages = languages is List<String> ? languages : _parseLanguages(languages.toString());
+  Blog([url, this.charset = '', List<String> languages]): languages = languages ?? [] {
     if (url != null) this.url = url is Uri ? url : Uri.parse(url.toString());
   }
 
   /// Creates a new blog from the specified [map] in JSON format.
   Blog.fromJson(Map<String, String> map):
-    charset = map['blog_charset'],
-    languages = map['blog_lang'] != null ? _parseLanguages(map['blog_lang']) : [],
+    charset = map['blog_charset'] != null ? map['blog_charset'] : '',
+    languages = map['blog_lang'] != null ? map['blog_lang'].split(',').map((lang) => lang.trim()).where((lang) => lang.isNotEmpty).toList() : [],
     url = map['blog'] != null ? Uri.parse(map['blog']) : null;
 
   /// The character encoding for the values included in comments.
   String charset;
 
   /// The languages in use on the blog or site, in ISO 639-1 format, comma-separated.
-  List<String> languages = [];
+  final List<String> languages;
 
   /// The blog or site URL.
   Uri url;
@@ -28,19 +27,12 @@ class Blog {
   Map<String, String> toJson() {
     var map = <String, String>{};
     if (url != null) map['blog'] = url.toString();
-    if (charset != null) map['blog_charset'] = charset;
-    if (languages != null && languages.isNotEmpty) map['blog_lang'] = languages.join(',');
+    if (charset.isNotEmpty) map['blog_charset'] = charset;
+    if (languages.isNotEmpty) map['blog_lang'] = languages.join(',');
     return map;
   }
 
   /// Returns a string representation of this object.
   @override
   String toString() => '$runtimeType ${JSON.encode(this)}';
-
-  /// Parses the specified comma-separated list of [languages] into a [List] object.
-  static List<String> _parseLanguages(String languages) => languages
-    .split(',')
-    .map((language) => language.trim())
-    .where((language) => language.isNotEmpty)
-    .toList();
 }

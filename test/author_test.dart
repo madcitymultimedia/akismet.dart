@@ -29,13 +29,12 @@ void main() => group('Author', () {
     });
 
     test('should return a non-empty map with a initialized instance', () {
-      var data = new Author(
-        email: 'cedric@belin.io',
-        ipAddress: '127.0.0.1',
-        name: 'Cédric Belin',
-        url: 'https://belin.io'
-      ).toJson();
+      var author = new Author('127.0.0.1')
+        ..email = 'cedric@belin.io'
+        ..name = 'Cédric Belin'
+        ..url = Uri.parse('https://belin.io');
 
+      var data = author.toJson();
       expect(data, allOf(isMap, hasLength(4)));
       expect(data['comment_author'], equals('Cédric Belin'));
       expect(data['comment_author_email'], equals('cedric@belin.io'));
