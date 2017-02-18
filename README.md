@@ -1,5 +1,5 @@
 # Akismet for Dart
-![Release](https://img.shields.io/pub/v/akismet.svg) ![License](https://img.shields.io/badge/license-Apache--2.0-blue.svg) ![Build](https://travis-ci.org/cedx/akismet.dart.svg)
+![Release](https://img.shields.io/pub/v/akismet.svg) ![License](https://img.shields.io/badge/license-Apache--2.0-blue.svg) ![Coverage](https://coveralls.io/repos/github/cedx/akismet.dart/badge.svg) ![Build](https://travis-ci.org/cedx/akismet.dart.svg)
 
 Prevent comment spam using the [Akismet](https://akismet.com) service, in [Dart](https://www.dartlang.org).
 
@@ -120,6 +120,7 @@ $ pub run test
 
 ## See also
 - [API reference](https://cedx.github.io/akismet.dart)
+- [Code coverage](https://coveralls.io/github/cedx/akismet.dart)
 - [Continuous integration](https://travis-ci.org/cedx/akismet.dart)
 
 ## License
