@@ -42,31 +42,49 @@ import 'package:akismet/akismet.dart';
 ### Key verification
 
 ```dart
-var client = new Client('your API key', 'http://your.blog.url');
-var isValid = await client.verifyKey();
-print(isValid ? 'Your API key is valid.' : 'Your API key is invalid.');
+try {
+  var client = new Client('your API key', 'http://your.blog.url');
+  var isValid = await client.verifyKey();
+  print(isValid ? 'Your API key is valid.' : 'Your API key is invalid.');
+}
+
+catch (error) {
+  print('An error occurred: $error');
+}
 ```
 
 ### Comment check
 
 ```dart
-var comment = new Comment(
-  author: new Author('127.0.0.1', 'Mozilla/5.0'),
-  content: 'A comment.'
-);
+try {
+  var comment = new Comment(
+    new Author('127.0.0.1', 'Mozilla/5.0'),
+    'A comment.'
+  );
 
-var isSpam = await client.checkComment(comment);
-print(isSpam ? 'The comment is marked as spam.' : 'The comment is marked as ham.');
+  var isSpam = await client.checkComment(comment);
+  print(isSpam ? 'The comment is marked as spam.' : 'The comment is marked as ham.');
+}
+
+catch (error) {
+  print('An error occurred: $error');
+}
 ```
 
 ### Submit spam/ham
 
 ```dart
-await client.submitSpam(comment);
-print('Spam submitted.');
+try {
+  await client.submitSpam(comment);
+  print('Spam submitted.');
 
-await client.submitHam(comment);
-print('Ham submitted.');
+  await client.submitHam(comment);
+  print('Ham submitted.');
+}
+
+catch (error) {
+  print('An error occurred: $error');
+}
 ```
 
 ## Events

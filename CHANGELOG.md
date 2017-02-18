@@ -1,6 +1,14 @@
 # Changelog
 This file contains highlights of what changes on each version of the [Akismet for Dart](https://github.com/cedx/akismet.dart) library.
 
+## Version 2.0.0
+- Breaking change: changed the signature of all constructors.
+- Breaking change: raised the required [Dart](https://www.dartlang.org) version.
+- Breaking change: renamed the `Client.serviceUrl` constant to `DEFAULT_defaultEndPoint`.
+- Added the `Client.endPoint` property.
+- Added the `version` constant.
+- Updated the package dependencies.
+
 ## Version 1.0.0
 - Breaking change: changed the `Blog.language` string property for the `languages` array property.
 - Breaking change: dropped the [dart:html](https://api.dartlang.org/stable/dart-html/dart-html-library.html) client.
