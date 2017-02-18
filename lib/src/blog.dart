@@ -10,7 +10,7 @@ class Blog {
 
   /// Creates a new blog from the specified [map] in JSON format.
   Blog.fromJson(Map<String, String> map):
-    charset = map['blog_charset'] != null ? map['blog_charset'] : '',
+    charset = map['blog_charset'] ?? '',
     languages = map['blog_lang'] != null ? map['blog_lang'].split(',').map((lang) => lang.trim()).where((lang) => lang.isNotEmpty).toList() : [],
     url = map['blog'] != null ? Uri.parse(map['blog']) : null;
 

@@ -60,6 +60,21 @@ void main() => group('Client', () {
     });
   });
 
+  group('.toString()', () {
+    var data = _client.toString();
+
+    test('should start with the constructor name', () {
+      expect(data, contains('Client {'));
+    });
+
+    test('should contain the instance properties', () {
+      expect(data, contains('"apiKey":"'));
+      expect(data, contains('"blog":"Blog"'));
+      expect(data, contains('"isTest":true'));
+      expect(data, contains('"userAgent":"Dart/'));
+    });
+  });
+
   group('.verifyKey()', () {
     test('should return `true` for a valid API key', () async {
       expect(await _client.verifyKey(), isTrue);
