@@ -11,8 +11,5 @@ part 'src/blog.dart';
 part 'src/client.dart';
 part 'src/comment.dart';
 
-/// The version number of the Dart runtime.
-final String _dartVersion = Platform.version.substring(0, Platform.version.indexOf(' '));
-
-/// The version number of the package.
-const String _packageVersion = '1.1.0';
+/// The version number of this package.
+const String version = '2.0.0';

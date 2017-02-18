@@ -32,7 +32,7 @@ class Client {
 
   /// The user agent string to use when making requests.
   /// If possible, the user agent string should always have the following format: `Application Name/Version | Plugin Name/Version`.
-  String userAgent = 'Dart/$_dartVersion | Akismet/$_packageVersion';
+  String userAgent = 'Dart/${Platform.version.substring(0, Platform.version.indexOf(' '))} | Akismet/$version';
 
   /// The handler of "request" events.
   final StreamController<http.Request> _onRequest = new StreamController<http.Request>.broadcast();
