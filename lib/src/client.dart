@@ -73,6 +73,7 @@ class Client {
   Map<String, dynamic> toJson() => {
     'apiKey': apiKey,
     'blog': blog != null ? blog.runtimeType.toString() : null,
+    'endPoint': endPoint != null ? endPoint.toString() : null,
     'isTest': isTest,
     'userAgent': userAgent
   };
