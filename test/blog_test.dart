@@ -42,7 +42,7 @@ void main() => group('Blog', () {
   group('.toString()', () {
     var data = new Blog('https://github.com/cedx/akismet.dart', 'UTF-8', ['en', 'fr']).toString();
 
-    test('should start with the constructor name', () {
+    test('should start with the class name', () {
       expect(data, contains('Blog {'));
     });
 

@@ -59,7 +59,7 @@ void main() => group('Comment', () {
       ..referrer = Uri.parse('https://belin.io');
 
     var data = comment.toString();
-    test('should start with the constructor name', () {
+    test('should start with the class name', () {
       expect(data, contains('Comment {'));
     });
 

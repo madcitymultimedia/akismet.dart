@@ -50,7 +50,7 @@ void main() => group('Author', () {
       ..url = Uri.parse('https://belin.io');
 
     var data = author.toString();
-    test('should start with the constructor name', () {
+    test('should start with the class name', () {
       expect(data, contains('Author {'));
     });
 
