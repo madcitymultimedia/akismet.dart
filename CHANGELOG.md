@@ -1,6 +1,9 @@
 # Changelog
 This file contains highlights of what changes on each version of the [Akismet for Dart](https://github.com/cedx/akismet.dart) library.
 
+## Version 2.1.0
+- Updated the package dependencies.
+
 ## Version 2.0.0
 - Breaking change: changed the signature of all constructors.
 - Breaking change: raised the required [Dart](https://www.dartlang.org) version.
