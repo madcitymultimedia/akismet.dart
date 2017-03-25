@@ -12,4 +12,4 @@ part 'src/client.dart';
 part 'src/comment.dart';
 
 /// The version number of this package.
-const String version = '2.0.0';
+const String version = '2.1.0';
