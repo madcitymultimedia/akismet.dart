@@ -61,7 +61,7 @@ void main() => group('Client', () {
       expect(data['endPoint'], equals(Client.defaultEndPoint.toString()));
       expect(data['isTest'], isTrue);
 
-      var version = 'Dart/${Platform.version.substring(0, Platform.version.indexOf(' '))}';
+      var version = 'Dart/${Platform.version.split(' ').first}';
       expect(data['userAgent'].substring(0, version.length), equals(version));
     });
   });
