@@ -11,7 +11,7 @@ class Client {
 
   /// Creates a new client.
   Client([this.apiKey = '', blog]) {
-    if (blog != null) this.blog = blog is Blog ? blog : new Blog(blog.toString());
+    if (blog != null) this.blog = blog is Blog ? blog : new Blog(blog);
   }
 
   /// The Akismet API key.
