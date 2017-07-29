@@ -13,7 +13,7 @@ This file contains highlights of what changes on each version of the [Akismet fo
 - Updated the package dependencies.
 
 ## Version 1.0.0
-- Breaking change: changed the `Blog.language` string property for the `languages` array property.
+- Breaking change: changed the `Blog.language` string property for the `languages` list property.
 - Breaking change: dropped the [dart:html](https://api.dartlang.org/stable/dart-html/dart-html-library.html) client.
 - Breaking change: dropped the embedded server and the command line interface.
 - Breaking change: merged all the libraries (e.g. `core`, `html` and `io`) into the sole `akismet` one.
