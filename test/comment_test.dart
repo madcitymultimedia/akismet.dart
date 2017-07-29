@@ -22,10 +22,10 @@ void main() => group('Comment', () {
         'referrer': 'https://belin.io'
       });
 
-      expect(comment.author, new isInstanceOf<Author>());
+      expect(comment.author, const isInstanceOf<Author>());
       expect(comment.author.name, equals('Cédric Belin'));
       expect(comment.content, equals('A user comment.'));
-      expect(comment.date, new isInstanceOf<DateTime>());
+      expect(comment.date, const isInstanceOf<DateTime>());
       expect(comment.referrer, equals(Uri.parse('https://belin.io')));
       expect(comment.type, equals(CommentType.trackback));
     });

@@ -65,9 +65,8 @@ class Client {
   }
 
   /// Checks the API key against the service database, and returns a value indicating whether it is valid.
-  Future<bool> verifyKey() async {
-    return await _fetch(Uri.parse('$endPoint/1.1/verify-key'), {'key': apiKey}) == 'valid';
-  }
+  Future<bool> verifyKey() async =>
+    await _fetch(Uri.parse('$endPoint/1.1/verify-key'), {'key': apiKey}) == 'valid';
 
   /// Converts this object to a map in JSON format.
   Map<String, dynamic> toJson() => {
@@ -87,8 +86,7 @@ class Client {
     if (apiKey == null || apiKey.isEmpty) throw new ArgumentError('The API key is empty.');
     if (blog == null) throw new ArgumentError('The blog URL is empty.');
 
-    var bodyFields = blog.toJson();
-    bodyFields.addAll(fields);
+    var bodyFields = blog.toJson()..addAll(fields);
     if (isTest) bodyFields['is_test'] = '1';
 
     var request = new http.Request('POST', endPoint)
