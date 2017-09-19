@@ -4,9 +4,9 @@ part of akismet;
 class Blog {
 
   /// Creates a new blog.
-  Blog([url, this.charset = '', List<String> languages]): languages = languages ?? [] {
-    if (url != null) this.url = url is Uri ? url : Uri.parse(url.toString());
-  }
+  Blog(url, {this.charset = '', List<String> languages}):
+    languages = languages ?? [],
+    url = url is Uri ? url : Uri.parse(url.toString());
 
   /// Creates a new blog from the specified [map] in JSON format.
   Blog.fromJson(Map<String, String> map):
@@ -15,18 +15,17 @@ class Blog {
     url = map['blog'] != null ? Uri.parse(map['blog']) : null;
 
   /// The character encoding for the values included in comments.
-  String charset;
+  final String charset;
 
   /// The languages in use on the blog or site, in ISO 639-1 format, comma-separated.
   final List<String> languages;
 
   /// The blog or site URL.
-  Uri url;
+  final Uri url;
 
   /// Converts this object to a map in JSON format.
   Map<String, String> toJson() {
-    var map = <String, String>{};
-    if (url != null) map['blog'] = url.toString();
+    var map = {'blog': url.toString()};
     if (charset.isNotEmpty) map['blog_charset'] = charset;
     if (languages.isNotEmpty) map['blog_lang'] = languages.join(',');
     return map;

@@ -19,20 +19,21 @@ void main() => group('Blog', () {
       });
 
       expect(blog.charset, equals('UTF-8'));
-      expect(blog.languages, allOf(isList, hasLength(2)));
       expect(blog.languages, orderedEquals(const ['en', 'fr']));
       expect(blog.url, equals(Uri.parse('https://github.com/cedx/akismet.dart')));
     });
   });
 
   group('.toJson()', () {
-    test('should return an empty map with a newly created instance', () {
-      expect(new Blog().toJson(), allOf(isMap, isEmpty));
+    test('should return only the blog URL with a newly created instance', () {
+      var data = new Blog('https://github.com/cedx/akismet.dart').toJson();
+      expect(data, hasLength(1));
+      expect(data['blog'], equals('https://github.com/cedx/akismet.dart'));
     });
 
-    test('should return a non-empty map with a initialized instance', () {
-      var data = new Blog('https://github.com/cedx/akismet.dart', 'UTF-8', ['en', 'fr']).toJson();
-      expect(data, allOf(isMap, hasLength(3)));
+    test('should return a non-empty map with an initialized instance', () {
+      var data = new Blog('https://github.com/cedx/akismet.dart', charset: 'UTF-8', languages: ['en', 'fr']).toJson();
+      expect(data, hasLength(3));
       expect(data['blog'], equals('https://github.com/cedx/akismet.dart'));
       expect(data['blog_charset'], equals('UTF-8'));
       expect(data['blog_lang'], equals('en,fr'));
@@ -40,7 +41,7 @@ void main() => group('Blog', () {
   });
 
   group('.toString()', () {
-    var data = new Blog('https://github.com/cedx/akismet.dart', 'UTF-8', ['en', 'fr']).toString();
+    var data = new Blog('https://github.com/cedx/akismet.dart', charset: 'UTF-8', languages: ['en', 'fr']).toString();
 
     test('should start with the class name', () {
       expect(data, contains('Blog {'));
