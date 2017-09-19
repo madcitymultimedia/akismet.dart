@@ -22,6 +22,7 @@ class Author {
   String ipAddress;
 
   /// The author's name.
+  /// If you set it to `"viagra-test-123"`, Akismet will always return `true`.
   String name = '';
 
   /// The author's role.

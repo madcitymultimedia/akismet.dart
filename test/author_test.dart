@@ -28,7 +28,7 @@ void main() => group('Author', () {
       expect(new Author().toJson(), allOf(isMap, isEmpty));
     });
 
-    test('should return a non-empty map with a initialized instance', () {
+    test('should return a non-empty map with an initialized instance', () {
       var author = new Author('127.0.0.1')
         ..email = 'cedric@belin.io'
         ..name = 'Cédric Belin'

@@ -36,7 +36,7 @@ void main() => group('Comment', () {
       expect(new Comment().toJson(), allOf(isMap, isEmpty));
     });
 
-    test('should return a non-empty map with a initialized instance', () {
+    test('should return a non-empty map with an initialized instance', () {
       var author = new Author()..name = 'Cédric Belin';
       var comment = new Comment(author, 'A user comment.', CommentType.pingback)
         ..date = DateTime.parse('2000-01-01T00:00:00.000Z')
