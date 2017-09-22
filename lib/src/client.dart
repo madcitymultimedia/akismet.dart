@@ -10,15 +10,13 @@ class Client {
   static final Uri defaultEndPoint = Uri.parse('https://rest.akismet.com');
 
   /// Creates a new client.
-  Client([this.apiKey = '', blog]) {
-    if (blog != null) this.blog = blog is Blog ? blog : new Blog(blog);
-  }
+  Client(this.apiKey, blog): blog = blog is Blog ? blog : new Blog(blog);
 
   /// The Akismet API key.
-  String apiKey;
+  final String apiKey;
 
   /// The front page or home URL of the instance making requests.
-  Blog blog;
+  final Blog blog;
 
   /// The URL of the API end point.
   Uri endPoint = defaultEndPoint;
