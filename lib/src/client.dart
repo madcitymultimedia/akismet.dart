@@ -63,19 +63,6 @@ class Client {
   Future<bool> verifyKey() async =>
     await _fetch(Uri.parse('$endPoint/1.1/verify-key'), {'key': apiKey}) == 'valid';
 
-  /// Converts this object to a map in JSON format.
-  Map<String, dynamic> toJson() => {
-    'apiKey': apiKey,
-    'blog': blog != null ? blog.runtimeType.toString() : null,
-    'endPoint': endPoint != null ? endPoint.toString() : null,
-    'isTest': isTest,
-    'userAgent': userAgent
-  };
-
-  /// Returns a string representation of this object.
-  @override
-  String toString() => '$runtimeType ${JSON.encode(this)}';
-
   /// Queries the service by posting the specified [fields] to a given end point, and returns the response as a string.
   Future<String> _fetch(Uri endPoint, Map<String, String> fields) async {
     if (apiKey == null || apiKey.isEmpty) throw new ArgumentError('The API key is empty.');
