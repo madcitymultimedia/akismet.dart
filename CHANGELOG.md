@@ -3,6 +3,8 @@ This file contains highlights of what changes on each version of the [Akismet fo
 
 ## Version [3.0.0](https://github.com/cedx/akismet.dart/compare/v2.1.0...v3.0.0)
 - Breaking change: raised the required [Dart](https://www.dartlang.org) version.
+- Breaking change: removed the `toJson()` and `toString()` methods from the `Client` class.
+- Breaking change: the `version` property is now private.
 - Added new values to the `CommentType` enumeration.
 - Changed licensing for the [MIT License](https://opensource.org/licenses/MIT).
 - Updated the package dependencies.
