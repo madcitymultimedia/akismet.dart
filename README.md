@@ -48,8 +48,8 @@ try {
   print(isValid ? 'Your API key is valid.' : 'Your API key is invalid.');
 }
 
-catch (error) {
-  print('An error occurred: $error');
+on Exception catch (err) {
+  print('An error occurred: $err');
 }
 ```
 
@@ -59,15 +59,15 @@ catch (error) {
 try {
   var comment = new Comment(
     new Author('127.0.0.1', 'Mozilla/5.0'),
-    'A comment.'
+    content: 'A comment.'
   );
 
   var isSpam = await client.checkComment(comment);
   print(isSpam ? 'The comment is marked as spam.' : 'The comment is marked as ham.');
 }
 
-catch (error) {
-  print('An error occurred: $error');
+on Exception catch (err) {
+  print('An error occurred: $err');
 }
 ```
 
@@ -82,8 +82,8 @@ try {
   print('Ham submitted.');
 }
 
-catch (error) {
-  print('An error occurred: $error');
+on Exception catch (err) {
+  print('An error occurred: $err');
 }
 ```
 

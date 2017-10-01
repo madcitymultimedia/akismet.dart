@@ -4,18 +4,16 @@ part of akismet;
 class Author {
 
   /// Creates a new author.
-  Author(this.ipAddress, this.userAgent, {this.email = '', this.name = '', this.role = '', url}) {
-    if (url != null) this.url = url is Uri ? url : Uri.parse(url.toString());
-  }
+  Author(this.ipAddress, this.userAgent, {this.email = '', this.name = '', this.role = '', this.url});
 
   /// Creates a new author from the specified [map] in JSON format.
   Author.fromJson(Map<String, String> map):
-    email = map['comment_author_email'],
-    ipAddress = map['user_ip'],
-    name = map['comment_author'],
-    role = map['user_role'],
+    email = map['comment_author_email'] ?? '',
+    ipAddress = map['user_ip'] ?? '',
+    name = map['comment_author'] ?? '',
+    role = map['user_role'] ?? '',
     url = map['comment_author_url'] != null ? Uri.parse(map['comment_author_url']) : null,
-    userAgent = map['user_agent'];
+    userAgent = map['user_agent'] ?? '';
 
   /// The author's mail address.
   final String email;

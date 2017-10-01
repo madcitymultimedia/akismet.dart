@@ -4,7 +4,7 @@ part of akismet;
 class Comment {
 
   /// Creates a new comment.
-  Comment([this.author, this.content = '', this.type = '']);
+  Comment(this.author, {this.content = '', this.date, this.permalink, this.postModified, this.referrer, this.type = ''});
 
   /// Creates a new comment from the specified [map] in JSON format.
   Comment.fromJson(Map<String, String> map):
@@ -40,7 +40,7 @@ class Comment {
 
   /// Converts this object to a map in JSON format.
   Map<String, String> toJson() {
-    var map = author != null ? author.toJson() : <String, String>{};
+    var map = author.toJson();
     if (content.isNotEmpty) map['comment_content'] = content;
     if (date != null) map['comment_date_gmt'] = date.toIso8601String();
     if (postModified != null) map['comment_post_modified_gmt'] = postModified.toIso8601String();

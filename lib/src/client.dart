@@ -10,7 +10,10 @@ class Client {
   static final Uri defaultEndPoint = Uri.parse('https://rest.akismet.com');
 
   /// Creates a new client.
-  Client(this.apiKey, blog): blog = blog is Blog ? blog : new Blog(blog);
+  Client(this.apiKey, blog, {Uri endPoint, this.isTest = false, String userAgent}):
+    blog = blog is Blog ? blog : new Blog(blog),
+    endPoint = endPoint != null ? endPoint : defaultEndPoint,
+    userAgent = userAgent != null ? userAgent : 'Dart/${Platform.version.split(' ').first} | Akismet/$_version';
 
   /// The Akismet API key.
   final String apiKey;
@@ -65,9 +68,6 @@ class Client {
 
   /// Queries the service by posting the specified [fields] to a given end point, and returns the response as a string.
   Future<String> _fetch(Uri endPoint, Map<String, String> fields) async {
-    if (apiKey == null || apiKey.isEmpty) throw new ArgumentError('The API key is empty.');
-    if (blog == null) throw new ArgumentError('The blog URL is empty.');
-
     var bodyFields = blog.toJson()..addAll(fields);
     if (isTest) bodyFields['is_test'] = '1';
 
