@@ -32,33 +32,42 @@ void main() => group('Comment', () {
   });
 
   group('.toJson()', () {
-    test('should return an empty map with a newly created instance', () {
-      expect(new Comment().toJson(), allOf(isMap, isEmpty));
+    test('should return only the author info with a newly created instance', () {
+      var data = new Comment(new Author('127.0.0.1', 'Doom/6.6.6')).toJson();
+      expect(data, hasLength(2));
+      expect(data['user_agent'], equals('Doom/6.6.6'));
+      expect(data['user_ip'], equals('127.0.0.1'));
     });
 
     test('should return a non-empty map with an initialized instance', () {
-      var author = new Author()..name = 'Cédric Belin';
-      var comment = new Comment(author, 'A user comment.', CommentType.pingback)
-        ..date = DateTime.parse('2000-01-01T00:00:00.000Z')
-        ..referrer = Uri.parse('https://belin.io');
+      var data = new Comment(
+        new Author('127.0.0.1', 'Doom/6.6.6', name: 'Cédric Belin'),
+        content: 'A user comment.',
+        date: DateTime.parse('2000-01-01T00:00:00.000Z'),
+        referrer: Uri.parse('https://belin.io'),
+        type: CommentType.pingback
+      ).toJson();
 
-      var data = comment.toJson();
-      expect(data, allOf(isMap, hasLength(5)));
+      expect(data, hasLength(7));
       expect(data['comment_author'], 'Cédric Belin');
       expect(data['comment_content'], 'A user comment.');
       expect(data['comment_date_gmt'], '2000-01-01T00:00:00.000Z');
       expect(data['comment_type'], 'pingback');
       expect(data['referrer'], 'https://belin.io');
+      expect(data['user_agent'], equals('Doom/6.6.6'));
+      expect(data['user_ip'], equals('127.0.0.1'));
     });
   });
 
   group('.toString()', () {
-    var author = new Author()..name = 'Cédric Belin';
-    var comment = new Comment(author, 'A user comment.', CommentType.pingback)
-      ..date = DateTime.parse('2000-01-01T00:00:00.000Z')
-      ..referrer = Uri.parse('https://belin.io');
+    var data = new Comment(
+      new Author('127.0.0.1', 'Doom/6.6.6', name: 'Cédric Belin'),
+      content: 'A user comment.',
+      date: DateTime.parse('2000-01-01T00:00:00.000Z'),
+      referrer: Uri.parse('https://belin.io'),
+      type: CommentType.pingback
+    ).toString();
 
-    var data = comment.toString();
     test('should start with the class name', () {
       expect(data, contains('Comment {'));
     });
@@ -69,6 +78,8 @@ void main() => group('Comment', () {
       expect(data, contains('"comment_date_gmt":"2000-01-01T00:00:00.000Z"'));
       expect(data, contains('"comment_type":"pingback"'));
       expect(data, contains('"referrer":"https://belin.io"'));
+      expect(data, contains('"user_agent":"Doom/6.6.6"'));
+      expect(data, contains('"user_ip":"127.0.0.1"'));
     });
   });
 });
