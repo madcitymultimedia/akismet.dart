@@ -2,6 +2,7 @@
 This file contains highlights of what changes on each version of the [Akismet for Dart](https://github.com/cedx/akismet.dart) library.
 
 ## Version [3.0.0](https://github.com/cedx/akismet.dart/compare/v2.1.0...v3.0.0)
+- Breaking change: most class properties are now `final`.
 - Breaking change: raised the required [Dart](https://www.dartlang.org) version.
 - Breaking change: removed the `toJson()` and `toString()` methods from the `Client` class.
 - Breaking change: the `version` property is now private.
@@ -15,7 +16,7 @@ This file contains highlights of what changes on each version of the [Akismet fo
 ## Version [2.0.0](https://github.com/cedx/akismet.dart/compare/v1.0.0...v2.0.0)
 - Breaking change: changed the signature of all constructors.
 - Breaking change: raised the required [Dart](https://www.dartlang.org) version.
-- Breaking change: renamed the `Client.serviceUrl` constant to `DEFAULT_defaultEndPoint`.
+- Breaking change: renamed the `Client.serviceUrl` constant to `defaultEndPoint`.
 - Added the `Client.endPoint` property.
 - Added the `version` constant.
 - Updated the package dependencies.

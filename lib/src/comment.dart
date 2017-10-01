@@ -17,26 +17,26 @@ class Comment {
     type = map['comment_type'] ?? '';
 
   /// The comment's author.
-  Author author;
+  final Author author;
 
   /// The comment's content.
-  String content;
+  final String content;
 
   /// The UTC timestamp of the creation of the comment.
-  DateTime date;
+  final DateTime date;
 
   /// The permanent location of the entry the comment is submitted to.
-  Uri permalink;
+  final Uri permalink;
 
   /// The UTC timestamp of the publication time for the post, page or thread on which the comment was posted.
-  DateTime postModified;
+  final DateTime postModified;
 
   /// The URL of the webpage that linked to the entry being requested.
-  Uri referrer;
+  final Uri referrer;
 
   /// The comment's type.
   /// This string value specifies a [CommentType] constant or a made up value like `"registration"`.
-  String type;
+  final String type;
 
   /// Converts this object to a map in JSON format.
   Map<String, String> toJson() {

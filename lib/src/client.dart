@@ -19,11 +19,11 @@ class Client {
   final Blog blog;
 
   /// The URL of the API end point.
-  Uri endPoint = defaultEndPoint;
+  final Uri endPoint;
 
   /// Value indicating whether the client operates in test mode.
   /// You can use it when submitting test queries to Akismet.
-  bool isTest = false;
+  final bool isTest;
 
   /// The stream of "request" events.
   Stream<http.Request> get onRequest => _onRequest.stream;
@@ -33,7 +33,7 @@ class Client {
 
   /// The user agent string to use when making requests.
   /// If possible, the user agent string should always have the following format: `Application Name/Version | Plugin Name/Version`.
-  String userAgent = 'Dart/${Platform.version.split(' ').first} | Akismet/$version';
+  final String userAgent;
 
   /// The handler of "request" events.
   final StreamController<http.Request> _onRequest = new StreamController<http.Request>.broadcast();
