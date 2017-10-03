@@ -59,7 +59,8 @@ on Exception catch (err) {
 try {
   var comment = new Comment(
     new Author('127.0.0.1', 'Mozilla/5.0'),
-    content: 'A comment.'
+    content: 'A comment.',
+    date: new DateTime.now()
   );
 
   var isSpam = await client.checkComment(comment);
@@ -96,13 +97,8 @@ The `Client` class triggers some events during its life cycle:
 These events are exposed as [`Stream`](https://api.dartlang.org/stable/dart-async/Stream-class.html), you can listen to them using the `on<EventName>` properties:
 
 ```dart
-client.onRequest.listen(
-  (request) => print('Client request: ${request.url}')
-);
-
-client.onResponse.listen(
-  (response) => print('Server response: ${response.statusCode}')
-);
+client.onRequest.listen((request) => print('Client request: ${request.url}'));
+client.onResponse.listen((response) => print('Server response: ${response.statusCode}'));
 ```
 
 ## Unit tests

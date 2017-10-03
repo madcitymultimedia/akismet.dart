@@ -23,8 +23,11 @@ void main() => group('Client', () {
     type: CommentType.comment
   );
 
-  author = new Author('127.0.0.1', 'Spam Bot/6.6.6', name: 'viagra-test-123');
-  final spam = new Comment(author, content: 'Spam!', type: CommentType.trackback);
+  final spam = new Comment(
+    new Author('127.0.0.1', 'Spam Bot/6.6.6', name: 'viagra-test-123'),
+    content: 'Spam!',
+    type: CommentType.trackback
+  );
 
   group('.checkComment()', () {
     test('should return `false` for valid comment (e.g. ham)', () async {
