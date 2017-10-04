@@ -12,8 +12,8 @@ class Client {
   /// Creates a new client.
   Client(this.apiKey, blog, {Uri endPoint, this.isTest = false, String userAgent}):
     blog = blog is Blog ? blog : new Blog(blog),
-    endPoint = endPoint != null ? endPoint : defaultEndPoint,
-    userAgent = userAgent != null ? userAgent : 'Dart/${Platform.version.split(' ').first} | Akismet/$_version';
+    endPoint = endPoint ?? defaultEndPoint,
+    userAgent = userAgent ?? 'Dart/${Platform.version.split(' ').first} | Akismet/$_version';
 
   /// The Akismet API key.
   final String apiKey;
