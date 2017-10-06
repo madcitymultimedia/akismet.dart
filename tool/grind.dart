@@ -33,7 +33,7 @@ void fix() => DartFmt.format(_sources);
 void lint() => Analyzer.analyze(_sources);
 
 /// Runs all the test suites.
-@Task('Run the tests')
+@DefaultTask('Run the tests')
 Future test() async {
   if (!Platform.environment.containsKey('AKISMET_API_KEY')) fail('AKISMET_API_KEY environment variable not set.');
 
