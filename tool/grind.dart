@@ -38,7 +38,7 @@ Future test() async {
   if (!Platform.environment.containsKey('AKISMET_API_KEY')) fail('AKISMET_API_KEY environment variable not set.');
 
   await Future.wait([
-    Dart.runAsync('test/all.dart', vmArgs: const ['--checked', '--enable-vm-service', '--pause-isolates-on-exit']),
+    Dart.runAsync('test/all.dart', vmArgs: const ['--enable-vm-service', '--pause-isolates-on-exit']),
     Pub.runAsync('coverage', script: 'collect_coverage', arguments: const ['--out=var/coverage.json', '--resume-isolates', '--wait-paused'])
   ]);
 
