@@ -35,7 +35,8 @@ void lint() => Analyzer.analyze(_sources);
 /// Runs all the test suites.
 @DefaultTask('Run the tests')
 Future test() async {
-  if (!Platform.environment.containsKey('AKISMET_API_KEY')) fail('AKISMET_API_KEY environment variable not set.');
+  var apiKey = const String.fromEnvironment('api_key') ?? Platform.environment['AKISMET_API_KEY'];
+  if (apiKey == null) fail('AKISMET_API_KEY environment variable not set.');
 
   await Future.wait([
     Dart.runAsync('test/all.dart', vmArgs: const ['--enable-vm-service', '--pause-isolates-on-exit']),
