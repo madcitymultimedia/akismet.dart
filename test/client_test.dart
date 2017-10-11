@@ -7,7 +7,7 @@ import 'package:test/test.dart';
 /// Tests the features of the [Client] class.
 void main() => group('Client', () {
   final _client = new Client(
-    const String.fromEnvironment('api_key') ?? Platform.environment['AKISMET_API_KEY'],
+    const String.fromEnvironment('akismet_api_key') ?? Platform.environment['AKISMET_API_KEY'],
     'https://github.com/cedx/akismet.dart',
     isTest: true
   );

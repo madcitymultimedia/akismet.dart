@@ -35,7 +35,7 @@ void lint() => Analyzer.analyze(_sources);
 /// Runs all the test suites.
 @DefaultTask('Run the tests')
 Future test() async {
-  var apiKey = const String.fromEnvironment('api_key') ?? Platform.environment['AKISMET_API_KEY'];
+  var apiKey = const String.fromEnvironment('akismet_api_key') ?? Platform.environment['AKISMET_API_KEY'];
   if (apiKey == null) fail('AKISMET_API_KEY environment variable not set.');
 
   await Future.wait([
