@@ -12,16 +12,14 @@ void main() => group('Client', () {
     isTest: true
   );
 
-  var author = new Author(
-    '192.168.0.1',
-    'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0',
-    name: 'Akismet',
-    role: 'administrator',
-    url: Uri.parse('https://github.com/cedx/akismet.dart')
-  );
-
   final ham = new Comment(
-    author,
+    new Author(
+      '192.168.0.1',
+      'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0',
+      name: 'Akismet',
+      role: 'administrator',
+      url: Uri.parse('https://github.com/cedx/akismet.dart')
+    ),
     content: 'I\'m testing out the Service API.',
     referrer: Uri.parse('https://pub.dartlang.org/packages/akismet'),
     type: CommentType.comment
