@@ -79,7 +79,8 @@ class Client {
     var response = await http.post(request.url, body: request.bodyFields, headers: request.headers);
     _onResponse.add(response);
 
-    if (response.headers.containsKey(debugHeader)) throw new http.ClientException(response.headers[debugHeader]);
+    if (response.statusCode >= 400) throw new http.ClientException('An error occurred while querying the end point.', endPoint);
+    if (response.headers.containsKey(debugHeader)) throw new http.ClientException(response.headers[debugHeader], endPoint);
     return response.body;
   }
 }
