@@ -120,4 +120,4 @@ $ pub run test
 - [Continuous integration](https://travis-ci.org/cedx/akismet.dart)
 
 ## License
-[Akismet for Dart](https://github.com/cedx/akismet.dart) is distributed under the Apache License, version 2.0.
+[Akismet for Dart](https://github.com/cedx/akismet.dart) is distributed under the MIT License.
