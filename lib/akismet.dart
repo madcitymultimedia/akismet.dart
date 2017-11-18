@@ -10,7 +10,6 @@ part 'src/author.dart';
 part 'src/blog.dart';
 part 'src/client.dart';
 part 'src/comment.dart';
-part 'src/comment_type.dart';
 
 /// The version number of this package.
 const String _version = '3.1.0';
