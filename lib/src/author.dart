@@ -51,5 +51,5 @@ class Author {
 
   /// Returns a string representation of this object.
   @override
-  String toString() => '$runtimeType ${JSON.encode(this)}';
+  String toString() => 'Author ${JSON.encode(this)}';
 }

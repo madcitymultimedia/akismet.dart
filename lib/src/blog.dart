@@ -33,5 +33,5 @@ class Blog {
 
   /// Returns a string representation of this object.
   @override
-  String toString() => '$runtimeType ${JSON.encode(this)}';
+  String toString() => 'Blog ${JSON.encode(this)}';
 }
