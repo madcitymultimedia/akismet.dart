@@ -1,6 +1,8 @@
 # Changelog
 This file contains highlights of what changes on each version of the [Akismet for Dart](https://github.com/cedx/akismet.dart) library.
 
+## Version [3.2.0](https://github.com/cedx/akismet.dart/compare/v3.1.0...v3.2.0)
+
 ## Version [3.1.0](https://github.com/cedx/akismet.dart/compare/v3.0.0...v3.1.0)
 - Updated the package dependencies.
 
