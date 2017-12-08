@@ -1,4 +1,4 @@
-part of akismet;
+part of akismet.core;
 
 /// Represents the author of a comment.
 class Author {

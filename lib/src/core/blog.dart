@@ -1,4 +1,4 @@
-part of akismet;
+part of akismet.core;
 
 /// Represents the front page or home URL transmitted when making requests.
 class Blog {

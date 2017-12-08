@@ -1,4 +1,4 @@
-part of akismet;
+part of akismet.http;
 
 /// Submits comments to the [Akismet](https://akismet.com) service.
 class Client {
@@ -9,11 +9,14 @@ class Client {
   /// The URL of the default API end point.
   static final Uri defaultEndPoint = Uri.parse('https://rest.akismet.com');
 
+  /// The version number of this package.
+  static const String version = '4.0.0';
+
   /// Creates a new client.
   Client(this.apiKey, blog, {Uri endPoint, this.isTest = false, String userAgent}):
     blog = blog is Blog ? blog : new Blog(blog),
     endPoint = endPoint ?? defaultEndPoint,
-    userAgent = userAgent ?? 'Dart/${Platform.version.split(' ').first} | Akismet/$_version';
+    userAgent = userAgent ?? 'Dart/$platformVersion | Akismet/$version';
 
   /// The Akismet API key.
   final String apiKey;
@@ -29,20 +32,20 @@ class Client {
   final bool isTest;
 
   /// The stream of "request" events.
-  Stream<http.Request> get onRequest => _onRequest.stream;
+  Stream<RequestEvent> get onRequest => _onRequest.stream;
 
   /// The stream of "response" events.
-  Stream<http.Response> get onResponse => _onResponse.stream;
+  Stream<RequestEvent> get onResponse => _onResponse.stream;
 
   /// The user agent string to use when making requests.
   /// If possible, the user agent string should always have the following format: `Application Name/Version | Plugin Name/Version`.
   final String userAgent;
 
   /// The handler of "request" events.
-  final StreamController<http.Request> _onRequest = new StreamController<http.Request>.broadcast();
+  final StreamController<RequestEvent> _onRequest = new StreamController<RequestEvent>.broadcast();
 
   /// The handler of "response" events.
-  final StreamController<http.Response> _onResponse = new StreamController<http.Response>.broadcast();
+  final StreamController<RequestEvent> _onResponse = new StreamController<RequestEvent>.broadcast();
 
   /// Checks the specified [comment] against the service database, and returns a value indicating whether it is spam.
   Future<bool> checkComment(Comment comment) async {
@@ -75,12 +78,25 @@ class Client {
       ..bodyFields = bodyFields
       ..headers[HttpHeaders.USER_AGENT] = userAgent;
 
-    _onRequest.add(request);
+    _onRequest.add(new RequestEvent(request));
     var response = await httpClient.post(request.url, body: request.bodyFields, headers: request.headers);
-    _onResponse.add(response);
+    _onResponse.add(new RequestEvent(request, response));
 
     if ((response.statusCode / 100).truncate() != 2) throw new http.ClientException('An error occurred while querying the end point.', endPoint);
     if (response.headers.containsKey(debugHeader)) throw new http.ClientException(response.headers[debugHeader], endPoint);
     return response.body;
   }
+}
+
+/// The event parameter used for request events.
+class RequestEvent {
+
+  /// Creates a new request event.
+  RequestEvent(this.request, [this.response]);
+
+  /// The client request.
+  final http.Request request;
+
+  /// The server response.
+  final http.Response response;
 }

@@ -1,4 +1,4 @@
-part of akismet;
+part of akismet.core;
 
 /// Represents a comment submitted by an author.
 class Comment {
