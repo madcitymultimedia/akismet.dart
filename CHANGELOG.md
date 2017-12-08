@@ -2,6 +2,10 @@
 This file contains highlights of what changes on each version of the [Akismet for Dart](https://github.com/cedx/akismet.dart) library.
 
 ## Version [4.0.0](https://github.com/cedx/akismet.dart/compare/v3.2.0...v4.0.0)
+- Breaking change: changed the signature of the `Client` events.
+- Breaking change: the `httpClient` property is now private.
+- Added the `RequestEvent` class.
+- Improved support for browser platform.
 
 ## Version [3.2.0](https://github.com/cedx/akismet.dart/compare/v3.1.0...v3.2.0)
 - Added support for browser platform.

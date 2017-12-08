@@ -21,6 +21,7 @@ Add this to your package's `pubspec.yaml` file:
 ```yaml
 dependencies:
   akismet: *
+  http: *
 ```
 
 ### 2. Install it
@@ -35,6 +36,7 @@ Now in your [Dart](https://www.dartlang.org) code, you can use:
 
 ```dart
 import 'package:akismet/akismet.dart';
+import 'package:http/http.dart' as http;
 ```
 
 ## Usage
@@ -48,7 +50,7 @@ try {
   print(isValid ? 'Your API key is valid.' : 'Your API key is invalid.');
 }
 
-on Exception catch (err) {
+on http.ClientException catch (err) {
   print('An error occurred: $err');
 }
 ```
@@ -67,7 +69,7 @@ try {
   print(isSpam ? 'The comment is marked as spam.' : 'The comment is marked as ham.');
 }
 
-on Exception catch (err) {
+on http.ClientException catch (err) {
   print('An error occurred: $err');
 }
 ```
@@ -83,7 +85,7 @@ try {
   print('Ham submitted.');
 }
 
-on Exception catch (err) {
+on http.ClientException catch (err) {
   print('An error occurred: $err');
 }
 ```
@@ -97,8 +99,13 @@ The `Client` class triggers some events during its life cycle:
 These events are exposed as [`Stream`](https://api.dartlang.org/stable/dart-async/Stream-class.html), you can listen to them using the `on<EventName>` properties:
 
 ```dart
-client.onRequest.listen((request) => print('Client request: ${request.url}'));
-client.onResponse.listen((response) => print('Server response: ${response.statusCode}'));
+client.onRequest.listen(
+  (event) => print('Client request: ${event.request.url}')
+);
+
+client.onResponse.listen(
+  (event) => print('Server response: ${event.response.statusCode}')
+);
 ```
 
 ## Unit tests
