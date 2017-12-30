@@ -19,7 +19,7 @@ void main() => group('Blog', () {
       });
 
       expect(blog.charset, equals('UTF-8'));
-      expect(blog.languages, orderedEquals(const ['en', 'fr']));
+      expect(blog.languages, orderedEquals(const <String>['en', 'fr']));
       expect(blog.url, equals(Uri.parse('https://github.com/cedx/akismet.dart')));
     });
   });
