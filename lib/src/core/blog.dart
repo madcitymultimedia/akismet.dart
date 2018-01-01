@@ -4,7 +4,7 @@ part of akismet.core;
 class Blog {
 
   /// Creates a new blog.
-  Blog(url, {this.charset = '', List<String> languages}):
+  Blog(Object url, {this.charset = '', List<String> languages}):
     languages = new List.from(languages ?? const <String>[]),
     url = url is Uri ? url : Uri.parse(url.toString());
 

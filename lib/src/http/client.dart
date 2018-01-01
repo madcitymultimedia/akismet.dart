@@ -13,7 +13,7 @@ class Client {
   static const String version = '4.0.0';
 
   /// Creates a new client.
-  Client(this.apiKey, blog, {Uri endPoint, this.isTest = false, String userAgent}):
+  Client(this.apiKey, Object blog, {Uri endPoint, this.isTest = false, String userAgent}):
     blog = blog is Blog ? blog : new Blog(blog),
     endPoint = endPoint ?? defaultEndPoint,
     userAgent = userAgent ?? 'Dart/$platformVersion | Akismet/$version';
