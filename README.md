@@ -46,9 +46,9 @@ import 'package:http/http.dart' as http;
 
 ```dart
 try {
-  var client = new Client('your API key', 'http://your.blog.url');
+  var client = new Client('123YourAPIKey', 'http://www.yourblog.com');
   var isValid = await client.verifyKey();
-  print(isValid ? 'Your API key is valid.' : 'Your API key is invalid.');
+  print(isValid ? 'The API key is valid' : 'The API key is invalid');
 }
 
 on http.ClientException catch (err) {
@@ -62,12 +62,12 @@ on http.ClientException catch (err) {
 try {
   var comment = new Comment(
     new Author('127.0.0.1', 'Mozilla/5.0'),
-    content: 'A comment.',
+    content: 'A user comment',
     date: new DateTime.now()
   );
 
   var isSpam = await client.checkComment(comment);
-  print(isSpam ? 'The comment is marked as spam.' : 'The comment is marked as ham.');
+  print(isSpam ? 'The comment is spam' : 'The comment is ham');
 }
 
 on http.ClientException catch (err) {
@@ -80,10 +80,10 @@ on http.ClientException catch (err) {
 ```dart
 try {
   await client.submitSpam(comment);
-  print('Spam submitted.');
+  print('Spam submitted');
 
   await client.submitHam(comment);
-  print('Ham submitted.');
+  print('Ham submitted');
 }
 
 on http.ClientException catch (err) {

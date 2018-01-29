@@ -34,8 +34,8 @@ pages:
 - Submit spam: submit-spam.md
 - Submit ham: submit-ham.md
 - About:
-  - Changelog: changelog.md
-  - License: license.md
+  - Changelog: about/changelog.md
+  - License: about/license.md
 
 theme:
   name: material
