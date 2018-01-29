@@ -1,5 +1,4 @@
 # Changelog
-This file contains highlights of what changes on each version of the [Akismet for Dart](https://github.com/cedx/akismet.dart) library.
 
 ## Version [4.0.0](https://github.com/cedx/akismet.dart/compare/v3.2.0...v4.0.0)
 - Breaking change: changed the signature of the `Client` events.

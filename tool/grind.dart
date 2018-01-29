@@ -20,8 +20,9 @@ void coverage() => Pub.run('coveralls', arguments: const ['var/lcov.info']);
 /// Builds the documentation.
 @Task('Build the documentation')
 void doc() {
-  delete(getDir('doc/api'));
+  ['doc/api', 'web'].map(getDir).forEach(delete);
   DartDoc.doc();
+  run('mkdocs', arguments: const ['build']);
 }
 
 /// Fixes the coding standards issues.

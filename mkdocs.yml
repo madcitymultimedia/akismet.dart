@@ -1,0 +1,44 @@
+site_name: Akismet for Dart
+site_description: Prevent comment spam using the Akismet service, in Dart.
+site_author: Cédric Belin - cedric@belin.io
+site_url: https://cedx.github.io/akismet.dart
+
+docs_dir: doc
+site_dir: web
+
+repo_name: cedx/akismet.dart
+repo_url: https://github.com/cedx/akismet.dart
+edit_uri: ''
+
+copyright: Copyright &copy; 2013 - 2018 Cédric Belin
+google_analytics:
+- !!python/object/apply:os.getenv [GOOGLE_ANALYTICS_ID]
+- auto
+
+extra:
+  social:
+  - {type: globe, link: 'https://belin.io'}
+  - {type: github, link: 'https://github.com/cedx'}
+  - {type: twitter, link: 'https://twitter.com/cedxbelin'}
+  - {type: linkedin, link: 'https://www.linkedin.com/in/cedxbelin'}
+
+markdown_extensions:
+- admonition
+- codehilite
+- meta
+
+pages:
+- Akismet: index.md
+- Key verification: key-verification.md
+- Comment check: comment-check.md
+- Submit spam: submit-spam.md
+- Submit ham: submit-ham.md
+- About:
+  - Changelog: changelog.md
+  - License: license.md
+
+theme:
+  name: material
+  favicon: img/favicon.ico
+  feature: {tabs: true}
+  palette: {primary: blue, accent: blue}

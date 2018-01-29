@@ -11,7 +11,8 @@ Prevent comment spam using the [Akismet](https://akismet.com) service, in [Dart]
 
 ## Requirements
 The latest [Dart SDK](https://www.dartlang.org) and [Pub](https://pub.dartlang.org) versions.
-If you plan to play with the sources, you will also need the latest [Grinder](http://google.github.io/grinder.dart) version.
+
+If you plan to play with the sources, you will also need the latest [Grinder](http://google.github.io/grinder.dart) and [Material for MkDocs](https://squidfunk.github.io/mkdocs-material) versions.
 
 ## Installing via [Pub](https://pub.dartlang.org)
 
@@ -122,9 +123,9 @@ $ pub run test
 ```
 
 ## See also
-- [API reference](https://cedx.github.io/akismet.dart)
+- [API reference](https://cedx.github.io/akismet.dart/api)
 - [Code coverage](https://coveralls.io/github/cedx/akismet.dart)
 - [Continuous integration](https://travis-ci.org/cedx/akismet.dart)
 
 ## License
-[Akismet for Dart](https://github.com/cedx/akismet.dart) is distributed under the MIT License.
+[Akismet for Dart](https://cedx.github.io/akismet.dart) is distributed under the MIT License.
