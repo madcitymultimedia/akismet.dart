@@ -52,7 +52,7 @@ try {
 }
 
 on http.ClientException catch (err) {
-  print('An error occurred: $err');
+  print('An error occurred: ${err.message}');
 }
 ```
 
@@ -71,7 +71,7 @@ try {
 }
 
 on http.ClientException catch (err) {
-  print('An error occurred: $err');
+  print('An error occurred: ${err.message}');
 }
 ```
 
@@ -87,7 +87,7 @@ try {
 }
 
 on http.ClientException catch (err) {
-  print('An error occurred: $err');
+  print('An error occurred: ${err.message}');
 }
 ```
 
@@ -123,6 +123,7 @@ $ pub run test
 ```
 
 ## See also
+- [User guide](https://cedx.github.io/akismet.dart)
 - [API reference](https://cedx.github.io/akismet.dart/api)
 - [Code coverage](https://coveralls.io/github/cedx/akismet.dart)
 - [Continuous integration](https://travis-ci.org/cedx/akismet.dart)

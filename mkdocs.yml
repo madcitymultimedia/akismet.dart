@@ -28,11 +28,12 @@ markdown_extensions:
 - meta
 
 pages:
-- Akismet: index.md
-- Key verification: key-verification.md
-- Comment check: comment-check.md
-- Submit spam: submit-spam.md
-- Submit ham: submit-ham.md
+- Home: index.md
+- Features:
+  - Key verification: features/key-verification.md
+  - Comment check: features/comment-check.md
+  - Submit spam: features/submit-spam.md
+  - Submit ham: features/submit-ham.md
 - About:
   - Changelog: about/changelog.md
   - License: about/license.md
@@ -40,5 +41,4 @@ pages:
 theme:
   name: material
   favicon: img/favicon.ico
-  feature: {tabs: true}
   palette: {primary: blue, accent: blue}
