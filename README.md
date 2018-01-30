@@ -123,10 +123,10 @@ $ pub run test
 ```
 
 ## See also
-- [User guide](https://cedx.github.io/akismet.dart)
 - [API reference](https://cedx.github.io/akismet.dart/api)
 - [Code coverage](https://coveralls.io/github/cedx/akismet.dart)
 - [Continuous integration](https://travis-ci.org/cedx/akismet.dart)
+- [Pub package](https://pub.dartlang.org/packages/akismet)
 
 ## License
 [Akismet for Dart](https://cedx.github.io/akismet.dart) is distributed under the MIT License.
