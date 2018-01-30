@@ -10,11 +10,11 @@ Prevent comment spam using the [Akismet](https://akismet.com) service, in [Dart]
 - [Submit ham](https://akismet.com/development/api/#submit-ham): submits a comment that was incorrectly marked as spam but should not have been.
 
 ## Requirements
-The latest [Dart SDK](https://www.dartlang.org) and [Pub](https://pub.dartlang.org) versions.
+You need the latest [Dart SDK](https://www.dartlang.org) and [Pub](https://pub.dartlang.org) versions.
 
 If you plan to play with the sources, you will also need the latest [Grinder](http://google.github.io/grinder.dart) and [Material for MkDocs](https://squidfunk.github.io/mkdocs-material) versions.
 
-## Installing via [Pub](https://pub.dartlang.org)
+## Installing with Pub package manager
 
 ### 1. Depend on it
 Add this to your package's `pubspec.yaml` file:
@@ -29,7 +29,7 @@ dependencies:
 Install this package and its dependencies from a command prompt:
 
 ```shell
-$ pub get
+pub get
 ```
 
 ### 3. Import it
@@ -113,13 +113,13 @@ client.onResponse.listen(
 In order to run the tests, you must set the `AKISMET_API_KEY` environment variable to the value of your Akismet API key:
 
 ```shell
-$ export AKISMET_API_KEY="<YourAPIKey>"
+export AKISMET_API_KEY="<YourAPIKey>"
 ```
 
 Then, you can run the `test` script from the command prompt:
 
 ```shell
-$ pub run test
+pub run test
 ```
 
 ## See also
