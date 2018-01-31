@@ -22,7 +22,6 @@ The exception `message` usually includes some debug information, provided by the
 ```dart
 import 'dart:async';
 import 'package:akismet/akismet.dart';
-import 'package:http/http.dart' as http;
 
 Future<Null> main() async {
   try {
@@ -31,7 +30,7 @@ Future<Null> main() async {
     print(isValid ? 'The API key is valid' : 'The API key is invalid');
   }
 
-  on http.ClientException catch (err) {
+  on ClientException catch (err) {
     print('An error occurred: ${err.message}');
   }
 }

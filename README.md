@@ -37,7 +37,6 @@ Now in your [Dart](https://www.dartlang.org) code, you can use:
 
 ```dart
 import 'package:akismet/akismet.dart';
-import 'package:http/http.dart' as http;
 ```
 
 ## Usage
@@ -51,7 +50,7 @@ try {
   print(isValid ? 'The API key is valid' : 'The API key is invalid');
 }
 
-on http.ClientException catch (err) {
+on ClientException catch (err) {
   print('An error occurred: ${err.message}');
 }
 ```
@@ -70,7 +69,7 @@ try {
   print(isSpam ? 'The comment is spam' : 'The comment is ham');
 }
 
-on http.ClientException catch (err) {
+on ClientException catch (err) {
   print('An error occurred: ${err.message}');
 }
 ```
@@ -86,7 +85,7 @@ try {
   print('Ham submitted');
 }
 
-on http.ClientException catch (err) {
+on ClientException catch (err) {
   print('An error occurred: ${err.message}');
 }
 ```
