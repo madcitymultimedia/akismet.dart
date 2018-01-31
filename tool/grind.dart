@@ -9,6 +9,7 @@ Future main(List<String> args) => grind(args);
 @Task('Delete the generated files')
 void clean() {
   defaultClean();
+  ['doc/api', 'web'].map(getDir).forEach(delete);
   new FileSet.fromDir(getDir('var'), pattern: '*.{info,json}').files.forEach(delete);
 }
 
@@ -20,7 +21,6 @@ void coverage() => Pub.run('coveralls', arguments: const ['var/lcov.info']);
 /// Builds the documentation.
 @Task('Build the documentation')
 void doc() {
-  ['doc/api', 'web'].map(getDir).forEach(delete);
   DartDoc.doc();
   run('mkdocs', arguments: const ['build']);
 }
