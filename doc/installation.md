@@ -13,7 +13,6 @@ Add this to your package's `pubspec.yaml` file:
 ```yaml
 dependencies:
   akismet: *
-  http: *
 ```
 
 ### 2. Install it
