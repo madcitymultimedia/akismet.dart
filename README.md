@@ -10,14 +10,14 @@ Prevent comment spam using the [Akismet](https://akismet.com) service, in [Dart]
 - [Submit ham](https://akismet.com/development/api/#submit-ham): submits a comment that was incorrectly marked as spam but should not have been.
 
 ## Requirements
-You need the latest [Dart SDK](https://www.dartlang.org) and [Pub](https://pub.dartlang.org) versions.
+You need the latest [Dart SDK](https://www.dartlang.org) and [Pub](https://pub.dartlang.org) versions to use the Akismet library.
 
-If you plan to play with the sources, you will also need the latest [Grinder](http://google.github.io/grinder.dart) and [Material for MkDocs](https://squidfunk.github.io/mkdocs-material) versions.
+> If you plan to play with the sources, you will also need the latest [Grinder](http://google.github.io/grinder.dart) and [Material for MkDocs](https://squidfunk.github.io/mkdocs-material) versions.
 
 ## Installing with Pub package manager
 
 ### 1. Depend on it
-Add this to your package's `pubspec.yaml` file:
+Add this to your project's `pubspec.yaml` file:
 
 ```yaml
 dependencies:
@@ -73,7 +73,7 @@ on ClientException catch (err) {
 }
 ```
 
-### Submit spam/ham
+### Submit spam / ham
 
 ```dart
 try {
@@ -111,7 +111,7 @@ client.onResponse.listen(
 In order to run the tests, you must set the `AKISMET_API_KEY` environment variable to the value of your Akismet API key:
 
 ```shell
-export AKISMET_API_KEY="<YourAPIKey>"
+export AKISMET_API_KEY="<123YourAPIKey>"
 ```
 
 Then, you can run the `test` script from the command prompt:
@@ -121,10 +121,15 @@ pub run test
 ```
 
 ## See also
-- [API reference](https://cedx.github.io/akismet.dart/api)
-- [Code coverage](https://coveralls.io/github/cedx/akismet.dart)
-- [Continuous integration](https://travis-ci.org/cedx/akismet.dart)
-- [Pub package](https://pub.dartlang.org/packages/akismet)
+* [API reference](https://cedx.github.io/akismet.dart/api)
+* [Pub package](https://pub.dartlang.org/packages/akismet)
+* [Continuous integration](https://travis-ci.org/cedx/akismet.dart)
+* [Code coverage](https://coveralls.io/github/cedx/akismet.dart)
+
+### Other implementations
+* Node.js: [Akismet for JS](https://cedx.github.io/akismet.js)
+* PHP: [Akismet for PHP](https://cedx.github.io/akismet.php)
+* Yii Framework: [Akismet for Yii](https://cedx.github.io/yii2-akismet)
 
 ## License
 [Akismet for Dart](https://cedx.github.io/akismet.dart) is distributed under the MIT License.

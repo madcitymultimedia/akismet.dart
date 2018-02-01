@@ -16,6 +16,7 @@ class Author {
     userAgent = map['user_agent'] ?? '';
 
   /// The author's mail address.
+  /// If you set it to `"akismet-guaranteed-spam@example.com"`, Akismet will always return `true`.
   final String email;
 
   /// The author's IP address.

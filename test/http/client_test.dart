@@ -8,7 +8,7 @@ import 'package:test/test.dart';
 void main() => group('Client', () {
   final _client = new Client(
     const String.fromEnvironment('akismet_api_key') ?? Platform.environment['AKISMET_API_KEY'],
-    'https://github.com/cedx/akismet.dart',
+    'https://cedx.github.io/akismet.dart',
     isTest: true
   );
 
@@ -18,7 +18,7 @@ void main() => group('Client', () {
       'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0',
       name: 'Akismet',
       role: 'administrator',
-      url: Uri.parse('https://github.com/cedx/akismet.dart')
+      url: Uri.parse('https://cedx.github.io/akismet.dart')
     ),
     content: 'I\'m testing out the Service API.',
     referrer: Uri.parse('https://pub.dartlang.org/packages/akismet'),
@@ -26,7 +26,7 @@ void main() => group('Client', () {
   );
 
   final spam = new Comment(
-    new Author('127.0.0.1', 'Spam Bot/6.6.6', name: 'viagra-test-123'),
+    new Author('127.0.0.1', 'Spam Bot/6.6.6', email: 'akismet-guaranteed-spam@example.com', name: 'viagra-test-123'),
     content: 'Spam!',
     type: CommentType.trackback
   );

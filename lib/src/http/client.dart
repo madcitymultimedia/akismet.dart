@@ -84,7 +84,7 @@ class Client {
     _onResponse.add(new RequestEvent(request, response));
     httpClient.close();
 
-    if ((response.statusCode / 100).truncate() != 2) throw new http.ClientException('An error occurred while querying the end point.', endPoint);
+    if ((response.statusCode / 100).truncate() != 2) throw new http.ClientException('An error occurred while querying the end point', endPoint);
     if (response.headers.containsKey(debugHeader)) throw new http.ClientException(response.headers[debugHeader], endPoint);
     return response.body;
   }

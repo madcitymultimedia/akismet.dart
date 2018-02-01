@@ -1,14 +1,16 @@
 # Installation
 
 ## Requirements
-You need the latest [Dart SDK](https://www.dartlang.org) and [Pub](https://pub.dartlang.org) versions in order to use the Akismet library.
+You need the latest [Dart SDK](https://www.dartlang.org) and [Pub](https://pub.dartlang.org) versions to use the Akismet library.
 
-If you plan to play with the sources, you will also need the latest [Grinder](http://google.github.io/grinder.dart) and [Material for MkDocs](https://squidfunk.github.io/mkdocs-material) versions.
+!!! info
+    If you plan to play with the project sources, you will also need the latest [Grinder](http://google.github.io/grinder.dart)
+    and [Material for MkDocs](https://squidfunk.github.io/mkdocs-material) versions.
 
 ## Installing with Pub package manager
 
 ### 1. Depend on it
-Add this to your package's `pubspec.yaml` file:
+Add this to your project's `pubspec.yaml` file:
 
 ```yaml
 dependencies:

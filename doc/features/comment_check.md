@@ -1,17 +1,17 @@
-path: blob/master
-source: lib/src/http/client.dart
+path: blob/master/lib
+source: src/http/client.dart
 
 # Comment check
 This is the call you will make the most. It takes a number of arguments and characteristics about the submitted content and then returns a thumbs up or thumbs down. **Performance can drop dramatically if you choose to exclude data points.** The more data you send Akismet about each comment, the greater the accuracy. We recommend erring on the side of including too much data.
 
 ```dart
-Future<bool> Client.checkComment(Comment comment)
+Future<bool> Client#checkComment(Comment comment)
 ```
 
 ## Return value
 A `Future` that completes with a `bool` value indicating whether the given `Comment` is spam.
 
-The future completes with a `ClientException` from the [`http`](https://pub.dartlang.org/packages/http) package when an error occurs.
+The future completes with a `ClientException` when an error occurs.
 The exception `message` usually includes some debug information, provided by the `X-akismet-debug-help` HTTP header, about what exactly was invalid about the call.
 
 ## Example
