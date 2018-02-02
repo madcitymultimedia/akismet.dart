@@ -4,9 +4,12 @@ source: src/http/client.dart
 # Comment check
 This is the call you will make the most. It takes a number of arguments and characteristics about the submitted content and then returns a thumbs up or thumbs down. **Performance can drop dramatically if you choose to exclude data points.** The more data you send Akismet about each comment, the greater the accuracy. We recommend erring on the side of including too much data.
 
-```dart
+```
 Future<bool> Client#checkComment(Comment comment)
 ```
+
+## Parameters
+- `comment` : the `Comment` providing the user message to be checked.
 
 ## Return value
 A `Future` that completes with a `bool` value indicating whether the given `Comment` is spam.

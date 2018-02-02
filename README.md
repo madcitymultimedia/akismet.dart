@@ -3,6 +3,8 @@
 
 Prevent comment spam using the [Akismet](https://akismet.com) service, in [Dart](https://www.dartlang.org).
 
+> For detailed instructions, see the [user guide](https://cedx.github.io/akismet.dart).
+
 ## Features
 - [Key verification](https://akismet.com/development/api/#verify-key): checks an Akismet API key and gets a value indicating whether it is valid.
 - [Comment check](https://akismet.com/development/api/#comment-check): checks a comment and gets a value indicating whether it is spam.
@@ -10,7 +12,7 @@ Prevent comment spam using the [Akismet](https://akismet.com) service, in [Dart]
 - [Submit ham](https://akismet.com/development/api/#submit-ham): submits a comment that was incorrectly marked as spam but should not have been.
 
 ## Requirements
-You need the latest [Dart SDK](https://www.dartlang.org) and [Pub](https://pub.dartlang.org) versions to use the Akismet library.
+You need the latest [Dart SDK](https://www.dartlang.org/tools/sdk) and [Pub](https://www.dartlang.org/tools/pub) versions to use **Akismet for Dart**.
 
 > If you plan to play with the sources, you will also need the latest [Grinder](http://google.github.io/grinder.dart) and [Material for MkDocs](https://squidfunk.github.io/mkdocs-material) versions.
 
@@ -95,7 +97,7 @@ The `Client` class triggers some events during its life cycle:
 - `request` : emitted every time a request is made to the remote service.
 - `response` : emitted every time a response is received from the remote service.
 
-These events are exposed as [`Stream`](https://api.dartlang.org/stable/dart-async/Stream-class.html), you can listen to them using the `on<EventName>` properties:
+These events are exposed as [`Stream<RequestEvent>`](https://api.dartlang.org/stable/dart-async/Stream-class.html), you can listen to them using the `on<EventName>` properties:
 
 ```dart
 client.onRequest.listen(
