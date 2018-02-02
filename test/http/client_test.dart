@@ -13,9 +13,7 @@ void main() => group('Client', () {
   );
 
   final ham = new Comment(
-    new Author(
-      '192.168.0.1',
-      'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0',
+    new Author('192.168.0.1', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0',
       name: 'Akismet',
       role: 'administrator',
       url: Uri.parse('https://cedx.github.io/akismet.dart')
@@ -26,7 +24,10 @@ void main() => group('Client', () {
   );
 
   final spam = new Comment(
-    new Author('127.0.0.1', 'Spam Bot/6.6.6', email: 'akismet-guaranteed-spam@example.com', name: 'viagra-test-123'),
+    new Author('127.0.0.1', 'Spam Bot/6.6.6',
+      email: 'akismet-guaranteed-spam@example.com',
+      name: 'viagra-test-123'
+    ),
     content: 'Spam!',
     type: CommentType.trackback
   );
