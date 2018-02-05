@@ -21,7 +21,7 @@ Akismet works by examining all the available information combined. It is not eno
 
 
 
-## Testing your API calls
+## Testing
 To simulate a positive (spam) result, make a [comment check](features/comment_check.md) API call with the `Author#name` set to `"viagra-test-123"` or `Author#email` set to `"akismet-guaranteed-spam@example.com"`. Populate all other required fields with typical values. The Akismet API will always return a `true` response to a valid request with one of those values. If you receive anything else, something is wrong in your client, data, or communications.
 
 To simulate a negative (not spam) result, make a [comment check](features/comment_check.md) API call with the `Author#role` set to `"administrator"` and all other required fields populated with typical values. The Akismet API will always return a `false` response. Any other response indicates a data or communication problem.

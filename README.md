@@ -123,15 +123,15 @@ pub run test
 ```
 
 ## See also
-* [API reference](https://cedx.github.io/akismet.dart/api)
-* [Pub package](https://pub.dartlang.org/packages/akismet)
-* [Continuous integration](https://travis-ci.org/cedx/akismet.dart)
-* [Code coverage](https://coveralls.io/github/cedx/akismet.dart)
+- [API reference](https://cedx.github.io/akismet.dart/api)
+- [Pub package](https://pub.dartlang.org/packages/akismet)
+- [Continuous integration](https://travis-ci.org/cedx/akismet.dart)
+- [Code coverage](https://coveralls.io/github/cedx/akismet.dart)
 
 ### Other implementations
-* Node.js: [Akismet for JS](https://cedx.github.io/akismet.js)
-* PHP: [Akismet for PHP](https://cedx.github.io/akismet.php)
-* Yii Framework: [Akismet for Yii](https://cedx.github.io/yii2-akismet)
+- Node.js: [Akismet for JS](https://cedx.github.io/akismet.js)
+- PHP: [Akismet for PHP](https://cedx.github.io/akismet.php)
+- Yii Framework: [Akismet for Yii](https://cedx.github.io/yii2-akismet)
 
 ## License
 [Akismet for Dart](https://cedx.github.io/akismet.dart) is distributed under the MIT License.

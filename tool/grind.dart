@@ -15,7 +15,6 @@ void clean() {
 
 /// Uploads the code coverage report.
 @Task('Upload the code coverage')
-@Depends(test)
 void coverage() => Pub.run('coveralls', arguments: const ['var/lcov.info']);
 
 /// Builds the documentation.

@@ -11,7 +11,9 @@ Future<bool> Client#checkComment(Comment comment)
     so artificially generating spam comments is not a viable approach.
 
 ## Parameters
-- `comment` : the `Comment` providing the user message to be checked.
+
+### comment
+The `Comment` providing the user message to be checked.
 
 ## Return value
 A `Future` that completes with a `bool` value indicating whether the given `Comment` is spam.

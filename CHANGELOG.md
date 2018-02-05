@@ -66,7 +66,7 @@
 - Moved the `Future` API to `async` and `await`.
 
 ## Version 0.5.1
-- Using [Gulp.js](http://gulpjs.com) as build system.
+- Using [Gulp.js](https://gulpjs.com) as build system.
 
 ## Version 0.5.0
 - Breaking change: renamed `Server.start` method to `bind`.
