@@ -2,6 +2,7 @@
 
 ## Version [4.0.0](https://github.com/cedx/akismet.dart/compare/v3.2.0...v4.0.0)
 - Breaking change: changed the signature of the `Client` events.
+- Breaking change: starting to use and support the [Dart 2 SDK](https://www.dartlang.org/tools/sdk).
 - Breaking change: the `httpClient` property is now private.
 - Added a user guide based on [MkDocs](http://www.mkdocs.org).
 - Added the `ClientException` and `RequestEvent` classes.

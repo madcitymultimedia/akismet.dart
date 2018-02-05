@@ -7,7 +7,7 @@ documentation: https://cedx.github.io/akismet.dart/api
 homepage: https://cedx.github.io/akismet.dart
 
 environment:
-  sdk: '>=1.24.0 <2.0.0'
+  sdk: '>=2.0.0-dev <2.0.0'
 
 dependencies:
   http: ^0.11.3
