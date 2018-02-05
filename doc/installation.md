@@ -5,7 +5,7 @@ Before installing **Akismet for Dart**, you need to make sure you have the [Dart
 and [Pub](https://www.dartlang.org/tools/pub), the Dart package manager, up and running.
 
 !!! warning
-    Akismet for Dart requires Dart >= **1.24.0**.
+    Akismet for Dart requires Dart >= **2.0.0-dev**.
 
 !!! info
     If you plan to play with the library sources, you will also need
@@ -15,10 +15,10 @@ You can verify if you're already good to go with the following commands:
 
 ```shell
 dart --version
-# Dart VM version: 1.24.3 (Wed Dec 13 16:10:39 2017) on "linux_x64"
+# Dart VM version: 2.0.0-dev.20.0 (Mon Jan 29 16:25:01 2018 +0100) on "linux_x64"
 
 pub --version
-# Pub 1.24.3
+# Pub 2.0.0-dev.20.0
 ```
 
 ## Installing with Pub package manager
