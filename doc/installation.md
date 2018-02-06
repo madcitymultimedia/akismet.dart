@@ -7,10 +7,6 @@ and [Pub](https://www.dartlang.org/tools/pub), the Dart package manager, up and 
 !!! warning
     Akismet for Dart requires Dart >= **2.0.0-dev**.
 
-!!! info
-    If you plan to play with the library sources, you will also need
-    [Grinder](http://google.github.io/grinder.dart) and [Material for MkDocs](https://squidfunk.github.io/mkdocs-material).
-
 You can verify if you're already good to go with the following commands:
 
 ```shell
@@ -20,6 +16,10 @@ dart --version
 pub --version
 # Pub 2.0.0-dev.20.0
 ```
+
+!!! info
+    If you plan to play with the package sources, you will also need
+    [Grinder](http://google.github.io/grinder.dart) and [Material for MkDocs](https://squidfunk.github.io/mkdocs-material).
 
 ## Installing with Pub package manager
 

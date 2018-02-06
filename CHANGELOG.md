@@ -7,6 +7,7 @@
 - Added a user guide based on [MkDocs](http://www.mkdocs.org).
 - Added the `ClientException` and `RequestEvent` classes.
 - Improved support for browser platform.
+- Updated the package dependencies.
 
 ## Version [3.2.0](https://github.com/cedx/akismet.dart/compare/v3.1.0...v3.2.0)
 - Added support for browser platform.
