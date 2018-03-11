@@ -19,7 +19,7 @@ void main() => group('Comment', () {
         'comment_content': 'A user comment.',
         'comment_date_gmt': '2000-01-01T00:00:00.000Z',
         'comment_type': 'trackback',
-        'referrer': 'https://belin.io'
+        'referrer': 'https://belin.io/'
       });
 
       expect(comment.author, const isInstanceOf<Author>());
@@ -53,7 +53,7 @@ void main() => group('Comment', () {
       expect(data['comment_content'], 'A user comment.');
       expect(data['comment_date_gmt'], '2000-01-01T00:00:00.000Z');
       expect(data['comment_type'], 'pingback');
-      expect(data['referrer'], 'https://belin.io');
+      expect(data['referrer'], 'https://belin.io/');
       expect(data['user_agent'], equals('Doom/6.6.6'));
       expect(data['user_ip'], equals('127.0.0.1'));
     });
@@ -77,7 +77,7 @@ void main() => group('Comment', () {
       expect(data, contains('"comment_content":"A user comment."'));
       expect(data, contains('"comment_date_gmt":"2000-01-01T00:00:00.000Z"'));
       expect(data, contains('"comment_type":"pingback"'));
-      expect(data, contains('"referrer":"https://belin.io"'));
+      expect(data, contains('"referrer":"https://belin.io/"'));
       expect(data, contains('"user_agent":"Doom/6.6.6"'));
       expect(data, contains('"user_ip":"127.0.0.1"'));
     });
