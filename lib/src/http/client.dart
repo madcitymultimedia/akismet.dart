@@ -7,7 +7,7 @@ class Client {
   static const String debugHeader = 'x-akismet-debug-help';
 
   /// The URL of the default API end point.
-  static final Uri defaultEndPoint = Uri.parse('https://rest.akismet.com');
+  static final Uri defaultEndPoint = new Uri.https('rest.akismet.com', '/');
 
   /// The version number of this package.
   static const String version = '4.0.0';
@@ -67,7 +67,7 @@ class Client {
 
   /// Checks the API key against the service database, and returns a value indicating whether it is valid.
   Future<bool> verifyKey() async =>
-    await _fetch(Uri.parse('$endPoint/1.1/verify-key'), {'key': apiKey}) == 'valid';
+    await _fetch(endPoint.resolve('1.1/verify-key'), {'key': apiKey}) == 'valid';
 
   /// Queries the service by posting the specified [fields] to a given end point, and returns the response as a string.
   Future<String> _fetch(Uri endPoint, Map<String, String> fields) async {

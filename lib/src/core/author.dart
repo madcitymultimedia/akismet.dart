@@ -52,5 +52,5 @@ class Author {
 
   /// Returns a string representation of this object.
   @override
-  String toString() => 'Author ${JSON.encode(this)}';
+  String toString() => 'Author ${json.encode(this)}';
 }

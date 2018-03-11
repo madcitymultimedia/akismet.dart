@@ -20,7 +20,7 @@ void main() => group('Blog', () {
 
       expect(blog.charset, equals('UTF-8'));
       expect(blog.languages, orderedEquals(const <String>['en', 'fr']));
-      expect(blog.url, equals(Uri.parse('https://cedx.github.io/akismet.dart')));
+      expect(blog.url, equals(new Uri.https('cedx.github.io', '/akismet.dart')));
     });
   });
 

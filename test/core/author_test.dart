@@ -21,7 +21,7 @@ void main() => group('Author', () {
 
       expect(author.email, equals('cedric@belin.io'));
       expect(author.ipAddress, equals('127.0.0.1'));
-      expect(author.url, equals(Uri.parse('https://belin.io')));
+      expect(author.url, equals(new Uri.https('belin.io', '/')));
       expect(author.userAgent, equals('Mozilla/5.0'));
     });
   });
@@ -35,7 +35,7 @@ void main() => group('Author', () {
     });
 
     test('should return a non-empty map with an initialized instance', () {
-      var data = new Author('192.168.0.1', 'Mozilla/5.0', email: 'cedric@belin.io', name: 'Cédric Belin', url: Uri.parse('https://belin.io')).toJson();
+      var data = new Author('192.168.0.1', 'Mozilla/5.0', email: 'cedric@belin.io', name: 'Cédric Belin', url: new Uri.https('belin.io', '/')).toJson();
       expect(data, hasLength(5));
       expect(data['comment_author'], equals('Cédric Belin'));
       expect(data['comment_author_email'], equals('cedric@belin.io'));
@@ -46,7 +46,7 @@ void main() => group('Author', () {
   });
 
   group('.toString()', () {
-    var data = new Author('127.0.0.1', 'Doom/6.6.6', email: 'cedric@belin.io', name: 'Cédric Belin', url: Uri.parse('https://belin.io')).toString();
+    var data = new Author('127.0.0.1', 'Doom/6.6.6', email: 'cedric@belin.io', name: 'Cédric Belin', url: new Uri.https('belin.io', '/')).toString();
 
     test('should start with the class name', () {
       expect(data, contains('Author {'));

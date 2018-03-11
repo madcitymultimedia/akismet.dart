@@ -52,7 +52,7 @@ class Comment {
 
   /// Returns a string representation of this object.
   @override
-  String toString() => 'Comment ${JSON.encode(this)}';
+  String toString() => 'Comment ${json.encode(this)}';
 }
 
 /// Specifies the type of a comment.

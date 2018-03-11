@@ -26,7 +26,7 @@ void main() => group('Comment', () {
       expect(comment.author.name, equals('Cédric Belin'));
       expect(comment.content, equals('A user comment.'));
       expect(comment.date, const isInstanceOf<DateTime>());
-      expect(comment.referrer, equals(Uri.parse('https://belin.io')));
+      expect(comment.referrer, equals(new Uri.https('belin.io', '/')));
       expect(comment.type, equals(CommentType.trackback));
     });
   });
@@ -44,7 +44,7 @@ void main() => group('Comment', () {
         new Author('127.0.0.1', 'Doom/6.6.6', name: 'Cédric Belin'),
         content: 'A user comment.',
         date: DateTime.parse('2000-01-01T00:00:00.000Z'),
-        referrer: Uri.parse('https://belin.io'),
+        referrer: new Uri.https('belin.io', '/'),
         type: CommentType.pingback
       ).toJson();
 
@@ -64,7 +64,7 @@ void main() => group('Comment', () {
       new Author('127.0.0.1', 'Doom/6.6.6', name: 'Cédric Belin'),
       content: 'A user comment.',
       date: DateTime.parse('2000-01-01T00:00:00.000Z'),
-      referrer: Uri.parse('https://belin.io'),
+      referrer: new Uri.https('belin.io', '/'),
       type: CommentType.pingback
     ).toString();
 

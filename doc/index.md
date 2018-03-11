@@ -16,7 +16,7 @@ This will give you access to the API and will allow Akismet to monitor its resul
     [join the developer program](https://akismet.com/signup/?connect=yes&plan=developer).
 
 ### Get the library
-Append the following lines to your project's `pubspec.yaml` file:
+Append the following line to your project's `pubspec.yaml` file:
 
 ```yaml
 dependencies:
