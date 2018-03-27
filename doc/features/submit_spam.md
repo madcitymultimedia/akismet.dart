@@ -4,7 +4,7 @@ This call is for submitting comments that weren't marked as spam but should have
 It is very important that the values you submit with this call match those of your [comment check](comment_check.md) calls as closely as possible. In order to learn from its mistakes, Akismet needs to match your missed spam and false positive reports to the original [comment check](comment_check.md) API calls made when the content was first posted. While it is normal for less information to be available for [submit spam](submit_spam.md) and [submit ham](submit_ham.md) calls (most comment systems and forums will not store all metadata), you should ensure that the values that you do send match those of the original content.
 
 ```
-Future Client#submitSpam(Comment comment)
+Future<void> Client#submitSpam(Comment comment)
 ```
 
 ## Parameters
@@ -27,7 +27,7 @@ The exception `message` usually includes some debug information, provided by the
 import 'dart:async';
 import 'package:akismet/akismet.dart';
 
-Future<Null> main() async {
+Future<void> main() async {
   try {
     var comment = new Comment(
       new Author('127.0.0.1', 'Mozilla/5.0'),

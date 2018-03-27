@@ -10,7 +10,7 @@ The Akismet API will always return a `true` response to a valid request with one
 import 'dart:async';
 import 'package:akismet/akismet.dart';
 
-Future<Null> main() async {
+Future<void> main() async {
   var author = new Author('127.0.0.1', 'Mozilla/5.0', name: 'viagra-test-123');
   var comment = new Comment(author, content: 'A user comment');
 
@@ -29,7 +29,7 @@ The Akismet API will always return a `false` response. Any other response indica
 import 'dart:async';
 import 'package:akismet/akismet.dart';
 
-Future<Null> main() async {
+Future<void> main() async {
   var author = new Author('127.0.0.1', 'Mozilla/5.0', role: 'administrator');
   var comment = new Comment(author, content: 'A user comment');
 
@@ -48,7 +48,7 @@ That will tell Akismet not to change its behaviour based on those API calls – 
 import 'dart:async';
 import 'package:akismet/akismet.dart';
 
-Future<Null> main() async {
+Future<void> main() async {
   var author = new Author('127.0.0.1', 'Mozilla/5.0');
   var comment = new Comment(author, content: 'A user comment');
 

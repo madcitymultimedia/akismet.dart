@@ -4,7 +4,7 @@ This call is intended for the submission of false positives - items that were in
 Remember that, as explained in the [submit spam](submit_spam.md) documentation, you should ensure that any values you're passing here match up with the original and corresponding [comment check](comment_check.md) call.
 
 ```
-Future Client#submitHam(Comment comment)
+Future<void> Client#submitHam(Comment comment)
 ```
 
 ## Parameters
@@ -27,7 +27,7 @@ The exception `message` usually includes some debug information, provided by the
 import 'dart:async';
 import 'package:akismet/akismet.dart';
 
-Future<Null> main() async {
+Future<void> main() async {
   try {
     var comment = new Comment(
       new Author('127.0.0.1', 'Mozilla/5.0'),

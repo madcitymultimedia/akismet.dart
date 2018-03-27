@@ -20,7 +20,7 @@ The exception `message` usually includes some debug information, provided by the
 import 'dart:async';
 import 'package:akismet/akismet.dart';
 
-Future<Null> main() async {
+Future<void> main() async {
   try {
     var client = new Client('123YourAPIKey', 'http://www.yourblog.com');
     var isValid = await client.verifyKey();
