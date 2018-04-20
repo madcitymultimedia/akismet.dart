@@ -10,10 +10,10 @@ class Comment {
   Comment.fromJson(Map<String, String> map):
     author = map.keys.any((key) => key.startsWith('comment_author') || key.startsWith('user')) ? new Author.fromJson(map) : null,
     content = map['comment_content'] ?? '',
-    date = map['comment_date_gmt'] != null ? DateTime.parse(map['comment_date_gmt']) : null,
-    permalink = map['permalink'] != null ? Uri.parse(map['permalink']) : null,
-    postModified = map['comment_post_modified_gmt'] != null ? DateTime.parse(map['comment_post_modified_gmt']) : null,
-    referrer = map['referrer'] != null ? Uri.parse(map['referrer']) : null,
+    date = map['comment_date_gmt'] != null ? DateTime.tryParse(map['comment_date_gmt']) : null,
+    permalink = map['permalink'] != null ? Uri.tryParse(map['permalink']) : null,
+    postModified = map['comment_post_modified_gmt'] != null ? DateTime.tryParse(map['comment_post_modified_gmt']) : null,
+    referrer = map['referrer'] != null ? Uri.tryParse(map['referrer']) : null,
     type = map['comment_type'] ?? '';
 
   /// The comment's author.

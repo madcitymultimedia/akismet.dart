@@ -12,7 +12,7 @@ class Blog {
   Blog.fromJson(Map<String, String> map):
     charset = map['blog_charset'] ?? '',
     languages = map['blog_lang'] != null ? map['blog_lang'].split(',').map((lang) => lang.trim()).where((lang) => lang.isNotEmpty).toList() : [],
-    url = map['blog'] != null ? Uri.parse(map['blog']) : null;
+    url = map['blog'] != null ? Uri.tryParse(map['blog']) : null;
 
   /// The character encoding for the values included in comments.
   final String charset;

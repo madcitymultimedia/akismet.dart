@@ -12,7 +12,7 @@ class Author {
     ipAddress = map['user_ip'] ?? '',
     name = map['comment_author'] ?? '',
     role = map['user_role'] ?? '',
-    url = map['comment_author_url'] != null ? Uri.parse(map['comment_author_url']) : null,
+    url = map['comment_author_url'] != null ? Uri.tryParse(map['comment_author_url']) : null,
     userAgent = map['user_agent'] ?? '';
 
   /// The author's mail address.
