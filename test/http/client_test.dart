@@ -13,7 +13,7 @@ void main() => group('Client', () {
   );
 
   final ham = new Comment(
-    new Author('192.168.0.1', 'Mozilla/5.0 (X11; Linux x86_64) Chrome/65.0.3325.181',
+    new Author('192.168.0.1', 'Mozilla/5.0 (X11; Linux x86_64) Chrome/66.0.3359.139',
       name: 'Akismet',
       role: 'administrator',
       url: new Uri.https('cedx.github.io', '/akismet.dart')
