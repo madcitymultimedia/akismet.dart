@@ -3,11 +3,11 @@ version: 4.0.0
 
 author: Cédric Belin <cedric@belin.io>
 description: Prevent comment spam using the Akismet service.
-documentation: https://cedx.github.io/akismet.dart/api
-homepage: https://cedx.github.io/akismet.dart
+documentation: https://dev.belin.io/akismet.dart/api
+homepage: https://dev.belin.io/akismet.dart
 
 environment:
-  sdk: '>=2.0.0-dev.55 <2.0.0'
+  sdk: '>=2.0.0-dev.60 <2.0.0'
 
 dependencies:
   http: ^0.11.3
@@ -16,4 +16,4 @@ dev_dependencies:
   coverage: ^0.11.0
   coveralls: ^2.1.0
   grinder: ^0.8.2
-  test: ^0.12.38
+  test: ^0.12.40
