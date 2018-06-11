@@ -8,7 +8,7 @@ import 'package:test/test.dart';
 void main() => group('Client', () {
   final _client = new Client(
     const String.fromEnvironment('akismet_api_key') ?? Platform.environment['AKISMET_API_KEY'],
-    'https://cedx.github.io/akismet.dart',
+    'https://dev.belin.io/akismet.dart',
     isTest: true
   );
 
@@ -16,7 +16,7 @@ void main() => group('Client', () {
     new Author('192.168.0.1', 'Mozilla/5.0 (X11; Linux x86_64) Chrome/66.0.3359.139',
       name: 'Akismet',
       role: 'administrator',
-      url: new Uri.https('cedx.github.io', '/akismet.dart')
+      url: new Uri.https('dev.belin.io', '/akismet.dart')
     ),
     content: 'I\'m testing out the Service API.',
     referrer: new Uri.https('pub.dartlang.org', '/packages/akismet'),
