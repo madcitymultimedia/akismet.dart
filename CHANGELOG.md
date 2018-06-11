@@ -49,7 +49,7 @@
 - Added the `Client.toJson()` method.
 - Added the `onRequest` and `onResponse` event streams to the `Client` class.
 - The parameters of the `Client` constructor are now optional.
-- Added support for the [Travis CI](https://travis-ci.org) continuous integration.
+- Added support for the [Travis CI](https://travis-ci.com) continuous integration.
 - Changed the build system for [Grinder](http://google.github.io/grinder.dart).
 - Changed the documentation system for [Dartdoc](https://github.com/dart-lang/dartdoc).
 - Changed the licensing for the [Apache License Version 2.0](http://www.apache.org/licenses/LICENSE-2.0).
@@ -87,7 +87,7 @@
 ## Version 0.3.2
 - Migrated build system and tools to [ShellJS](http://shelljs.org).
 - Migrated documentation comments to [YUIDoc](http://yui.github.io/yuidoc).
-- Using DocGen.js to generate the [API reference](https://cedx.github.io/akismet.dart).
+- Using DocGen.js to generate the [API reference](https://dev.belin.io/akismet.dart).
 
 ## Version 0.3.1
 - Added unit tests of the HTML client.

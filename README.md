@@ -1,9 +1,9 @@
 # Akismet for Dart
-![Runtime](https://img.shields.io/badge/dart-%3E%3D2.0-brightgreen.svg) ![Release](https://img.shields.io/pub/v/akismet.svg) ![License](https://img.shields.io/badge/license-MIT-blue.svg) ![Coverage](https://coveralls.io/repos/github/cedx/akismet.dart/badge.svg) ![Build](https://travis-ci.org/cedx/akismet.dart.svg)
+![Runtime](https://img.shields.io/badge/dart-%3E%3D2.0-brightgreen.svg) ![Release](https://img.shields.io/pub/v/akismet.svg) ![License](https://img.shields.io/badge/license-MIT-blue.svg) ![Coverage](https://coveralls.io/repos/github/cedx/akismet.dart/badge.svg) ![Build](https://travis-ci.com/cedx/akismet.dart.svg)
 
 Prevent comment spam using the [Akismet](https://akismet.com) service, in [Dart](https://www.dartlang.org).
 
-> For detailed instructions, see the [user guide](https://cedx.github.io/akismet.dart).
+> For detailed instructions, see the [user guide](https://dev.belin.io/akismet.dart).
 
 ## Features
 - [Key verification](https://akismet.com/development/api/#verify-key): checks an Akismet API key and gets a value indicating whether it is valid.
@@ -123,15 +123,15 @@ pub run test
 ```
 
 ## See also
-- [API reference](https://cedx.github.io/akismet.dart/api)
+- [API reference](https://dev.belin.io/akismet.dart/api)
 - [Pub package](https://pub.dartlang.org/packages/akismet)
-- [Continuous integration](https://travis-ci.org/cedx/akismet.dart)
+- [Continuous integration](https://travis-ci.com/cedx/akismet.dart)
 - [Code coverage](https://coveralls.io/github/cedx/akismet.dart)
 
 ### Other implementations
-- Node.js: [Akismet for JS](https://cedx.github.io/akismet.js)
-- PHP: [Akismet for PHP](https://cedx.github.io/akismet.php)
-- Yii Framework: [Akismet for Yii](https://cedx.github.io/yii2-akismet)
+- Node.js: [Akismet for JS](https://dev.belin.io/akismet.js)
+- PHP: [Akismet for PHP](https://dev.belin.io/akismet.php)
+- Yii Framework: [Akismet for Yii](https://dev.belin.io/yii2-akismet)
 
 ## License
-[Akismet for Dart](https://cedx.github.io/akismet.dart) is distributed under the MIT License.
+[Akismet for Dart](https://dev.belin.io/akismet.dart) is distributed under the MIT License.
