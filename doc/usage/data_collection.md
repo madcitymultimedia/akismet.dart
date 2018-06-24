@@ -5,7 +5,7 @@ Akismet is very heavily dependent on the quality of the data included in API cal
 The `Comment` class provides information about the content of a comment.
 
 ```
-new Comment(Author author, {
+Comment(Author author, {
   String content = '',
   DateTime date,
   Uri permalink,
@@ -23,7 +23,7 @@ new Comment(Author author, {
 The `Author` class provides information about the author of a comment.
 
 ```
-new Author(String ipAddress, String userAgent, {
+Author(String ipAddress, String userAgent, {
   String email = '',
   String name = '',
   String role = '',

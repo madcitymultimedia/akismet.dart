@@ -5,4 +5,4 @@ import 'package:http/http.dart' as http;
 String get platformVersion => Platform.version.split(' ').first;
 
 /// Creates a new HTTP client.
-http.Client newHttpClient() => new http.IOClient();
+http.Client newHttpClient() => http.IOClient();

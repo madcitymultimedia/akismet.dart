@@ -6,25 +6,25 @@ import 'package:test/test.dart';
 
 /// Tests the features of the [Client] class.
 void main() => group('Client', () {
-  final _client = new Client(
+  final _client = Client(
     const String.fromEnvironment('akismet_api_key') ?? Platform.environment['AKISMET_API_KEY'],
     'https://dev.belin.io/akismet.dart',
     isTest: true
   );
 
-  final ham = new Comment(
-    new Author('192.168.0.1', 'Mozilla/5.0 (X11; Linux x86_64) Chrome/66.0.3359.139',
+  final ham = Comment(
+    Author('192.168.0.1', 'Mozilla/5.0 (X11; Linux x86_64) Chrome/66.0.3359.139',
       name: 'Akismet',
       role: 'administrator',
-      url: new Uri.https('dev.belin.io', '/akismet.dart')
+      url: Uri.https('dev.belin.io', '/akismet.dart')
     ),
     content: 'I\'m testing out the Service API.',
-    referrer: new Uri.https('pub.dartlang.org', '/packages/akismet'),
+    referrer: Uri.https('pub.dartlang.org', '/packages/akismet'),
     type: CommentType.comment
   );
 
-  final spam = new Comment(
-    new Author('127.0.0.1', 'Spam Bot/6.6.6',
+  final spam = Comment(
+    Author('127.0.0.1', 'Spam Bot/6.6.6',
       email: 'akismet-guaranteed-spam@example.com',
       name: 'viagra-test-123'
     ),
@@ -60,7 +60,7 @@ void main() => group('Client', () {
     });
 
     test('should return `false` for an invalid API key', () async {
-      var client = new Client('0123456789-ABCDEF', _client.blog, isTest: _client.isTest);
+      var client = Client('0123456789-ABCDEF', _client.blog, isTest: _client.isTest);
       expect(await client.verifyKey(), isFalse);
     });
   });

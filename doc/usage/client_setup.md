@@ -11,7 +11,7 @@ All these calls go through the `Client` class that provides access to the Akisme
 The `Client` class provides access to the Akismet API endpoints.
 
 ```
-new Client(String apiKey, string|Blog blog, {
+Client(String apiKey, string|Blog blog, {
   Uri endPoint,
   bool isTest = false,
   String userAgent
@@ -22,7 +22,7 @@ new Client(String apiKey, string|Blog blog, {
 import 'dart:async';
 import 'package:akismet/akismet.dart';
 
-final client = new Client('123YourAPIKey', 'http://www.yourblog.com');
+final client = Client('123YourAPIKey', 'http://www.yourblog.com');
 ```
 
 To instantiate a new `Client`, you need the following elements:
@@ -43,7 +43,7 @@ Application Name/Version | Plugin Name/Version
 The `Blog` class provides metadata about your blog or site.
 
 ```
-new Blog(string|Uri url, {
+Blog(string|Uri url, {
   String charset = '',
   List<String> languages
 })

@@ -22,7 +22,7 @@ import 'package:akismet/akismet.dart';
 
 Future<void> main() async {
   try {
-    var client = new Client('123YourAPIKey', 'http://www.yourblog.com');
+    var client = Client('123YourAPIKey', 'http://www.yourblog.com');
     var isValid = await client.verifyKey();
     print(isValid ? 'The API key is valid' : 'The API key is invalid');
   }

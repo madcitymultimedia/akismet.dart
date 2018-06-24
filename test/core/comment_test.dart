@@ -5,7 +5,7 @@ import 'package:test/test.dart';
 void main() => group('Comment', () {
   group('.fromJson()', () {
     test('should return an empty instance with an empty map', () {
-      var comment = new Comment.fromJson(const {});
+      var comment = Comment.fromJson({});
       expect(comment.author, isNull);
       expect(comment.content, isEmpty);
       expect(comment.date, isNull);
@@ -14,7 +14,7 @@ void main() => group('Comment', () {
     });
 
     test('should return an initialized instance with a non-empty map', () {
-      var comment = new Comment.fromJson(const {
+      var comment = Comment.fromJson({
         'comment_author': 'Cédric Belin',
         'comment_content': 'A user comment.',
         'comment_date_gmt': '2000-01-01T00:00:00.000Z',
@@ -22,29 +22,29 @@ void main() => group('Comment', () {
         'referrer': 'https://belin.io/'
       });
 
-      expect(comment.author, const isInstanceOf<Author>());
+      expect(comment.author, const TypeMatcher<Author>());
       expect(comment.author.name, equals('Cédric Belin'));
       expect(comment.content, equals('A user comment.'));
-      expect(comment.date, const isInstanceOf<DateTime>());
-      expect(comment.referrer, equals(new Uri.https('belin.io', '/')));
+      expect(comment.date, const TypeMatcher<DateTime>());
+      expect(comment.referrer, equals(Uri.https('belin.io', '/')));
       expect(comment.type, equals(CommentType.trackback));
     });
   });
 
   group('.toJson()', () {
     test('should return only the author info with a newly created instance', () {
-      var data = new Comment(new Author('127.0.0.1', 'Doom/6.6.6')).toJson();
+      var data = Comment(Author('127.0.0.1', 'Doom/6.6.6')).toJson();
       expect(data, hasLength(2));
       expect(data['user_agent'], equals('Doom/6.6.6'));
       expect(data['user_ip'], equals('127.0.0.1'));
     });
 
     test('should return a non-empty map with an initialized instance', () {
-      var data = new Comment(
-        new Author('127.0.0.1', 'Doom/6.6.6', name: 'Cédric Belin'),
+      var data = Comment(
+        Author('127.0.0.1', 'Doom/6.6.6', name: 'Cédric Belin'),
         content: 'A user comment.',
         date: DateTime.parse('2000-01-01T00:00:00.000Z'),
-        referrer: new Uri.https('belin.io', '/'),
+        referrer: Uri.https('belin.io', '/'),
         type: CommentType.pingback
       ).toJson();
 
@@ -60,11 +60,11 @@ void main() => group('Comment', () {
   });
 
   group('.toString()', () {
-    var data = new Comment(
-      new Author('127.0.0.1', 'Doom/6.6.6', name: 'Cédric Belin'),
+    var data = Comment(
+      Author('127.0.0.1', 'Doom/6.6.6', name: 'Cédric Belin'),
       content: 'A user comment.',
       date: DateTime.parse('2000-01-01T00:00:00.000Z'),
-      referrer: new Uri.https('belin.io', '/'),
+      referrer: Uri.https('belin.io', '/'),
       type: CommentType.pingback
     ).toString();
 

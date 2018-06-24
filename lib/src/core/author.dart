@@ -38,7 +38,7 @@ class Author {
 
   /// Converts this object to a map in JSON format.
   Map<String, String> toJson() {
-    var map = {
+    var map = <String, String>{
       'user_agent': userAgent,
       'user_ip': ipAddress
     };

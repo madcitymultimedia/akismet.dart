@@ -7,14 +7,14 @@ class Client {
   static const String debugHeader = 'x-akismet-debug-help';
 
   /// The URL of the default API end point.
-  static final Uri defaultEndPoint = new Uri.https('rest.akismet.com', '/');
+  static final Uri defaultEndPoint = Uri.https('rest.akismet.com', '/');
 
   /// The version number of this package.
   static const String version = '4.0.0';
 
   /// Creates a new client.
   Client(this.apiKey, Object blog, {Uri endPoint, this.isTest = false, String userAgent}):
-    blog = blog is Blog ? blog : new Blog(blog),
+    blog = blog is Blog ? blog : Blog(blog),
     endPoint = endPoint ?? defaultEndPoint,
     userAgent = userAgent ?? 'Dart/$platformVersion | Akismet/$version';
 
@@ -42,10 +42,10 @@ class Client {
   final String userAgent;
 
   /// The handler of "request" events.
-  final StreamController<RequestEvent> _onRequest = new StreamController<RequestEvent>.broadcast();
+  final StreamController<RequestEvent> _onRequest = StreamController<RequestEvent>.broadcast();
 
   /// The handler of "response" events.
-  final StreamController<RequestEvent> _onResponse = new StreamController<RequestEvent>.broadcast();
+  final StreamController<RequestEvent> _onResponse = StreamController<RequestEvent>.broadcast();
 
   /// Checks the specified [comment] against the service database, and returns a value indicating whether it is spam.
   Future<bool> checkComment(Comment comment) async {
@@ -75,17 +75,17 @@ class Client {
     if (isTest) bodyFields['is_test'] = '1';
 
     var httpClient = newHttpClient();
-    var request = new http.Request('POST', endPoint)
+    var request = http.Request('POST', endPoint)
       ..bodyFields = bodyFields
-      ..headers[HttpHeaders.USER_AGENT] = userAgent;
+      ..headers[HttpHeaders.userAgentHeader] = userAgent;
 
-    _onRequest.add(new RequestEvent(request));
+    _onRequest.add(RequestEvent(request));
     var response = await httpClient.post(request.url, body: request.bodyFields, headers: request.headers);
-    _onResponse.add(new RequestEvent(request, response));
+    _onResponse.add(RequestEvent(request, response));
     httpClient.close();
 
-    if ((response.statusCode ~/ 100) != 2) throw new http.ClientException('An error occurred while querying the end point', endPoint);
-    if (response.headers.containsKey(debugHeader)) throw new http.ClientException(response.headers[debugHeader], endPoint);
+    if ((response.statusCode ~/ 100) != 2) throw http.ClientException('An error occurred while querying the end point', endPoint);
+    if (response.headers.containsKey(debugHeader)) throw http.ClientException(response.headers[debugHeader], endPoint);
     return response.body;
   }
 }

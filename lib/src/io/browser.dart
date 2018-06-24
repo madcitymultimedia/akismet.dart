@@ -5,4 +5,4 @@ import 'package:http/browser_client.dart';
 String get platformVersion => '0.0.0';
 
 /// Creates a new HTTP client.
-http.Client newHttpClient() => new BrowserClient();
+http.Client newHttpClient() => BrowserClient();

@@ -8,7 +8,7 @@ class Comment {
 
   /// Creates a new comment from the specified [map] in JSON format.
   Comment.fromJson(Map<String, String> map):
-    author = map.keys.any((key) => key.startsWith('comment_author') || key.startsWith('user')) ? new Author.fromJson(map) : null,
+    author = map.keys.any((key) => key.startsWith('comment_author') || key.startsWith('user')) ? Author.fromJson(map) : null,
     content = map['comment_content'] ?? '',
     date = map['comment_date_gmt'] != null ? DateTime.tryParse(map['comment_date_gmt']) : null,
     permalink = map['permalink'] != null ? Uri.tryParse(map['permalink']) : null,

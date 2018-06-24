@@ -4,14 +4,14 @@ part of akismet.core;
 class Blog {
 
   /// Creates a new blog.
-  Blog(Object url, {this.charset = '', List<String> languages}):
-    languages = new List.from(languages ?? const <String>[]),
+  Blog(Object url, {this.charset = '', Iterable<String> languages}):
+    languages = List<String>.from(languages ?? const <String>[]),
     url = url is Uri ? url : Uri.parse(url.toString());
 
   /// Creates a new blog from the specified [map] in JSON format.
   Blog.fromJson(Map<String, String> map):
     charset = map['blog_charset'] ?? '',
-    languages = map['blog_lang'] != null ? map['blog_lang'].split(',').map((lang) => lang.trim()).where((lang) => lang.isNotEmpty).toList() : [],
+    languages = map['blog_lang'] != null ? map['blog_lang'].split(',').map((lang) => lang.trim()).where((lang) => lang.isNotEmpty).cast<String>().toList() : <String>[],
     url = map['blog'] != null ? Uri.tryParse(map['blog']) : null;
 
   /// The character encoding for the values included in comments.
@@ -25,7 +25,7 @@ class Blog {
 
   /// Converts this object to a map in JSON format.
   Map<String, String> toJson() {
-    var map = {'blog': url.toString()};
+    var map = <String, String>{'blog': url.toString()};
     if (charset.isNotEmpty) map['blog_charset'] = charset;
     if (languages.isNotEmpty) map['blog_lang'] = languages.join(',');
     return map;
