@@ -7,13 +7,13 @@ documentation: https://dev.belin.io/akismet.dart/api
 homepage: https://dev.belin.io/akismet.dart
 
 environment:
-  sdk: '>=2.0.0-dev.60 <2.0.0'
+  sdk: '>=2.0.0-dev.64 <2.0.0'
 
 dependencies:
   http: ^0.11.3
 
 dev_dependencies:
   coverage: ^0.11.0
-  coveralls: ^2.1.0
+  coveralls: ^3.0.0
   grinder: ^0.8.2
-  test: ^0.12.40
+  test: ^1.0.0
