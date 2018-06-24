@@ -11,7 +11,7 @@ class Blog {
   /// Creates a new blog from the specified [map] in JSON format.
   Blog.fromJson(Map<String, String> map):
     charset = map['blog_charset'] ?? '',
-    languages = map['blog_lang'] != null ? map['blog_lang'].split(',').map((lang) => lang.trim()).where((lang) => lang.isNotEmpty).cast<String>().toList() : <String>[],
+    languages = map['blog_lang'] != null ? map['blog_lang'].split(',').map((lang) => lang.trim()).where((lang) => lang.isNotEmpty).toList() : <String>[],
     url = map['blog'] != null ? Uri.tryParse(map['blog']) : null;
 
   /// The character encoding for the values included in comments.
