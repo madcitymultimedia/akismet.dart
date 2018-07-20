@@ -36,7 +36,7 @@ class Author {
   /// The author's user agent, that is the string identifying the Web browser used to submit comments.
   final String userAgent;
 
-  /// Converts this object to a map in JSON format.
+  /// Converts this object to a [Map] in JSON format.
   Map<String, String> toJson() {
     var map = <String, String>{
       'user_agent': userAgent,
