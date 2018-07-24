@@ -1,4 +1,4 @@
-dart: [dev]
+dart: dev
 dist: trusty
 language: dart
 notifications: {email: false}

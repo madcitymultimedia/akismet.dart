@@ -2,18 +2,18 @@
 version: 4.0.0
 
 author: Cédric Belin <cedric@belin.io>
-description: Prevent comment spam using the Akismet service.
+description: Prevent comment spam using the Akismet service. Add Akismet to your applications so you don't have to worry about spam again.
 documentation: https://dev.belin.io/akismet.dart/api
 homepage: https://dev.belin.io/akismet.dart
 
 environment:
-  sdk: '>=2.0.0-dev.64 <2.0.0'
+  sdk: '>=2.0.0-dev.69 <3.0.0'
 
 dependencies:
   http: ^0.11.3
 
 dev_dependencies:
-  coverage: ^0.11.0
-  coveralls: ^3.0.0
-  grinder: ^0.8.2
-  test: ^1.0.0
+  coverage: ^0.12.1
+  coveralls: ^3.1.0 # ^3.2.0
+  grinder: ^0.8.3
+  test: ^1.3.0

@@ -37,7 +37,7 @@ Application Name/Version | Plugin Name/Version
 ```
 
 !!! info
-    The default user agent string looks like: `Dart/1.24.3 | Akismet/4.0.0`
+    The default user agent string looks like: `Dart/2.0.0 | Akismet/4.0.0`
 
 ## Blog metadata
 The `Blog` class provides metadata about your blog or site.

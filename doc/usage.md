@@ -38,7 +38,7 @@ Application Name/Version | Plugin Name/Version
 The default user agent string would look like:
 
 ```
-Dart/1.24.3 | Akismet/4.0.0
+Dart/2.0.0 | Akismet/4.0.0
 ```
 
 ## The `Client` class
