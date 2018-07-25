@@ -5,6 +5,10 @@ import 'package:grinder/grinder.dart';
 /// Starts the build system.
 Future<void> main(List<String> args) => grind(args);
 
+/// Builds the project.
+@DefaultTask('Build the project')
+void build() => Pub.run('build_runner', arguments: ['build']);
+
 /// Deletes all generated files and reset any saved state.
 @Task('Delete the generated files')
 void clean() {
@@ -33,7 +37,8 @@ void fix() => DartFmt.format(existingSourceDirs, lineLength: 200);
 void lint() => Analyzer.analyze(existingSourceDirs);
 
 /// Runs all the test suites.
-@DefaultTask('Run the tests')
+@Task('Run the tests')
+@Depends(build)
 Future<void> test() async {
   var apiKey = const String.fromEnvironment('akismet_api_key') ?? Platform.environment['AKISMET_API_KEY'];
   if (apiKey == null) fail('AKISMET_API_KEY environment variable not set.');
@@ -45,4 +50,13 @@ Future<void> test() async {
 
   var args = ['--in=var/coverage.json', '--lcov', '--out=var/lcov.info', '--packages=.packages', '--report-on=${libDir.path}'];
   return Pub.runAsync('coverage', script: 'format_coverage', arguments: args);
+}
+
+/// Upgrades the project to the latest revision.
+@Task('Upgrade the project')
+void upgrade() {
+  run('git', arguments: ['reset', '--hard']);
+  run('git', arguments: ['fetch', '--all', '--prune']);
+  run('git', arguments: ['pull', '--rebase']);
+  Pub.upgrade();
 }
