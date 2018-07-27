@@ -1,54 +1,44 @@
 part of akismet.core;
 
 /// Represents the author of a comment.
+@JsonSerializable()
 class Author {
 
   /// Creates a new author.
-  Author(this.ipAddress, this.userAgent, {this.email = '', this.name = '', this.role = '', this.url});
+  Author(this.ipAddress, this.userAgent, {this.email, this.name, this.role, this.url});
 
   /// Creates a new author from the specified [map] in JSON format.
-  Author.fromJson(Map<String, String> map):
-    email = map['comment_author_email'] ?? '',
-    ipAddress = map['user_ip'] ?? '',
-    name = map['comment_author'] ?? '',
-    role = map['user_role'] ?? '',
-    url = map['comment_author_url'] != null ? Uri.tryParse(map['comment_author_url']) : null,
-    userAgent = map['user_agent'] ?? '';
+  factory Author.fromJson(Map<String, dynamic> map) => _$AuthorFromJson(map);
 
   /// The author's mail address.
   /// If you set it to `"akismet-guaranteed-spam@example.com"`, Akismet will always return `true`.
+  @JsonKey(includeIfNull: false, name: 'comment_author_email')
   final String email;
 
   /// The author's IP address.
+  @JsonKey(name: 'user_ip')
   final String ipAddress;
 
   /// The author's name.
   /// If you set it to `"viagra-test-123"`, Akismet will always return `true`.
+  @JsonKey(includeIfNull: false, name: 'comment_author')
   final String name;
 
   /// The author's role.
   /// If you set it to `"administrator"`, Akismet will always return `false`.
+  @JsonKey(includeIfNull: false, name: 'user_role')
   final String role;
 
   /// The URL of the author's website.
+  @JsonKey(includeIfNull: false, name: 'comment_author_url')
   final Uri url;
 
   /// The author's user agent, that is the string identifying the Web browser used to submit comments.
+  @JsonKey(name: 'user_agent')
   final String userAgent;
 
   /// Converts this object to a [Map] in JSON format.
-  Map<String, String> toJson() {
-    var map = <String, String>{
-      'user_agent': userAgent,
-      'user_ip': ipAddress
-    };
-
-    if (name.isNotEmpty) map['comment_author'] = name;
-    if (email.isNotEmpty) map['comment_author_email'] = email;
-    if (url != null) map['comment_author_url'] = url.toString();
-    if (role.isNotEmpty) map['user_role'] = role;
-    return map;
-  }
+  Map<String, dynamic> toJson() => _$AuthorToJson(this);
 
   /// Returns a string representation of this object.
   @override

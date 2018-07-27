@@ -6,9 +6,9 @@ void main() => group('Author', () {
   group('.fromJson()', () {
     test('should return an empty instance with an empty map', () {
       var author = Author.fromJson({});
-      expect(author.email, isEmpty);
-      expect(author.ipAddress, isEmpty);
-      expect(author.userAgent, isEmpty);
+      expect(author.email, isNull);
+      expect(author.ipAddress, isNull);
+      expect(author.userAgent, isNull);
     });
 
     test('should return an initialized instance with a non-empty map', () {

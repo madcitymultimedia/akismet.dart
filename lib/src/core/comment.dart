@@ -1,13 +1,14 @@
 part of akismet.core;
 
 /// Represents a comment submitted by an author.
+@JsonSerializable()
 class Comment {
 
   /// Creates a new comment.
   Comment(this.author, {this.content = '', this.date, this.permalink, this.postModified, this.referrer, this.type = ''});
 
   /// Creates a new comment from the specified [map] in JSON format.
-  Comment.fromJson(Map<String, String> map):
+  Comment.fromJson(Map<String, dynamic> map):
     author = map.keys.any((key) => key.startsWith('comment_author') || key.startsWith('user')) ? Author.fromJson(map) : null,
     content = map['comment_content'] ?? '',
     date = map['comment_date_gmt'] != null ? DateTime.tryParse(map['comment_date_gmt']) : null,
@@ -39,7 +40,7 @@ class Comment {
   final String type;
 
   /// Converts this object to a map in JSON format.
-  Map<String, String> toJson() {
+  Map<String, dynamic> toJson() {
     var map = author.toJson();
     if (content.isNotEmpty) map['comment_content'] = content;
     if (date != null) map['comment_date_gmt'] = date.toIso8601String();
