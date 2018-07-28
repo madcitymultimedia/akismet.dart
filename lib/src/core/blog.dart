@@ -28,7 +28,7 @@ class Blog {
   @JsonKey(name: 'blog')
   final Uri url;
 
-  /// Converts this object to a map in JSON format.
+  /// Converts this object to a [Map] in JSON format.
   Map<String, dynamic> toJson() => _$BlogToJson(this);
 
   /// Returns a string representation of this object.
