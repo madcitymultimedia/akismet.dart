@@ -8,7 +8,7 @@ import 'package:test/test.dart';
 void main() => group('Client', () {
   final _client = Client(
     const String.fromEnvironment('akismet_api_key') ?? Platform.environment['AKISMET_API_KEY'],
-    'https://dev.belin.io/akismet.dart',
+    Blog(Uri.https('dev.belin.io', '/akismet.dart')),
     isTest: true
   );
 

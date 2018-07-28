@@ -13,8 +13,7 @@ class Client {
   static const String version = '4.0.0';
 
   /// Creates a new client.
-  Client(this.apiKey, Object blog, {Uri endPoint, this.isTest = false, String userAgent}):
-    blog = blog is Blog ? blog : Blog(blog),
+  Client(this.apiKey, this.blog, {Uri endPoint, this.isTest = false, String userAgent}):
     endPoint = endPoint ?? defaultEndPoint,
     userAgent = userAgent ?? 'Dart/$platformVersion | Akismet/$version';
 
@@ -70,13 +69,13 @@ class Client {
     await _fetch(endPoint.resolve('1.1/verify-key'), {'key': apiKey}) == 'valid';
 
   /// Queries the service by posting the specified [fields] to a given end point, and returns the response as a string.
-  Future<String> _fetch(Uri endPoint, Map<String, String> fields) async {
+  Future<String> _fetch(Uri endPoint, Map<String, dynamic> fields) async {
     var bodyFields = blog.toJson()..addAll(fields);
     if (isTest) bodyFields['is_test'] = '1';
 
     var httpClient = newHttpClient();
     var request = http.Request('POST', endPoint)
-      ..bodyFields = bodyFields
+      ..bodyFields = bodyFields.cast<String, String>()
       ..headers[HttpHeaders.userAgentHeader] = userAgent;
 
     _onRequest.add(RequestEvent(request));

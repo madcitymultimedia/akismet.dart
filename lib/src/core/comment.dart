@@ -11,12 +11,14 @@ class Comment {
   Comment(this.author, {this.content, this.date, this.permalink, this.postModified, this.referrer, this.type});
 
   /// Creates a new comment from the specified [map] in JSON format.
-  factory Comment.fromJson(Map<String, dynamic> map) => _$CommentFromJson(map)
-    ..author = map.keys.any((key) => key.startsWith('comment_author') || key.startsWith('user')) ? Author.fromJson(map) : null;
+  factory Comment.fromJson(Map<String, dynamic> map) {
+    map['author'] = map.keys.any((key) => key.startsWith('comment_author') || key.startsWith('user')) ? map : null;
+    return _$CommentFromJson(map);
+  }
 
   /// The comment's author.
   @JsonKey(toJson: _authorToJson)
-  Author author;
+  final Author author;
 
   /// The comment's content.
   @JsonKey(name: 'comment_content')
