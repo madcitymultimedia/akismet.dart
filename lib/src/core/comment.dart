@@ -1,35 +1,36 @@
 part of akismet.core;
 
+/// Converts the specified [Author] instance to a JSON object.
+Map<String, dynamic> _authorToJson(Author author) => author.toJson();
+
 /// Represents a comment submitted by an author.
-@JsonSerializable()
+@JsonSerializable(includeIfNull: false)
 class Comment {
 
   /// Creates a new comment.
-  Comment(this.author, {this.content = '', this.date, this.permalink, this.postModified, this.referrer, this.type = ''});
+  Comment(this.author, {this.content, this.date, this.permalink, this.postModified, this.referrer, this.type});
 
   /// Creates a new comment from the specified [map] in JSON format.
-  Comment.fromJson(Map<String, dynamic> map):
-    author = map.keys.any((key) => key.startsWith('comment_author') || key.startsWith('user')) ? Author.fromJson(map) : null,
-    content = map['comment_content'] ?? '',
-    date = map['comment_date_gmt'] != null ? DateTime.tryParse(map['comment_date_gmt']) : null,
-    permalink = map['permalink'] != null ? Uri.tryParse(map['permalink']) : null,
-    postModified = map['comment_post_modified_gmt'] != null ? DateTime.tryParse(map['comment_post_modified_gmt']) : null,
-    referrer = map['referrer'] != null ? Uri.tryParse(map['referrer']) : null,
-    type = map['comment_type'] ?? '';
+  factory Comment.fromJson(Map<String, dynamic> map) => _$CommentFromJson(map)
+    ..author = map.keys.any((key) => key.startsWith('comment_author') || key.startsWith('user')) ? Author.fromJson(map) : null;
 
   /// The comment's author.
-  final Author author;
+  @JsonKey(toJson: _authorToJson)
+  Author author;
 
   /// The comment's content.
+  @JsonKey(name: 'comment_content')
   final String content;
 
   /// The UTC timestamp of the creation of the comment.
+  @JsonKey(name: 'comment_date_gmt')
   final DateTime date;
 
   /// The permanent location of the entry the comment is submitted to.
   final Uri permalink;
 
   /// The UTC timestamp of the publication time for the post, page or thread on which the comment was posted.
+  @JsonKey(name: 'comment_post_modified_gmt')
   final DateTime postModified;
 
   /// The URL of the webpage that linked to the entry being requested.
@@ -37,17 +38,13 @@ class Comment {
 
   /// The comment's type.
   /// This string value specifies a [CommentType] constant or a made up value like `"registration"`.
+  @JsonKey(name: 'comment_type')
   final String type;
 
   /// Converts this object to a map in JSON format.
   Map<String, dynamic> toJson() {
-    var map = author.toJson();
-    if (content.isNotEmpty) map['comment_content'] = content;
-    if (date != null) map['comment_date_gmt'] = date.toIso8601String();
-    if (postModified != null) map['comment_post_modified_gmt'] = postModified.toIso8601String();
-    if (type.isNotEmpty) map['comment_type'] = type;
-    if (permalink != null) map['permalink'] = permalink.toString();
-    if (referrer != null) map['referrer'] = referrer.toString();
+    var map = _$CommentToJson(this);
+    if (map.containsKey('author')) map..addAll(map['author'])..remove('author');
     return map;
   }
 

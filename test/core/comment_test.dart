@@ -7,10 +7,10 @@ void main() => group('Comment', () {
     test('should return an empty instance with an empty map', () {
       var comment = Comment.fromJson({});
       expect(comment.author, isNull);
-      expect(comment.content, isEmpty);
+      expect(comment.content, isNull);
       expect(comment.date, isNull);
       expect(comment.referrer, isNull);
-      expect(comment.type, isEmpty);
+      expect(comment.type, isNull);
     });
 
     test('should return an initialized instance with a non-empty map', () {
