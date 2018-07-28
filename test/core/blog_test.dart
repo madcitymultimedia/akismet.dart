@@ -6,7 +6,7 @@ void main() => group('Blog', () {
   group('.fromJson()', () {
     test('should return an empty instance with an empty map', () {
       var blog = Blog.fromJson({});
-      expect(blog.charset, isEmpty);
+      expect(blog.charset, isNull);
       expect(blog.languages, isEmpty);
       expect(blog.url, isNull);
     });
@@ -26,13 +26,13 @@ void main() => group('Blog', () {
 
   group('.toJson()', () {
     test('should return only the blog URL with a newly created instance', () {
-      var data = Blog('https://dev.belin.io/akismet.dart').toJson();
+      var data = Blog(Uri.https('dev.belin.io', '/akismet.dart')).toJson();
       expect(data, hasLength(1));
       expect(data['blog'], equals('https://dev.belin.io/akismet.dart'));
     });
 
     test('should return a non-empty map with an initialized instance', () {
-      var data = Blog('https://dev.belin.io/akismet.dart', charset: 'UTF-8', languages: ['en', 'fr']).toJson();
+      var data = Blog(Uri.https('dev.belin.io', '/akismet.dart'), charset: 'UTF-8', languages: ['en', 'fr']).toJson();
       expect(data, hasLength(3));
       expect(data['blog'], equals('https://dev.belin.io/akismet.dart'));
       expect(data['blog_charset'], equals('UTF-8'));
@@ -41,7 +41,7 @@ void main() => group('Blog', () {
   });
 
   group('.toString()', () {
-    var data = Blog('https://dev.belin.io/akismet.dart', charset: 'UTF-8', languages: ['en', 'fr']).toString();
+    var data = Blog(Uri.https('dev.belin.io', '/akismet.dart'), charset: 'UTF-8', languages: ['en', 'fr']).toString();
 
     test('should start with the class name', () {
       expect(data, contains('Blog {'));
