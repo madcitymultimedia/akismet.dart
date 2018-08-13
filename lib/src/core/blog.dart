@@ -1,4 +1,4 @@
-part of akismet.core;
+part of '../core.dart';
 
 /// Converts the specified comma-separated list to a list of [String] instances.
 List<String> _languagesFromJson(String languages) => languages.split(',').map((lang) => lang.trim()).toList();

@@ -1,4 +1,4 @@
-part of akismet.http;
+part of '../http.dart';
 
 /// Submits comments to the [Akismet](https://akismet.com) service.
 class Client {

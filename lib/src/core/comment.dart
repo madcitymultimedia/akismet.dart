@@ -1,4 +1,4 @@
-part of akismet.core;
+part of '../core.dart';
 
 /// Converts the specified [Author] instance to a JSON object.
 Map<String, dynamic> _authorToJson(Author author) => author.toJson();
