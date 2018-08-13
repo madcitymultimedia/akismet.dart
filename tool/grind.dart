@@ -7,13 +7,14 @@ Future<void> main(List<String> args) => grind(args);
 
 /// Builds the project.
 @DefaultTask('Build the project')
-void build() => Pub.run('build_runner', arguments: ['build']);
+void build() => Pub.run('build_runner', arguments: ['build', '--delete-conflicting-outputs']);
 
 /// Deletes all generated files and reset any saved state.
 @Task('Delete the generated files')
 void clean() {
   defaultClean();
   ['.dart_tool/build', 'doc/api', webDir.path].map(getDir).forEach(delete);
+  FileSet.fromDir(getDir('lib'), pattern: '*.g.dart', recurse: true).files.forEach(delete);
   FileSet.fromDir(getDir('var'), pattern: '*.{info,json}').files.forEach(delete);
 }
 
@@ -38,7 +39,6 @@ void lint() => Analyzer.analyze(existingSourceDirs);
 
 /// Runs all the test suites.
 @Task('Run the tests')
-@Depends(build)
 Future<void> test() async {
   var apiKey = const String.fromEnvironment('akismet_api_key') ?? Platform.environment['AKISMET_API_KEY'];
   if (apiKey == null) fail('AKISMET_API_KEY environment variable not set.');
