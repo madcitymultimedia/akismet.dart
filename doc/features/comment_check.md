@@ -29,15 +29,15 @@ import 'package:akismet/akismet.dart';
 
 Future<void> main() async {
   try {
-    var client = Client('123YourAPIKey', 'http://www.yourblog.com');
+    final client = Client('123YourAPIKey', 'http://www.yourblog.com');
 
-    var comment = Comment(
+    final comment = Comment(
       Author('127.0.0.1', 'Mozilla/5.0'),
       content: 'A user comment',
       date: DateTime.now()
     );
 
-    var isSpam = await client.checkComment(comment);
+    final isSpam = await client.checkComment(comment);
     print(isSpam ? 'The comment is spam' : 'The comment is ham');
   }
 

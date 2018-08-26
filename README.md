@@ -46,8 +46,8 @@ import 'package:akismet/akismet.dart';
 
 ```dart
 try {
-  var client = Client('123YourAPIKey', 'http://www.yourblog.com');
-  var isValid = await client.verifyKey();
+  final client = Client('123YourAPIKey', 'http://www.yourblog.com');
+  final isValid = await client.verifyKey();
   print(isValid ? 'The API key is valid' : 'The API key is invalid');
 }
 
@@ -60,13 +60,13 @@ on ClientException catch (err) {
 
 ```dart
 try {
-  var comment = Comment(
+  final comment = Comment(
     Author('127.0.0.1', 'Mozilla/5.0'),
     content: 'A user comment',
     date: DateTime.now()
   );
 
-  var isSpam = await client.checkComment(comment);
+  final isSpam = await client.checkComment(comment);
   print(isSpam ? 'The comment is spam' : 'The comment is ham');
 }
 

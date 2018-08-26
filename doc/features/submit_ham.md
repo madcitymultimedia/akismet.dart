@@ -29,13 +29,13 @@ import 'package:akismet/akismet.dart';
 
 Future<void> main() async {
   try {
-    var comment = Comment(
+    final comment = Comment(
       Author('127.0.0.1', 'Mozilla/5.0'),
       content: 'A valid user comment (ham)'
     );
     
-    var client = Client('123YourAPIKey', 'http://www.yourblog.com');
-    var isSpam = await client.checkComment(comment); // `true`, but `false` expected.
+    final client = Client('123YourAPIKey', 'http://www.yourblog.com');
+    final isSpam = await client.checkComment(comment); // `true`, but `false` expected.
     
     print('The comment was incorrectly classified as spam');
     await client.submitHam(comment);
