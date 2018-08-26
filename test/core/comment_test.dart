@@ -22,10 +22,11 @@ void main() => group('Comment', () {
         'referrer': 'https://belin.io/'
       });
 
-      expect(comment.author, const TypeMatcher<Author>());
+      expect(comment.author, isNotNull);
       expect(comment.author.name, equals('Cédric Belin'));
       expect(comment.content, equals('A user comment.'));
-      expect(comment.date, const TypeMatcher<DateTime>());
+      expect(comment.date, isNotNull);
+      expect(comment.date.year, equals(2000));
       expect(comment.referrer, equals(Uri.https('belin.io', '/')));
       expect(comment.type, equals(CommentType.trackback));
     });
