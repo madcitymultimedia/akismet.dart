@@ -12,7 +12,7 @@ void main() => group('Client', () {
     isTest: true
   );
 
-  final ham = Comment(
+  final _ham = Comment(
     Author('192.168.0.1', 'Mozilla/5.0 (X11; Linux x86_64) Chrome/66.0.3359.139',
       name: 'Akismet',
       role: 'administrator',
@@ -23,7 +23,7 @@ void main() => group('Client', () {
     type: CommentType.comment
   );
 
-  final spam = Comment(
+  final _spam = Comment(
     Author('127.0.0.1', 'Spam Bot/6.6.6',
       email: 'akismet-guaranteed-spam@example.com',
       name: 'viagra-test-123'
@@ -34,23 +34,23 @@ void main() => group('Client', () {
 
   group('.checkComment()', () {
     test('should return `false` for valid comment (e.g. ham)', () async {
-      expect(await _client.checkComment(ham), isFalse);
+      expect(await _client.checkComment(_ham), isFalse);
     });
 
     test('should return `true` for invalid comment (e.g. spam)', () async {
-      expect(await _client.checkComment(spam), isTrue);
+      expect(await _client.checkComment(_spam), isTrue);
     });
   });
 
   group('.submitHam()', () {
     test('should complete without error', () {
-      expect(_client.submitHam(ham), completes);
+      expect(_client.submitHam(_ham), completes);
     });
   });
 
   group('.submitSpam()', () {
     test('should complete without error', () {
-      expect(_client.submitSpam(spam), completes);
+      expect(_client.submitSpam(_spam), completes);
     });
   });
 
