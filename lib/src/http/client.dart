@@ -48,19 +48,19 @@ class Client {
 
   /// Checks the specified [comment] against the service database, and returns a value indicating whether it is spam.
   Future<bool> checkComment(Comment comment) async {
-    var url = Uri.parse('${endPoint.scheme}://$apiKey.${endPoint.host}/1.1/comment-check');
+    final url = Uri.parse('${endPoint.scheme}://$apiKey.${endPoint.host}/1.1/comment-check');
     return await _fetch(url, comment.toJson()) == 'true';
   }
 
   /// Submits the specified [comment] that was incorrectly marked as spam but should not have been.
   Future<void> submitHam(Comment comment) {
-    var url = Uri.parse('${endPoint.scheme}://$apiKey.${endPoint.host}/1.1/submit-ham');
+    final url = Uri.parse('${endPoint.scheme}://$apiKey.${endPoint.host}/1.1/submit-ham');
     return _fetch(url, comment.toJson());
   }
 
   /// Submits the specified [comment] that was not marked as spam but should have been.
   Future<void> submitSpam(Comment comment) {
-    var url = Uri.parse('${endPoint.scheme}://$apiKey.${endPoint.host}/1.1/submit-spam');
+    final url = Uri.parse('${endPoint.scheme}://$apiKey.${endPoint.host}/1.1/submit-spam');
     return _fetch(url, comment.toJson());
   }
 
@@ -70,16 +70,16 @@ class Client {
 
   /// Queries the service by posting the specified [fields] to a given end point, and returns the response as a string.
   Future<String> _fetch(Uri endPoint, Map<String, dynamic> fields) async {
-    var bodyFields = blog.toJson()..addAll(fields);
+    final bodyFields = blog.toJson()..addAll(fields);
     if (isTest) bodyFields['is_test'] = '1';
 
-    var httpClient = newHttpClient();
-    var request = http.Request('POST', endPoint)
+    final httpClient = newHttpClient();
+    final request = http.Request('POST', endPoint)
       ..bodyFields = bodyFields.cast<String, String>()
       ..headers[HttpHeaders.userAgentHeader] = userAgent;
 
     _onRequest.add(RequestEvent(request));
-    var response = await httpClient.post(request.url, body: request.bodyFields, headers: request.headers);
+    final response = await httpClient.post(request.url, body: request.bodyFields, headers: request.headers);
     _onResponse.add(RequestEvent(request, response));
     httpClient.close();
 

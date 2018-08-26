@@ -5,7 +5,7 @@ import 'package:test/test.dart';
 void main() => group('Comment', () {
   group('.fromJson()', () {
     test('should return an empty instance with an empty map', () {
-      var comment = Comment.fromJson({});
+      final comment = Comment.fromJson({});
       expect(comment.author, isNull);
       expect(comment.content, isNull);
       expect(comment.date, isNull);
@@ -14,7 +14,7 @@ void main() => group('Comment', () {
     });
 
     test('should return an initialized instance with a non-empty map', () {
-      var comment = Comment.fromJson({
+      final comment = Comment.fromJson({
         'comment_author': 'Cédric Belin',
         'comment_content': 'A user comment.',
         'comment_date_gmt': '2000-01-01T00:00:00.000Z',
@@ -33,14 +33,14 @@ void main() => group('Comment', () {
 
   group('.toJson()', () {
     test('should return only the author info with a newly created instance', () {
-      var data = Comment(Author('127.0.0.1', 'Doom/6.6.6')).toJson();
+      final data = Comment(Author('127.0.0.1', 'Doom/6.6.6')).toJson();
       expect(data, hasLength(2));
       expect(data['user_agent'], equals('Doom/6.6.6'));
       expect(data['user_ip'], equals('127.0.0.1'));
     });
 
     test('should return a non-empty map with an initialized instance', () {
-      var data = Comment(
+      final data = Comment(
         Author('127.0.0.1', 'Doom/6.6.6', name: 'Cédric Belin'),
         content: 'A user comment.',
         date: DateTime.parse('2000-01-01T00:00:00.000Z'),
@@ -60,7 +60,7 @@ void main() => group('Comment', () {
   });
 
   group('.toString()', () {
-    var data = Comment(
+    final data = Comment(
       Author('127.0.0.1', 'Doom/6.6.6', name: 'Cédric Belin'),
       content: 'A user comment.',
       date: DateTime.parse('2000-01-01T00:00:00.000Z'),

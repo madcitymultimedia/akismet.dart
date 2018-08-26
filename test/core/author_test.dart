@@ -5,14 +5,14 @@ import 'package:test/test.dart';
 void main() => group('Author', () {
   group('.fromJson()', () {
     test('should return an empty instance with an empty map', () {
-      var author = Author.fromJson({});
+      final author = Author.fromJson({});
       expect(author.email, isNull);
       expect(author.ipAddress, isNull);
       expect(author.userAgent, isNull);
     });
 
     test('should return an initialized instance with a non-empty map', () {
-      var author = Author.fromJson({
+      final author = Author.fromJson({
         'comment_author_email': 'cedric@belin.io',
         'comment_author_url': 'https://belin.io/',
         'user_agent': 'Mozilla/5.0',
@@ -28,14 +28,14 @@ void main() => group('Author', () {
 
   group('.toJson()', () {
     test('should return only the IP address and user agent with a newly created instance', () {
-      var data = Author('127.0.0.1', 'Doom/6.6.6').toJson();
+      final data = Author('127.0.0.1', 'Doom/6.6.6').toJson();
       expect(data, hasLength(2));
       expect(data['user_agent'], equals('Doom/6.6.6'));
       expect(data['user_ip'], equals('127.0.0.1'));
     });
 
     test('should return a non-empty map with an initialized instance', () {
-      var data = Author('192.168.0.1', 'Mozilla/5.0', email: 'cedric@belin.io', name: 'Cédric Belin', url: Uri.https('belin.io', '/')).toJson();
+      final data = Author('192.168.0.1', 'Mozilla/5.0', email: 'cedric@belin.io', name: 'Cédric Belin', url: Uri.https('belin.io', '/')).toJson();
       expect(data, hasLength(5));
       expect(data['comment_author'], equals('Cédric Belin'));
       expect(data['comment_author_email'], equals('cedric@belin.io'));
@@ -46,7 +46,7 @@ void main() => group('Author', () {
   });
 
   group('.toString()', () {
-    var data = Author('127.0.0.1', 'Doom/6.6.6', email: 'cedric@belin.io', name: 'Cédric Belin', url: Uri.https('belin.io', '/')).toString();
+    final data = Author('127.0.0.1', 'Doom/6.6.6', email: 'cedric@belin.io', name: 'Cédric Belin', url: Uri.https('belin.io', '/')).toString();
 
     test('should start with the class name', () {
       expect(data, contains('Author {'));

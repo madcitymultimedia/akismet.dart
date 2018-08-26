@@ -45,7 +45,7 @@ class Comment {
 
   /// Converts this object to a [Map] in JSON format.
   Map<String, dynamic> toJson() {
-    var map = _$CommentToJson(this);
+    final map = _$CommentToJson(this);
     if (map.containsKey('author')) map..addAll(map['author'])..remove('author');
     return map;
   }

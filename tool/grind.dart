@@ -40,7 +40,7 @@ void lint() => Analyzer.analyze(existingSourceDirs);
 /// Runs all the test suites.
 @Task('Run the tests')
 Future<void> test() async {
-  var apiKey = const String.fromEnvironment('akismet_api_key') ?? Platform.environment['AKISMET_API_KEY'];
+  final apiKey = const String.fromEnvironment('akismet_api_key') ?? Platform.environment['AKISMET_API_KEY'];
   if (apiKey == null) fail('AKISMET_API_KEY environment variable not set.');
 
   await Future.wait([
@@ -48,7 +48,7 @@ Future<void> test() async {
     Pub.runAsync('coverage', script: 'collect_coverage', arguments: ['--out=var/coverage.json', '--resume-isolates', '--wait-paused'])
   ]);
 
-  var args = ['--in=var/coverage.json', '--lcov', '--out=var/lcov.info', '--packages=.packages', '--report-on=${libDir.path}'];
+  final args = ['--in=var/coverage.json', '--lcov', '--out=var/lcov.info', '--packages=.packages', '--report-on=${libDir.path}'];
   return Pub.runAsync('coverage', script: 'format_coverage', arguments: args);
 }
 
