@@ -3,18 +3,12 @@ part of '../http.dart';
 /// Submits comments to the [Akismet](https://akismet.com) service.
 class Client {
 
-  /// The HTTP header containing the Akismet error messages.
-  static const String debugHeader = 'x-akismet-debug-help';
-
-  /// The URL of the default API end point.
-  static final Uri defaultEndPoint = Uri.https('rest.akismet.com', '/');
-
   /// The version number of this package.
   static const String version = '4.0.0';
 
   /// Creates a new client.
   Client(this.apiKey, this.blog, {Uri endPoint, this.isTest = false, String userAgent}):
-    endPoint = endPoint ?? defaultEndPoint,
+    endPoint = endPoint ?? Uri.https('rest.akismet.com', '/'),
     userAgent = userAgent ?? 'Dart/$platformVersion | Akismet/$version';
 
   /// The Akismet API key.
@@ -84,7 +78,7 @@ class Client {
     httpClient.close();
 
     if ((response.statusCode ~/ 100) != 2) throw http.ClientException('An error occurred while querying the end point', endPoint);
-    if (response.headers.containsKey(debugHeader)) throw http.ClientException(response.headers[debugHeader], endPoint);
+    if (response.headers.containsKey('x-akismet-debug-help')) throw http.ClientException(response.headers['x-akismet-debug-help'], endPoint);
     return response.body;
   }
 }
