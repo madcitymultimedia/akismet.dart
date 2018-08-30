@@ -1,11 +1,5 @@
 part of '../core.dart';
 
-/// Converts the specified comma-separated list to a list of [String] instances.
-List<String> _languagesFromJson(String languages) => languages.split(',').map((lang) => lang.trim()).toList();
-
-/// Converts the specified language list to a comma-separated one.
-String _languagesToJson(List<String> languages) => languages.isEmpty ? null : languages.join(',');
-
 /// Represents the front page or home URL transmitted when making requests.
 @JsonSerializable()
 class Blog {
@@ -34,4 +28,10 @@ class Blog {
   /// Returns a string representation of this object.
   @override
   String toString() => 'Blog ${json.encode(this)}';
+
+  /// Converts the specified comma-separated list to a list of [String] instances.
+  static List<String> _languagesFromJson(String languages) => languages.split(',').map((lang) => lang.trim()).toList();
+
+  /// Converts the specified language list to a comma-separated one.
+  static String _languagesToJson(List<String> languages) => languages.isEmpty ? null : languages.join(',');
 }

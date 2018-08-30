@@ -1,8 +1,5 @@
 part of '../core.dart';
 
-/// Converts the specified [Author] instance to a JSON object.
-Map<String, dynamic> _authorToJson(Author author) => author.toJson();
-
 /// Represents a comment submitted by an author.
 @JsonSerializable(includeIfNull: false)
 class Comment {
@@ -53,6 +50,9 @@ class Comment {
   /// Returns a string representation of this object.
   @override
   String toString() => 'Comment ${json.encode(this)}';
+
+  /// Converts the specified [Author] instance to a JSON object.
+  static Map<String, dynamic> _authorToJson(Author author) => author.toJson();
 }
 
 /// Specifies the type of a comment.
