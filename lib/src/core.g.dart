@@ -39,7 +39,7 @@ Blog _$BlogFromJson(Map<String, dynamic> json) {
       charset: json['blog_charset'] as String,
       languages: json['blog_lang'] == null
           ? null
-          : _languagesFromJson(json['blog_lang'] as String));
+          : Blog._languagesFromJson(json['blog_lang'] as String));
 }
 
 Map<String, dynamic> _$BlogToJson(Blog instance) {
@@ -52,8 +52,11 @@ Map<String, dynamic> _$BlogToJson(Blog instance) {
   }
 
   writeNotNull('blog_charset', instance.charset);
-  writeNotNull('blog_lang',
-      instance.languages == null ? null : _languagesToJson(instance.languages));
+  writeNotNull(
+      'blog_lang',
+      instance.languages == null
+          ? null
+          : Blog._languagesToJson(instance.languages));
   val['blog'] = instance.url?.toString();
   return val;
 }
@@ -89,7 +92,7 @@ Map<String, dynamic> _$CommentToJson(Comment instance) {
   }
 
   writeNotNull('author',
-      instance.author == null ? null : _authorToJson(instance.author));
+      instance.author == null ? null : Comment._authorToJson(instance.author));
   writeNotNull('comment_content', instance.content);
   writeNotNull('comment_date_gmt', instance.date?.toIso8601String());
   writeNotNull('permalink', instance.permalink?.toString());
