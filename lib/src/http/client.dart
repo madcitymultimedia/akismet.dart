@@ -3,13 +3,10 @@ part of '../http.dart';
 /// Submits comments to the [Akismet](https://akismet.com) service.
 class Client {
 
-  /// The version number of this package.
-  static const String version = '4.0.0';
-
   /// Creates a new client.
   Client(this.apiKey, this.blog, {Uri endPoint, this.isTest = false, String userAgent}):
     endPoint = endPoint ?? Uri.https('rest.akismet.com', '/'),
-    userAgent = userAgent ?? 'Dart/$platformVersion | Akismet/$version';
+    userAgent = userAgent ?? 'Dart/$platformVersion | Akismet/$packageVersion';
 
   /// The Akismet API key.
   final String apiKey;

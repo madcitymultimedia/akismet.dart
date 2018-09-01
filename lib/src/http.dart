@@ -8,6 +8,7 @@ import 'core.dart';
 import 'io.dart'
   if (dart.library.html) 'io/browser.dart'
   if (dart.library.io) 'io/vm.dart';
+import 'version.dart';
 
 export 'package:http/http.dart' show ClientException;
 
