@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'core.dart';
+part of 'akismet.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator

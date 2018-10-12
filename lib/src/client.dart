@@ -1,4 +1,4 @@
-part of '../http.dart';
+part of '../akismet.dart';
 
 /// Submits comments to the [Akismet](https://akismet.com) service.
 class Client {
@@ -64,7 +64,7 @@ class Client {
     final bodyFields = blog.toJson()..addAll(fields);
     if (isTest) bodyFields['is_test'] = '1';
 
-    final httpClient = newHttpClient();
+    final httpClient = http.Client();
     final request = http.Request('POST', endPoint)
       ..bodyFields = bodyFields.cast<String, String>()
       ..headers[HttpHeaders.userAgentHeader] = userAgent;
