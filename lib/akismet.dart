@@ -15,3 +15,6 @@ part 'src/author.dart';
 part 'src/blog.dart';
 part 'src/comment.dart';
 part 'src/client.dart';
+
+/// The version of the current platform.
+String get _platformVersion => '0.0.0';

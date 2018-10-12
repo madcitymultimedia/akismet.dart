@@ -6,7 +6,7 @@ class Client {
   /// Creates a new client.
   Client(this.apiKey, this.blog, {Uri endPoint, this.isTest = false, String userAgent}):
     endPoint = endPoint ?? Uri.https('rest.akismet.com', '/'),
-    userAgent = userAgent ?? 'Dart/$platformVersion | Akismet/$packageVersion';
+    userAgent = userAgent ?? 'Dart/$_platformVersion | Akismet/$packageVersion';
 
   /// The Akismet API key.
   final String apiKey;
