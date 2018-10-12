@@ -56,10 +56,9 @@ void upgrade() {
 
 @Task('Updates the version number contained in the sources')
 Future<void> version() async {
-  final file = File('lib/akismet.dart');
-  final contents = await file.readAsString();
-  return file.writeAsString(contents.replaceAll(
-    RegExp("_platformVersion => '\d+(\.\d+){2}'"),
+  final contents = await File('lib/akismet.dart').readAsString();
+  return File('lib/akismet.dart').writeAsString(contents.replaceAll(
+    RegExp(r"_platformVersion => '\d+(\.\d+){2}'"),
     "_platformVersion => '${Platform.version.split(' ').first}'"
   ));
 }
