@@ -5,6 +5,7 @@
 - Breaking change: starting to use and support the [Dart 2 SDK](https://www.dartlang.org/tools/sdk).
 - Breaking change: the `httpClient` property is now private.
 - Added a user guide based on [MkDocs](http://www.mkdocs.org).
+- Added an example code.
 - Added the `ClientException` and `RequestEvent` classes.
 - Improved support for browser platform.
 - Using optional `const` and `new`.

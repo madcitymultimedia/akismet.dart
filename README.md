@@ -3,42 +3,17 @@
 
 Prevent comment spam using the [Akismet](https://akismet.com) service, in [Dart](https://www.dartlang.org).
 
-> For detailed instructions, see the [user guide](https://dev.belin.io/akismet.dart).
+## Resources
+- [Documentation](https://dev.belin.io/akismet.dart)
+- [API reference](https://dev.belin.io/akismet.dart/api)
+- [Pub package](https://pub.dartlang.org/packages/akismet)
+- [GitHub repository](https://github.com/cedx/akismet.dart)
 
 ## Features
 - [Key verification](https://akismet.com/development/api/#verify-key): checks an Akismet API key and gets a value indicating whether it is valid.
 - [Comment check](https://akismet.com/development/api/#comment-check): checks a comment and gets a value indicating whether it is spam.
 - [Submit spam](https://akismet.com/development/api/#submit-spam): submits a comment that was not marked as spam but should have been.
 - [Submit ham](https://akismet.com/development/api/#submit-ham): submits a comment that was incorrectly marked as spam but should not have been.
-
-## Requirements
-You need the latest [Dart SDK](https://www.dartlang.org/tools/sdk) and [Pub](https://www.dartlang.org/tools/pub) versions to use **Akismet for Dart**.
-
-> If you plan to play with the sources, you will also need the latest [Grinder](http://google.github.io/grinder.dart) and [Material for MkDocs](https://squidfunk.github.io/mkdocs-material) versions.
-
-## Installing with Pub package manager
-
-### 1. Depend on it
-Add this to your project's `pubspec.yaml` file:
-
-```yaml
-dependencies:
-  akismet: *
-```
-
-### 2. Install it
-Install this package and its dependencies from a command prompt:
-
-```shell
-pub get
-```
-
-### 3. Import it
-Now in your [Dart](https://www.dartlang.org) code, you can use:
-
-```dart
-import 'package:akismet/akismet.dart';
-```
 
 ## Usage
 
@@ -121,17 +96,6 @@ Then, you can run the `test` script from the command prompt:
 ```shell
 pub run test
 ```
-
-## See also
-- [API reference](https://dev.belin.io/akismet.dart/api)
-- [Pub package](https://pub.dartlang.org/packages/akismet)
-- [Continuous integration](https://travis-ci.com/cedx/akismet.dart)
-- [Code coverage](https://coveralls.io/github/cedx/akismet.dart)
-
-### Other implementations
-- Node.js: [Akismet for JS](https://dev.belin.io/akismet.js)
-- PHP: [Akismet for PHP](https://dev.belin.io/akismet.php)
-- Yii Framework: [Akismet for Yii](https://dev.belin.io/yii2-akismet)
 
 ## License
 [Akismet for Dart](https://dev.belin.io/akismet.dart) is distributed under the MIT License.
