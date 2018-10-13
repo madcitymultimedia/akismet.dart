@@ -29,7 +29,7 @@ import 'package:akismet/akismet.dart';
 
 Future<void> main() async {
   try {
-    final client = Client('123YourAPIKey', 'http://www.yourblog.com');
+    final client = Client('123YourAPIKey', Blog(Uri.https('www.yourblog.com', '/')));
 
     final comment = Comment(
       Author('127.0.0.1', 'Mozilla/5.0'),

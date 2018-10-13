@@ -22,7 +22,7 @@ Client(String apiKey, string|Blog blog, {
 import 'dart:async';
 import 'package:akismet/akismet.dart';
 
-final client = Client('123YourAPIKey', 'http://www.yourblog.com');
+final client = Client('123YourAPIKey', Blog(Uri.https('www.yourblog.com', '/')));
 ```
 
 To instantiate a new `Client`, you need the following elements:

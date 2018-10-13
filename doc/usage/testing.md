@@ -14,7 +14,7 @@ Future<void> main() async {
   final author = Author('127.0.0.1', 'Mozilla/5.0', name: 'viagra-test-123');
   final comment = Comment(author, content: 'A user comment');
 
-  final client = Client('123YourAPIKey', 'http://www.yourblog.com');
+  final client = Client('123YourAPIKey', Blog(Uri.https('www.yourblog.com', '/')));
   final isSpam = await client.checkComment(comment);
   print('It should be "true": $isSpam');
 }
@@ -33,7 +33,7 @@ Future<void> main() async {
   final author = Author('127.0.0.1', 'Mozilla/5.0', role: 'administrator');
   final comment = Comment(author, content: 'A user comment');
 
-  final client = Client('123YourAPIKey', 'http://www.yourblog.com');
+  final client = Client('123YourAPIKey', Blog(Uri.https('www.yourblog.com', '/')));
   final isSpam = await client.checkComment(comment);
   print('It should be "false": $isSpam');
 }
@@ -52,7 +52,7 @@ Future<void> main() async {
   final author = Author('127.0.0.1', 'Mozilla/5.0');
   final comment = Comment(author, content: 'A user comment');
 
-  final client = Client('123YourAPIKey', 'http://www.yourblog.com', isTest: true);
+  final client = Client('123YourAPIKey', Blog(Uri.https('www.yourblog.com', '/')), isTest: true);
   print('It should not influence subsequent calls');
   await client.checkComment(comment);
 }

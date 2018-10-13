@@ -34,7 +34,7 @@ Future<void> main() async {
       content: 'An invalid user comment (spam)'
     );
     
-    final client = Client('123YourAPIKey', 'http://www.yourblog.com');
+    final client = Client('123YourAPIKey', Blog(Uri.https('www.yourblog.com', '/')));
     final isSpam = await client.checkComment(comment); // `false`, but `true` expected.
     
     print('The comment was incorrectly classified as ham');
