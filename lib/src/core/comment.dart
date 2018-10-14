@@ -1,4 +1,4 @@
-part of '../akismet.dart';
+part of '../core.dart';
 
 /// Represents a comment submitted by an author.
 @JsonSerializable(includeIfNull: false)

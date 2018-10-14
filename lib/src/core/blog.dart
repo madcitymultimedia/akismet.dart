@@ -1,4 +1,4 @@
-part of '../akismet.dart';
+part of '../core.dart';
 
 /// Represents the front page or home URL transmitted when making requests.
 @JsonSerializable()

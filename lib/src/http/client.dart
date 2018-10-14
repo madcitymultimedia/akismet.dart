@@ -1,4 +1,4 @@
-part of '../akismet.dart';
+part of '../io.dart';
 
 /// Submits comments to the [Akismet](https://akismet.com) service.
 class Client {
@@ -6,7 +6,7 @@ class Client {
   /// Creates a new client.
   Client(this.apiKey, this.blog, {Uri endPoint, this.isTest = false, String userAgent}):
     endPoint = endPoint ?? Uri.https('rest.akismet.com', '/'),
-    userAgent = userAgent ?? 'Dart/$_platformVersion | Akismet/$packageVersion';
+    userAgent = userAgent ?? 'Dart/$_platformVersion | Akismet/$_packageVersion';
 
   /// The Akismet API key.
   final String apiKey;
