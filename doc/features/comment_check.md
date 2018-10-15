@@ -1,5 +1,7 @@
 # Comment check
-This is the call you will make the most. It takes a number of arguments and characteristics about the submitted content and then returns a thumbs up or thumbs down. **Performance can drop dramatically if you choose to exclude data points.** The more data you send Akismet about each comment, the greater the accuracy. We recommend erring on the side of including too much data.
+This is the call you will make the most. It takes a number of arguments and characteristics about the submitted content
+and then returns a thumbs up or thumbs down. **Performance can drop dramatically if you choose to exclude data points.**
+The more data you send Akismet about each comment, the greater the accuracy. We recommend erring on the side of including too much data.
 
 ```
 Future<bool> Client#checkComment(Comment comment)
@@ -12,7 +14,7 @@ Future<bool> Client#checkComment(Comment comment)
 
 ## Parameters
 
-### comment
+### Comment **comment**
 The `Comment` providing the user message to be checked.
 
 ## Return value
@@ -29,14 +31,13 @@ import 'package:akismet/akismet.dart';
 
 Future<void> main() async {
   try {
-    final client = Client('123YourAPIKey', Blog(Uri.https('www.yourblog.com', '/')));
-
     final comment = Comment(
       Author('127.0.0.1', 'Mozilla/5.0'),
       content: 'A user comment',
       date: DateTime.now()
     );
 
+    final client = Client('123YourAPIKey', Blog(Uri.https('www.yourblog.com', '/')));
     final isSpam = await client.checkComment(comment);
     print(isSpam ? 'The comment is spam' : 'The comment is ham');
   }
