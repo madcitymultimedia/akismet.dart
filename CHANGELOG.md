@@ -52,7 +52,7 @@
 - Added the `onRequest` and `onResponse` event streams to the `Client` class.
 - The parameters of the `Client` constructor are now optional.
 - Added support for the [Travis CI](https://travis-ci.com) continuous integration.
-- Changed the build system for [Grinder](http://google.github.io/grinder.dart).
+- Changed the build system for [Grinder](https://google.github.io/grinder.dart).
 - Changed the documentation system for [Dartdoc](https://github.com/dart-lang/dartdoc).
 - Changed the licensing for the [Apache License Version 2.0](http://www.apache.org/licenses/LICENSE-2.0).
 - Dropped the development dependencies based on [Node.js](https://nodejs.org).
