@@ -3,11 +3,14 @@
 
 Prevent comment spam using the [Akismet](https://akismet.com) service, in [Dart](https://www.dartlang.org).
 
-## Resources
-- [Documentation](https://dev.belin.io/akismet.dart)
+## Documentation
+- [User guide](https://dev.belin.io/akismet.dart)
 - [API reference](https://dev.belin.io/akismet.dart/api)
+
+## Development
+- [Git repository](https://git.belin.io/cedx/akismet.dart)
 - [Pub package](https://pub.dartlang.org/packages/akismet)
-- [GitHub repository](https://github.com/cedx/akismet.dart)
+- [Submit an issue](https://git.belin.io/cedx/akismet.dart/issues)
 
 ## Features
 - [Key verification](https://akismet.com/development/api/#verify-key): checks an Akismet API key and gets a value indicating whether it is valid.
