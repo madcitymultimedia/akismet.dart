@@ -56,7 +56,7 @@ void upgrade() {
 
 @Task('Updates the version number contained in the sources')
 Future<void> version() async {
-  final file = File('lib/src/io/browser.dart');
+  final file = getFile('lib/src/io/browser.dart');
   return file.writeAsString((await file.readAsString()).replaceAll(
     RegExp(r"platformVersion => '\d+(\.\d+){2}'"),
     "platformVersion => '${Platform.version.split(' ').first}'"
