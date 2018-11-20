@@ -4,7 +4,7 @@
 - [Akismet for developers](https://akismet.com/development/api)
 - [API reference](https://dev.belin.io/akismet.dart/api)
 - [Pub package](https://pub.dartlang.org/packages/akismet)
-- [Submit an issue](https://git.belin.io/cedx/akismet.dart/issues)
+- [Submit an issue](https://github.com/cedx/akismet.dart/issues)
 
 ## Testing
 - [Continuous integration](https://travis-ci.com/cedx/akismet.dart)
