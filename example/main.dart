@@ -1,4 +1,3 @@
-import 'dart:async';
 import 'package:akismet/akismet.dart';
 
 /// Queries the Akismet service.
