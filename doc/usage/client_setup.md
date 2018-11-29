@@ -19,7 +19,6 @@ Client(String apiKey, string|Blog blog, {
 ```
 
 ```dart
-import 'dart:async';
 import 'package:akismet/akismet.dart';
 
 final client = Client('123YourAPIKey', Blog(Uri.https('www.yourblog.com', '/')));

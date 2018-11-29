@@ -26,7 +26,6 @@ The exception `message` usually includes some debug information, provided by the
 ## Example
 
 ```dart
-import 'dart:async';
 import 'package:akismet/akismet.dart';
 
 Future<void> main() async {
