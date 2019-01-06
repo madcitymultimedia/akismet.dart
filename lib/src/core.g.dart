@@ -17,7 +17,7 @@ Author _$AuthorFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$AuthorToJson(Author instance) {
-  var val = <String, dynamic>{};
+  final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {
     if (value != null) {
@@ -43,7 +43,7 @@ Blog _$BlogFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$BlogToJson(Blog instance) {
-  var val = <String, dynamic>{};
+  final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {
     if (value != null) {
@@ -83,7 +83,7 @@ Comment _$CommentFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$CommentToJson(Comment instance) {
-  var val = <String, dynamic>{};
+  final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {
     if (value != null) {
