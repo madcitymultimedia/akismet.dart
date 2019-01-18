@@ -1,10 +1,12 @@
-﻿name: akismet
+name: akismet
 version: 4.0.0
 
 author: Cédric Belin <cedric@belin.io>
 description: Prevent comment spam using the Akismet service. Add Akismet to your applications so you don't have to worry about spam again.
 documentation: https://dev.belin.io/akismet.dart/api
 homepage: https://dev.belin.io/akismet.dart
+issue_tracker: https://github.com/cedx/akismet.dart/issues
+repository: https://github.com/cedx/akismet.dart
 
 environment:
   sdk: '>=2.1.0 <3.0.0'
