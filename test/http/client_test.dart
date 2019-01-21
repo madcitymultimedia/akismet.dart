@@ -1,5 +1,3 @@
-@TestOn('vm')
-
 import 'dart:io';
 import 'package:akismet/akismet.dart';
 import 'package:test/test.dart';
