@@ -22,20 +22,20 @@ class Client {
   final bool isTest;
 
   /// The stream of "request" events.
-  Stream<RequestEvent> get onRequest => _onRequest.stream;
+  Stream<http.Request> get onRequest => _onRequest.stream;
 
   /// The stream of "response" events.
-  Stream<RequestEvent> get onResponse => _onResponse.stream;
+  Stream<http.Response> get onResponse => _onResponse.stream;
 
   /// The user agent string to use when making requests.
   /// If possible, the user agent string should always have the following format: `Application Name/Version | Plugin Name/Version`.
   final String userAgent;
 
   /// The handler of "request" events.
-  final StreamController<RequestEvent> _onRequest = StreamController<RequestEvent>.broadcast();
+  final StreamController<http.Request> _onRequest = StreamController<http.Request>.broadcast();
 
   /// The handler of "response" events.
-  final StreamController<RequestEvent> _onResponse = StreamController<RequestEvent>.broadcast();
+  final StreamController<http.Response> _onResponse = StreamController<http.Response>.broadcast();
 
   /// Checks the specified [comment] against the service database, and returns a value indicating whether it is spam.
   Future<bool> checkComment(Comment comment) async {
@@ -69,26 +69,13 @@ class Client {
       ..bodyFields = bodyFields.cast<String, String>()
       ..headers[HttpHeaders.userAgentHeader] = userAgent;
 
-    _onRequest.add(RequestEvent(request));
+    _onRequest.add(request);
     final response = await httpClient.post(request.url, body: request.bodyFields, headers: request.headers);
-    _onResponse.add(RequestEvent(request, response));
+    _onResponse.add(response);
     httpClient.close();
 
     if ((response.statusCode ~/ 100) != 2) throw http.ClientException('An error occurred while querying the end point', endPoint);
     if (response.headers.containsKey('x-akismet-debug-help')) throw http.ClientException(response.headers['x-akismet-debug-help'], endPoint);
     return response.body;
   }
-}
-
-/// The event parameter used for request events.
-class RequestEvent {
-
-  /// Creates a new request event.
-  RequestEvent(this.request, [this.response]);
-
-  /// The client request.
-  final http.Request request;
-
-  /// The server response.
-  final http.Response response;
 }
