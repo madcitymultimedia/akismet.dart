@@ -66,7 +66,7 @@ class Client {
 
     final httpClient = http.Client();
     final request = http.Request('POST', endPoint)
-      ..bodyFields = bodyFields.cast<String, String>()
+      ..bodyFields = Map<String, String>.from(bodyFields)
       ..headers[HttpHeaders.userAgentHeader] = userAgent;
 
     _onRequest.add(request);
