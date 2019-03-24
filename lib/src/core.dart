@@ -1,7 +1,6 @@
 /// Provides the core functionality.
 library akismet.core;
 
-import 'dart:convert';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'core.g.dart';
