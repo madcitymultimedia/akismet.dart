@@ -25,10 +25,6 @@ class Blog {
   /// Converts this object to a [Map] in JSON format.
   Map<String, dynamic> toJson() => _$BlogToJson(this);
 
-  /// Returns a string representation of this object.
-  @override
-  String toString() => 'Blog ${json.encode(this)}';
-
   /// Converts the specified comma-separated list to a list of [String] instances.
   static List<String> _languagesFromJson(String languages) => languages.split(',').map((lang) => lang.trim()).toList();
 

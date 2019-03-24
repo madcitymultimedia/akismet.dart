@@ -47,10 +47,6 @@ class Comment {
     return map;
   }
 
-  /// Returns a string representation of this object.
-  @override
-  String toString() => 'Comment ${json.encode(this)}';
-
   /// Converts the specified [Author] instance to a JSON object.
   static Map<String, dynamic> _authorToJson(Author author) => author.toJson();
 }

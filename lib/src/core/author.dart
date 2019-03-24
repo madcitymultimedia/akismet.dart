@@ -39,8 +39,4 @@ class Author {
 
   /// Converts this object to a [Map] in JSON format.
   Map<String, dynamic> toJson() => _$AuthorToJson(this);
-
-  /// Returns a string representation of this object.
-  @override
-  String toString() => 'Author ${json.encode(this)}';
 }
