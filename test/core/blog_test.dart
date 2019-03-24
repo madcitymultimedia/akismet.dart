@@ -39,18 +39,4 @@ void main() => group('Blog', () {
       expect(data['blog_lang'], equals('en,fr'));
     });
   });
-
-  group('.toString()', () {
-    final data = Blog(Uri.https('dev.belin.io', '/akismet.dart'), charset: 'UTF-8', languages: ['en', 'fr']).toString();
-
-    test('should start with the class name', () {
-      expect(data, contains('Blog {'));
-    });
-
-    test('should contain the instance properties', () {
-      expect(data, contains('"blog":"https://dev.belin.io/akismet.dart"'));
-      expect(data, contains('"blog_charset":"UTF-8"'));
-      expect(data, contains('"blog_lang":"en,fr"'));
-    });
-  });
 });

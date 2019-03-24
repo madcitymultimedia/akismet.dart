@@ -44,20 +44,4 @@ void main() => group('Author', () {
       expect(data['user_ip'], equals('192.168.0.1'));
     });
   });
-
-  group('.toString()', () {
-    final data = Author('127.0.0.1', 'Doom/6.6.6', email: 'cedric@belin.io', name: 'Cédric Belin', url: Uri.https('belin.io', '/')).toString();
-
-    test('should start with the class name', () {
-      expect(data, contains('Author {'));
-    });
-
-    test('should contain the instance properties', () {
-      expect(data, contains('"comment_author":"Cédric Belin"'));
-      expect(data, contains('"comment_author_email":"cedric@belin.io"'));
-      expect(data, contains('"comment_author_url":"https://belin.io/"'));
-      expect(data, contains('"user_agent":"Doom/6.6.6"'));
-      expect(data, contains('"user_ip":"127.0.0.1"'));
-    });
-  });
 });
