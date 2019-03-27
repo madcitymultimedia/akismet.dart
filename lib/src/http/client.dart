@@ -5,7 +5,7 @@ class Client {
 
   /// Creates a new client.
   Client(this.apiKey, this.blog, {Uri endPoint, this.isTest = false, String userAgent}):
-    endPoint = endPoint ?? Uri.https('rest.akismet.com', '/'),
+    endPoint = endPoint ?? Uri.https('rest.akismet.com', '/1.1/'),
     userAgent = userAgent ?? 'Dart/$platformVersion | Akismet/$packageVersion';
 
   /// The Akismet API key.
@@ -40,24 +40,24 @@ class Client {
   /// Checks the specified [comment] against the service database, and returns a value indicating whether it is spam.
   Future<bool> checkComment(Comment comment) async {
     final url = Uri.parse('${endPoint.scheme}://$apiKey.${endPoint.host}:${endPoint.port}${endPoint.path}');
-    return await _fetch(url.resolve('1.1/comment-check'), comment.toJson()) == 'true';
+    return await _fetch(url.resolve('comment-check'), comment.toJson()) == 'true';
   }
 
   /// Submits the specified [comment] that was incorrectly marked as spam but should not have been.
   Future<void> submitHam(Comment comment) {
     final url = Uri.parse('${endPoint.scheme}://$apiKey.${endPoint.host}:${endPoint.port}${endPoint.path}');
-    return _fetch(url.resolve('1.1/submit-ham'), comment.toJson());
+    return _fetch(url.resolve('submit-ham'), comment.toJson());
   }
 
   /// Submits the specified [comment] that was not marked as spam but should have been.
   Future<void> submitSpam(Comment comment) {
     final url = Uri.parse('${endPoint.scheme}://$apiKey.${endPoint.host}:${endPoint.port}${endPoint.path}');
-    return _fetch(url.resolve('1.1/submit-spam'), comment.toJson());
+    return _fetch(url.resolve('submit-spam'), comment.toJson());
   }
 
   /// Checks the API key against the service database, and returns a value indicating whether it is valid.
   Future<bool> verifyKey() async =>
-    await _fetch(endPoint.resolve('1.1/verify-key'), {'key': apiKey}) == 'valid';
+    await _fetch(endPoint.resolve('verify-key'), {'key': apiKey}) == 'valid';
 
   /// Queries the service by posting the specified [fields] to a given end point, and returns the response as a string.
   Future<String> _fetch(Uri endPoint, Map<String, dynamic> fields) async {
