@@ -39,19 +39,19 @@ class Client {
 
   /// Checks the specified [comment] against the service database, and returns a value indicating whether it is spam.
   Future<bool> checkComment(Comment comment) async {
-    final url = Uri.parse('${endPoint.scheme}://$apiKey.${endPoint.authority}${endPoint.path}');
+    final url = Uri.parse('${endPoint.scheme}://$apiKey.${endPoint.host}:${endPoint.port}${endPoint.path}');
     return await _fetch(url.resolve('1.1/comment-check'), comment.toJson()) == 'true';
   }
 
   /// Submits the specified [comment] that was incorrectly marked as spam but should not have been.
   Future<void> submitHam(Comment comment) {
-    final url = Uri.parse('${endPoint.scheme}://$apiKey.${endPoint.authority}${endPoint.path}');
+    final url = Uri.parse('${endPoint.scheme}://$apiKey.${endPoint.host}:${endPoint.port}${endPoint.path}');
     return _fetch(url.resolve('1.1/submit-ham'), comment.toJson());
   }
 
   /// Submits the specified [comment] that was not marked as spam but should have been.
   Future<void> submitSpam(Comment comment) {
-    final url = Uri.parse('${endPoint.scheme}://$apiKey.${endPoint.authority}${endPoint.path}');
+    final url = Uri.parse('${endPoint.scheme}://$apiKey.${endPoint.host}:${endPoint.port}${endPoint.path}');
     return _fetch(url.resolve('1.1/submit-spam'), comment.toJson());
   }
 
