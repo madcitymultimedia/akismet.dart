@@ -10,6 +10,7 @@
 - Improved support for browser platform.
 - Using optional `const` and `new`.
 - Updated the package dependencies.
+- Updated the URL of the default API endpoint.
 
 ## Version [3.2.0](https://github.com/cedx/akismet.dart/compare/v3.1.0...v3.2.0)
 - Added support for browser platform.
