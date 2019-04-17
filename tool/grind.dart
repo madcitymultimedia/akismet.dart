@@ -89,8 +89,13 @@ Future<void> _collectCoverage(File testFile) async {
 Future<Uri> _profileTest(File testFile) async {
   var counter = 0;
   final completer = Completer<Uri>();
+  final process = await Process.start('dart', [
+    '-Dapi_key=${Platform.environment['AKISMET_API_KEY']}',
+    '--enable-vm-service',
+    '--pause-isolates-on-exit',
+    testFile.path
+  ]);
 
-  final process = await Process.start('dart', ['--enable-vm-service', '--pause-isolates-on-exit', testFile.path]);
   process.stderr.transform(utf8.decoder).listen((data) => print(data.trimRight()));
   process.stdout.transform(utf8.decoder).listen((data) {
     print(data.trimRight());
