@@ -1,11 +1,11 @@
 # Akismet <small>for Dart</small>
-![Runtime](https://img.shields.io/badge/dart-%3E%3D2.2-brightgreen.svg) ![Release](https://img.shields.io/pub/v/akismet.svg) ![License](https://img.shields.io/badge/license-MIT-blue.svg) ![Coverage](https://coveralls.io/repos/github/cedx/akismet.dart/badge.svg) ![Build](https://travis-ci.com/cedx/akismet.dart.svg)
+![Runtime](https://img.shields.io/badge/dart-%3E%3D2.3-brightgreen.svg) ![Release](https://img.shields.io/pub/v/akismet.svg) ![License](https://img.shields.io/badge/license-MIT-blue.svg) ![Coverage](https://coveralls.io/repos/github/cedx/akismet.dart/badge.svg) ![Build](https://travis-ci.com/cedx/akismet.dart.svg)
 
 ![Akismet](img/akismet.png)
 
 ## Stop spam
 Used by millions of websites, [Akismet](https://akismet.com) filters out hundreds of millions of spam comments from the Web every day.
-Add Akismet to your [Dart](https://www.dartlang.org) applications so you don't have to worry about spam again.
+Add Akismet to your [Dart](https://dart.dev) applications so you don't have to worry about spam again.
 
 ## Quick start
 
@@ -25,7 +25,7 @@ dependencies:
   akismet: *
 ```
 
-Install the latest version of **Akismet for Dart** with [Pub](https://www.dartlang.org/tools/pub):
+Install the latest version of **Akismet for Dart** with [Pub](https://dart.dev/tools/pub/cmd):
 
 ```shell
 pub get

@@ -3,7 +3,7 @@
 ## Development
 - [Akismet for developers](https://akismet.com/development/api)
 - [API reference](https://dev.belin.io/akismet.dart/api)
-- [Pub package](https://pub.dartlang.org/packages/akismet)
+- [Pub package](https://pub.dev/packages/akismet)
 - [Submit an issue](https://github.com/cedx/akismet.dart/issues)
 
 ## Testing

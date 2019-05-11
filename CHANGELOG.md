@@ -2,7 +2,7 @@
 
 ## Version [4.0.0](https://github.com/cedx/akismet.dart/compare/v3.2.0...v4.0.0)
 - Breaking change: changed the signature of the `Client` events.
-- Breaking change: starting to use and support the [Dart 2 SDK](https://www.dartlang.org/tools/sdk).
+- Breaking change: starting to use and support the [Dart 2 SDK](https://dart.dev/tools/sdk).
 - Breaking change: the `httpClient` property is now private.
 - Added a user guide based on [MkDocs](http://www.mkdocs.org).
 - Added an example code.
@@ -21,7 +21,7 @@
 ## Version [3.0.0](https://github.com/cedx/akismet.dart/compare/v2.1.0...v3.0.0)
 - Breaking change: changed the signature of most class constructors.
 - Breaking change: most class properties are now `final`.
-- Breaking change: raised the required [Dart](https://www.dartlang.org) version.
+- Breaking change: raised the required [Dart](https://dart.dev) version.
 - Breaking change: removed the `toJson()` and `toString()` methods from the `Client` class.
 - Breaking change: the `version` property is now private.
 - Added new values to the `CommentType` enumeration.
@@ -33,7 +33,7 @@
 
 ## Version [2.0.0](https://github.com/cedx/akismet.dart/compare/v1.0.0...v2.0.0)
 - Breaking change: changed the signature of all constructors.
-- Breaking change: raised the required [Dart](https://www.dartlang.org) version.
+- Breaking change: raised the required [Dart](https://dart.dev) version.
 - Breaking change: renamed the `Client.serviceUrl` constant to `defaultEndPoint`.
 - Added the `Client.endPoint` property.
 - Added the `version` constant.
