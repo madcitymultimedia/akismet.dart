@@ -13,7 +13,7 @@ void main() => group('Client', () {
   );
 
   final _ham = Comment(
-    Author('192.168.0.1', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.131 Safari/537.36',
+    Author('192.168.0.1', 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:67.0) Gecko/20100101 Firefox/67.0',
       name: 'Akismet',
       role: 'administrator',
       url: Uri.https('dev.belin.io', '/akismet.dart')
