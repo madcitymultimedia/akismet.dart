@@ -30,5 +30,5 @@ class Blog {
     languages == null || languages.isEmpty ? [] : languages.split(',').map((lang) => lang.trim()).toList();
 
   /// Converts the specified language list to a comma-separated one.
-  static String _languagesToJson(List<String> languages) => languages == null || languages.isEmpty ? null : languages.join(',');
+  static String _languagesToJson(List<String> languages) => languages.isEmpty ? null : languages.join(',');
 }
