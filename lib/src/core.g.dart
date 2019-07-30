@@ -7,13 +7,16 @@ part of 'core.dart';
 // **************************************************************************
 
 Author _$AuthorFromJson(Map<String, dynamic> json) {
-  return Author(json['user_ip'] as String, json['user_agent'] as String,
-      email: json['comment_author_email'] as String,
-      name: json['comment_author'] as String,
-      role: json['user_role'] as String,
-      url: json['comment_author_url'] == null
-          ? null
-          : Uri.parse(json['comment_author_url'] as String));
+  return Author(
+    json['user_ip'] as String,
+    json['user_agent'] as String,
+    email: json['comment_author_email'] as String,
+    name: json['comment_author'] as String,
+    role: json['user_role'] as String,
+    url: json['comment_author_url'] == null
+        ? null
+        : Uri.parse(json['comment_author_url'] as String),
+  );
 }
 
 Map<String, dynamic> _$AuthorToJson(Author instance) {
@@ -35,11 +38,11 @@ Map<String, dynamic> _$AuthorToJson(Author instance) {
 }
 
 Blog _$BlogFromJson(Map<String, dynamic> json) {
-  return Blog(json['blog'] == null ? null : Uri.parse(json['blog'] as String),
-      charset: json['blog_charset'] as String,
-      languages: json['blog_lang'] == null
-          ? null
-          : Blog._languagesFromJson(json['blog_lang'] as String));
+  return Blog(
+    json['blog'] == null ? null : Uri.parse(json['blog'] as String),
+    charset: json['blog_charset'] as String,
+    languages: Blog._languagesFromJson(json['blog_lang'] as String),
+  );
 }
 
 Map<String, dynamic> _$BlogToJson(Blog instance) {
@@ -52,34 +55,30 @@ Map<String, dynamic> _$BlogToJson(Blog instance) {
   }
 
   writeNotNull('blog_charset', instance.charset);
-  writeNotNull(
-      'blog_lang',
-      instance.languages == null
-          ? null
-          : Blog._languagesToJson(instance.languages));
+  writeNotNull('blog_lang', Blog._languagesToJson(instance.languages));
   val['blog'] = instance.url?.toString();
   return val;
 }
 
 Comment _$CommentFromJson(Map<String, dynamic> json) {
   return Comment(
-      json['author'] == null
-          ? null
-          : Author.fromJson(json['author'] as Map<String, dynamic>),
-      content: json['comment_content'] as String,
-      date: json['comment_date_gmt'] == null
-          ? null
-          : DateTime.parse(json['comment_date_gmt'] as String),
-      permalink: json['permalink'] == null
-          ? null
-          : Uri.parse(json['permalink'] as String),
-      postModified: json['comment_post_modified_gmt'] == null
-          ? null
-          : DateTime.parse(json['comment_post_modified_gmt'] as String),
-      referrer: json['referrer'] == null
-          ? null
-          : Uri.parse(json['referrer'] as String),
-      type: json['comment_type'] as String);
+    json['author'] == null
+        ? null
+        : Author.fromJson(json['author'] as Map<String, dynamic>),
+    content: json['comment_content'] as String,
+    date: json['comment_date_gmt'] == null
+        ? null
+        : DateTime.parse(json['comment_date_gmt'] as String),
+    permalink: json['permalink'] == null
+        ? null
+        : Uri.parse(json['permalink'] as String),
+    postModified: json['comment_post_modified_gmt'] == null
+        ? null
+        : DateTime.parse(json['comment_post_modified_gmt'] as String),
+    referrer:
+        json['referrer'] == null ? null : Uri.parse(json['referrer'] as String),
+    type: json['comment_type'] as String,
+  );
 }
 
 Map<String, dynamic> _$CommentToJson(Comment instance) {
@@ -91,8 +90,7 @@ Map<String, dynamic> _$CommentToJson(Comment instance) {
     }
   }
 
-  writeNotNull('author',
-      instance.author == null ? null : Comment._authorToJson(instance.author));
+  writeNotNull('author', Comment._authorToJson(instance.author));
   writeNotNull('comment_content', instance.content);
   writeNotNull('comment_date_gmt', instance.date?.toIso8601String());
   writeNotNull('permalink', instance.permalink?.toString());
