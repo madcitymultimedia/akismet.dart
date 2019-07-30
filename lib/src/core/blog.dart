@@ -26,8 +26,9 @@ class Blog {
   Map<String, dynamic> toJson() => _$BlogToJson(this);
 
   /// Converts the specified comma-separated list to a list of [String] instances.
-  static List<String> _languagesFromJson(String languages) => languages.split(',').map((lang) => lang.trim()).toList();
+  static List<String> _languagesFromJson(String languages) =>
+    languages == null || languages.isEmpty ? [] : languages.split(',').map((lang) => lang.trim()).toList();
 
   /// Converts the specified language list to a comma-separated one.
-  static String _languagesToJson(List<String> languages) => languages.isEmpty ? null : languages.join(',');
+  static String _languagesToJson(List<String> languages) => languages == null || languages.isEmpty ? null : languages.join(',');
 }
