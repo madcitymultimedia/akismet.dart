@@ -1,13 +1,10 @@
 import 'package:akismet/akismet.dart';
 import 'package:test/test.dart';
 
-/// The Akismet API key.
-const String apiKey = String.fromEnvironment('api_key');
-
 /// Tests the features of the [Client] class.
 void main() => group('Client', () {
   final _client = Client(
-    apiKey,
+    const String.fromEnvironment('api_key'),
     Blog(Uri.https('dev.belin.io', '/akismet.dart')),
     isTest: true
   );
@@ -64,4 +61,4 @@ void main() => group('Client', () {
       expect(await client.verifyKey(), isFalse);
     });
   });
-}, skip: apiKey == null);
+});

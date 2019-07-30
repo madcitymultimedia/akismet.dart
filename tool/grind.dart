@@ -35,13 +35,9 @@ void fix() => DartFmt.format(existingSourceDirs);
 void lint() => Analyzer.analyze(existingSourceDirs);
 
 @Task('Runs the test suites')
-Future<void> test() async {
-  final args = context.invocation.arguments;
-  final isCI = Platform.environment['CI'] == 'true';
-  return (args.hasOption('platform') ? args.getOption('platform') : 'vm') == 'browser'
-    ? Pub.runAsync('build_runner', arguments: ['test', '--delete-conflicting-outputs', if (isCI) '--release', '--', '--platform=chrome'])
-    : collectCoverage(getDir('test'), reportOn: [libDir.path], saveAs: 'var/lcov.info');
-}
+Future<void> test() => collectCoverage(getDir('test'), reportOn: [libDir.path], saveAs: 'var/lcov.info', environment: {
+  'api_key': Platform.environment['AKISMET_API_KEY']
+});
 
 @Task('Upgrades the project to the latest revision')
 void upgrade() {
