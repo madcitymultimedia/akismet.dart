@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:io';
+import 'package:code_builder/code_builder.dart';
 import 'package:grinder/grinder.dart';
 import 'package:grinder_coveralls/grinder_coveralls.dart';
 
@@ -47,13 +48,21 @@ void upgrade() {
   Pub.upgrade();
 }
 
-@Task('Updates the version number contained in the sources')
+@Task('Builds the version file')
 Future<void> version() async {
-  final file = getFile('lib/src/io/browser.dart');
-  return file.writeAsString((await file.readAsString()).replaceAll(
-    RegExp(r"platformVersion => '\d+(\.\d+){2}'"),
-    "platformVersion => '${Platform.version.split(' ').first}'"
-  ));
+  final library = Library((builder) => builder.body.addAll([
+    Method((builder) => builder
+      ..docs.add('/// The version of the current platform.')
+      ..name = 'platformVersion'
+      ..type = MethodType.getter
+      ..returns = const Reference('String')
+      ..body = ToCodeExpression(literalString(Platform.version.split(' ').first))
+    )
+  ]));
+
+  final output = joinFile(libDir, ['src', 'io', 'browser.dart']);
+  await output.writeAsString(library.accept(DartEmitter()).toString());
+  DartFmt.format(output);
 }
 
 @Task('Watches for file changes')
