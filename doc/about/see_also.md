@@ -7,7 +7,7 @@
 - [Submit an issue](https://github.com/cedx/akismet.dart/issues)
 
 ## Testing
-- [Continuous integration](https://travis-ci.com/cedx/akismet.dart)
+- [Continuous integration](https://github.com/cedx/akismet.dart/actions)
 - [Code coverage](https://coveralls.io/github/cedx/akismet.dart)
 
 ## Other implementations
