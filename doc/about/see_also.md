@@ -11,6 +11,6 @@
 - [Code coverage](https://coveralls.io/github/cedx/akismet.dart)
 
 ## Other implementations
-- Node.js: [Akismet for JS](https://dev.belin.io/akismet.js)
+- JavaScript: [Akismet for JS](https://dev.belin.io/akismet.js)
 - PHP: [Akismet for PHP](https://dev.belin.io/akismet.php)
 - Yii Framework: [Akismet for Yii](https://dev.belin.io/yii2-akismet)
