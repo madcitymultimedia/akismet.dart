@@ -8,6 +8,7 @@
 - Added an example code.
 - Added the `ClientException` and `RequestEvent` classes.
 - Improved support for browser platform.
+- Replaced [Travis CI](https://travis-ci.com) by [GitHub Actions](https://github.com/features/actions) for the continuous integration.
 - Using optional `const` and `new`.
 - Updated the package dependencies.
 - Updated the URL of the default API endpoint.
