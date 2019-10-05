@@ -42,7 +42,7 @@
 
 ## Version 1.0.0
 - Breaking change: changed the `Blog.language` string property for the `languages` list property.
-- Breaking change: dropped the [dart:html](https://api.dartlang.org/stable/dart-html/dart-html-library.html) client.
+- Breaking change: dropped the [dart:html](https://api.dart.dev/stable/dart-html/dart-html-library.html) client.
 - Breaking change: dropped the embedded server and the command line interface.
 - Breaking change: merged all the libraries (e.g. `core`, `html` and `io`) into the sole `akismet` one.
 - Breaking change: most of the constructors are now using optional named parameters.
@@ -107,7 +107,7 @@
 - Breaking change: renamed `Server.secureRequests` property to `useSecureRequests`.
 
 ## Version 0.2.0
-- Added client implementation based on [dart:html](https://api.dartlang.org/stable/dart-html/dart-html-library.html).
+- Added client implementation based on [dart:html](https://api.dart.dev/stable/dart-html/dart-html-library.html).
 - Added server implementation used to proxy requests from HTML clients to [Akismet](https://akismet.com) service.
 - Breaking change: `Uri` in constructors can no longer be specified as `String`.
 - Breaking change: removed `Client.encoding` property.
@@ -116,4 +116,4 @@
 - Added `EndPoints` class providing the URLs of the [Akismet](https://akismet.com) service end points.
 
 ## Version 0.1.0
-- Initial release: client implementation based on [dart:io](https://api.dartlang.org/stable/dart-io/dart-io-library.html).
+- Initial release: client implementation based on [dart:io](https://api.dart.dev/stable/dart-io/dart-io-library.html).
