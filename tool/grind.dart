@@ -60,7 +60,7 @@ Future<void> version() async {
       ..name = 'platformVersion'
       ..type = MethodType.getter
       ..returns = const Reference('String')
-      ..body = ToCodeExpression(literalString(Platform.version.split(' ').first))
+      ..body = literalString(Platform.version.split(' ').first).code
     )
   ]));
 
