@@ -5,7 +5,7 @@ Prevent comment spam using the [Akismet](https://akismet.com) service, in [Dart]
 
 ## Documentation
 - [User guide](https://dev.belin.io/akismet.dart)
-- [API reference](https://dev.belin.io/akismet.dart/api)
+- [API reference](https://pub.dev/documentation/akismet)
 
 ## Development
 - [Git repository](https://github.com/cedx/akismet.dart)

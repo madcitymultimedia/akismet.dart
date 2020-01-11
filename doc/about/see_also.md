@@ -1,8 +1,8 @@
 # See also
 
 ## Development
-- [Akismet for developers](https://akismet.com/development/api)
-- [API reference](https://dev.belin.io/akismet.dart/api)
+- [Akismet for developers](https://akismet.com/development)
+- [API reference](https://pub.dev/documentation/akismet)
 - [Pub package](https://pub.dev/packages/akismet)
 - [Submit an issue](https://github.com/cedx/akismet.dart/issues)
 

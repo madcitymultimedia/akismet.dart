@@ -55,7 +55,7 @@
 - The parameters of the `Client` constructor are now optional.
 - Added support for the [Travis CI](https://travis-ci.com) continuous integration.
 - Changed the build system for [Grinder](https://google.github.io/grinder.dart).
-- Changed the documentation system for [Dartdoc](https://github.com/dart-lang/dartdoc).
+- Changed the documentation system for [Dartdoc](https://dart.dev/tools/dartdoc).
 - Changed the licensing for the [Apache License Version 2.0](http://www.apache.org/licenses/LICENSE-2.0).
 - Dropped the development dependencies based on [Node.js](https://nodejs.org).
 - Removed the info suffix from the Dart version number in the `Client.userAgent` property.
@@ -91,7 +91,7 @@
 ## Version 0.3.2
 - Migrated build system and tools to [ShellJS](http://shelljs.org).
 - Migrated documentation comments to [YUIDoc](http://yui.github.io/yuidoc).
-- Using DocGen.js to generate the [API reference](https://dev.belin.io/akismet.dart).
+- Using DocGen.js to generate the API reference.
 
 ## Version 0.3.1
 - Added unit tests of the HTML client.
