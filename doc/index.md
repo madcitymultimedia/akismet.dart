@@ -25,7 +25,7 @@ dependencies:
   akismet: *
 ```
 
-Install the latest version of **Akismet for Dart** with [Pub](https://dart.dev/tools/pub/cmd):
+Install the latest version of **Akismet for Dart** with [Pub](https://dart.dev/tools/pub):
 
 ```shell
 pub get
