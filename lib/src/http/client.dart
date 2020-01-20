@@ -75,7 +75,7 @@ class Client {
     httpClient.close();
 
     if ((response.statusCode ~/ 100) != 2) throw http.ClientException('An error occurred while querying the end point.', endPoint);
-    if (response.headers.containsKey('x-akismet-debug-help')) throw http.ClientException(response.headers['x-akismet-debug-help'], endPoint);
+    if (response.headers.containsKey('X-akismet-debug-help')) throw http.ClientException(response.headers['X-akismet-debug-help'], endPoint);
     return response.body;
   }
 }
