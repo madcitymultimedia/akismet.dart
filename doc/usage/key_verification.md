@@ -1,11 +1,18 @@
+path: blob/master
+source: lib/src/http/client.dart
+
 # Key verification
 Key verification authenticates your key before calling the [comment check](comment_check.md), [submit spam](submit_spam.md), 
-or [submit ham](submit_ham.md) methods. This is the first call that you should make to Akismet and is especially useful
-if you will have multiple users with their own Akismet subscriptions using your application.
+or [submit ham](submit_ham.md) methods.
 
 ```
 Future<bool> Client.verifyKey()
 ```
+
+This is the first call that you should make to Akismet and is especially useful
+if you will have multiple users with their own Akismet subscriptions using your application.
+
+See the [Akismet API documentation](https://akismet.com/development/api/#verify-key) for more information.
 
 ## Parameters
 None.
@@ -33,3 +40,5 @@ Future<void> main() async {
   }
 }
 ```
+
+See the [API reference](https://pub.dev/documentation/akismet) for detailed information about the `Client` and `Blog` classes, and their properties and methods.
