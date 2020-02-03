@@ -26,7 +26,7 @@ Prevent comment spam using the [Akismet](https://akismet.com) service, in [Dart]
 try {
   final client = Client('123YourAPIKey', Blog(Uri.https('www.yourblog.com', '/')));
   final isValid = await client.verifyKey();
-  print(isValid ? 'The API key is valid' : 'The API key is invalid');
+  print(isValid ? 'The API key is valid.' : 'The API key is invalid.');
 }
 
 on ClientException catch (err) {
@@ -45,7 +45,7 @@ try {
   );
 
   final isSpam = await client.checkComment(comment);
-  print(isSpam ? 'The comment is spam' : 'The comment is ham');
+  print(isSpam ? 'The comment is spam.' : 'The comment is ham.');
 }
 
 on ClientException catch (err) {

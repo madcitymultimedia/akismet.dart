@@ -4,7 +4,7 @@ or [submit ham](submit_ham.md) methods. This is the first call that you should m
 if you will have multiple users with their own Akismet subscriptions using your application.
 
 ```
-Future<bool> Client#verifyKey()
+Future<bool> Client.verifyKey()
 ```
 
 ## Parameters
@@ -25,7 +25,7 @@ Future<void> main() async {
   try {
     final client = Client('123YourAPIKey', Blog(Uri.https('www.yourblog.com', '/')));
     final isValid = await client.verifyKey();
-    print(isValid ? 'The API key is valid' : 'The API key is invalid');
+    print(isValid ? 'The API key is valid.' : 'The API key is invalid.');
   }
 
   on ClientException catch (err) {

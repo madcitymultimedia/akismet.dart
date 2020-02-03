@@ -6,7 +6,7 @@ Remember that, as explained in the [submit spam](submit_spam.md) documentation, 
 that any values you're passing here match up with the original and corresponding [comment check](comment_check.md) call.
 
 ```
-Future<void> Client#submitHam(Comment comment)
+Future<void> Client.submitHam(Comment comment)
 ```
 
 ## Parameters
@@ -36,9 +36,10 @@ Future<void> main() async {
     );
     
     final client = Client('123YourAPIKey', Blog(Uri.https('www.yourblog.com', '/')));
-    final isSpam = await client.checkComment(comment); // `true`, but `false` expected.
+    final result = await client.checkComment(comment);
+    // Got `CheckResult.isSpam`, but `CheckResult.isHam` expected.
     
-    print('The comment was incorrectly classified as spam');
+    print('The comment was incorrectly classified as spam.');
     await client.submitHam(comment);
   }
 

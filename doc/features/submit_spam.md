@@ -8,7 +8,7 @@ to be available for [submit spam](submit_spam.md) and [submit ham](submit_ham.md
 you should ensure that the values that you do send match those of the original content.
 
 ```
-Future<void> Client#submitSpam(Comment comment)
+Future<void> Client.submitSpam(Comment comment)
 ```
 
 ## Parameters
@@ -38,9 +38,10 @@ Future<void> main() async {
     );
     
     final client = Client('123YourAPIKey', Blog(Uri.https('www.yourblog.com', '/')));
-    final isSpam = await client.checkComment(comment); // `false`, but `true` expected.
+    final result = await client.checkComment(comment);
+    // Got `CheckResult.isHam`, but `CheckResult.isSpam` expected.
     
-    print('The comment was incorrectly classified as ham');
+    print('The comment was incorrectly classified as ham.');
     await client.submitSpam(comment);
   }
 

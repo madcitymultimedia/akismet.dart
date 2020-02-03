@@ -4,7 +4,7 @@ and then returns a thumbs up or thumbs down. **Performance can drop dramatically
 The more data you send Akismet about each comment, the greater the accuracy. We recommend erring on the side of including too much data.
 
 ```
-Future<bool> Client#checkComment(Comment comment)
+Future<CheckResult> Client.checkComment(Comment comment)
 ```
 
 !!! tip "Testing your data"
@@ -18,7 +18,7 @@ Future<bool> Client#checkComment(Comment comment)
 The `Comment` providing the user message to be checked.
 
 ## Return value
-A `Future` that completes with a `bool` value indicating whether the given `Comment` is spam.
+A `Future` that completes with a `CheckResult` value indicating whether the given `Comment` is ham, spam or pervasive spam.
 
 The future completes with a `ClientException` when an error occurs.
 The exception `message` usually includes some debug information, provided by the `X-akismet-debug-help` HTTP header, about what exactly was invalid about the call.
@@ -37,8 +37,8 @@ Future<void> main() async {
     );
 
     final client = Client('123YourAPIKey', Blog(Uri.https('www.yourblog.com', '/')));
-    final isSpam = await client.checkComment(comment);
-    print(isSpam ? 'The comment is spam' : 'The comment is ham');
+    final result = await client.checkComment(comment);
+    print(result == CheckResult.isHam ? 'The comment is ham.' : 'The comment is spam.');
   }
 
   on ClientException catch (err) {

@@ -7,7 +7,7 @@ Future<void> main() async {
     // Key verification.
     final client = Client('123YourAPIKey', Blog(Uri.https('www.yourblog.com', '/')));
     final isValid = await client.verifyKey();
-    print(isValid ? 'The API key is valid' : 'The API key is invalid');
+    print(isValid ? 'The API key is valid.' : 'The API key is invalid.');
 
     // Comment check.
     final comment = Comment(
@@ -17,14 +17,14 @@ Future<void> main() async {
     );
 
     final result = await client.checkComment(comment);
-    print(result == CheckResult.isHam ? 'The comment is ham' : 'The comment is spam');
+    print(result == CheckResult.isHam ? 'The comment is ham.' : 'The comment is spam.');
 
     // Submit spam / ham.
     await client.submitSpam(comment);
-    print('Spam submitted');
+    print('Spam submitted.');
 
     await client.submitHam(comment);
-    print('Ham submitted');
+    print('Ham submitted.');
   }
 
   on Exception catch (err) {
