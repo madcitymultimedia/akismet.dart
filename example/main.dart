@@ -16,8 +16,8 @@ Future<void> main() async {
       type: CommentType.contactForm
     );
 
-    final isSpam = await client.checkComment(comment);
-    print(isSpam ? 'The comment is spam' : 'The comment is ham');
+    final result = await client.checkComment(comment);
+    print(result == CheckResult.isHam ? 'The comment is ham' : 'The comment is spam');
 
     // Submit spam / ham.
     await client.submitSpam(comment);
