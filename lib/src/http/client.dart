@@ -38,9 +38,13 @@ class Client {
   final StreamController<http.Response> _onResponse = StreamController<http.Response>.broadcast();
 
   /// Checks the specified [comment] against the service database, and returns a value indicating whether it is spam.
-  Future<bool> checkComment(Comment comment) async {
+  Future<CheckResult> checkComment(Comment comment) async {
     final url = Uri.parse('${endPoint.scheme}://$apiKey.${endPoint.host}:${endPoint.port}${endPoint.path}');
-    return await _fetch(url.resolve('comment-check'), comment.toJson()) == 'true';
+    final response = await _fetch(url.resolve('comment-check'), comment.toJson());
+    if (response.body != 'true') return CheckResult.isHam;
+    return response.headers.containsKey('X-akismet-pro-tip') && response.headers['X-akismet-pro-tip'] == 'discard'
+      ? CheckResult.isPervasiveSpam
+      : CheckResult.isSpam;
   }
 
   /// Submits the specified [comment] that was incorrectly marked as spam but should not have been.
@@ -57,10 +61,10 @@ class Client {
 
   /// Checks the API key against the service database, and returns a value indicating whether it is valid.
   Future<bool> verifyKey() async =>
-    await _fetch(endPoint.resolve('verify-key'), {'key': apiKey}) == 'valid';
+    (await _fetch(endPoint.resolve('verify-key'), {'key': apiKey})).body == 'valid';
 
   /// Queries the service by posting the specified [fields] to a given end point, and returns the response as a string.
-  Future<String> _fetch(Uri endPoint, Map<String, dynamic> fields) async {
+  Future<http.Response> _fetch(Uri endPoint, Map<String, dynamic> fields) async {
     final bodyFields = blog.toJson()..addAll(fields);
     if (isTest) bodyFields['is_test'] = '1';
 
@@ -76,7 +80,7 @@ class Client {
 
     if ((response.statusCode ~/ 100) != 2) throw http.ClientException('An error occurred while querying the end point.', endPoint);
     if (response.headers.containsKey('X-akismet-debug-help')) throw http.ClientException(response.headers['X-akismet-debug-help'], endPoint);
-    return response.body;
+    return response;
   }
 }
 
