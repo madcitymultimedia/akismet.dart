@@ -30,12 +30,12 @@ void main() => group('Client', () {
   );
 
   group('.checkComment()', () {
-    test('should return `false` for valid comment (e.g. ham)', () async {
-      expect(await _client.checkComment(_ham), isFalse);
+    test('should return `CheckResult.isHam` for valid comment (e.g. ham)', () async {
+      expect(await _client.checkComment(_ham), CheckResult.isHam);
     });
 
-    test('should return `true` for invalid comment (e.g. spam)', () async {
-      expect(await _client.checkComment(_spam), isTrue);
+    test('should return `CheckResult.isSpam` for invalid comment (e.g. spam)', () async {
+      expect(await _client.checkComment(_spam), anyOf([CheckResult.isSpam, CheckResult.isPervasiveSpam]));
     });
   });
 
