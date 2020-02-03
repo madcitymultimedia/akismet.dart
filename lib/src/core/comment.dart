@@ -5,7 +5,7 @@ part of '../core.dart';
 class Comment {
 
   /// Creates a new comment.
-  Comment(this.author, {this.content, this.date, this.permalink, this.postModified, this.referrer, this.type});
+  Comment(this.author, {this.content, this.date, this.permalink, this.postModified, this.recheckReason, this.referrer, this.type});
 
   /// Creates a new comment from the specified [map] in JSON format.
   factory Comment.fromJson(Map<String, dynamic> map) {
@@ -31,6 +31,10 @@ class Comment {
   /// The UTC timestamp of the publication time for the post, page or thread on which the comment was posted.
   @JsonKey(name: 'comment_post_modified_gmt')
   final DateTime postModified;
+
+  /// A string describing why the content is being rechecked.
+  @JsonKey(name: 'recheck_reason')
+  final String recheckReason;
 
   /// The URL of the webpage that linked to the entry being requested.
   final Uri referrer;
