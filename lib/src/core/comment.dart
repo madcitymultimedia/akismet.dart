@@ -70,17 +70,8 @@ abstract class CommentType {
   /// A top-level forum post.
   static const String forumPost = 'forum-post';
 
-  /// A message sent between just a few users.
-  static const String message = 'message';
-
   /// A [pingback](https://en.wikipedia.org/wiki/Pingback) post.
   static const String pingback = 'pingback';
-
-  /// A reply to a top-level forum post.
-  static const String reply = 'reply';
-
-  /// A new user account.
-  static const String signup = 'signup';
 
   /// A [trackback](https://en.wikipedia.org/wiki/Trackback) post.
   static const String trackback = 'trackback';
