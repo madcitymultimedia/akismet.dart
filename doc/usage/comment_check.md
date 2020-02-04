@@ -11,7 +11,7 @@ Future<CheckResult> Client.checkComment(Comment comment)
 ```
 
 It is important to [test Akismet](testing.md) with a significant amount of real, live data in order to draw any conclusions on accuracy.
-Akismet works by comparing content to genuine spam activity happening right now (and this is based on more than just the content itself),
+Akismet works by comparing content to genuine spam activity happening **right now** (and this is based on more than just the content itself),
 so artificially generating spam comments is not a viable approach.
 
 See the [Akismet API documentation](https://akismet.com/development/api/#comment-check) for more information.
