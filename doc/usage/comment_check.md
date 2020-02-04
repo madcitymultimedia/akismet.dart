@@ -1,3 +1,6 @@
+path: blob/master
+source: lib/src/core/comment.dart
+
 # Comment check
 This is the call you will make the most. It takes a number of arguments and characteristics about the submitted content
 and then returns a thumbs up or thumbs down. **Performance can drop dramatically if you choose to exclude data points.**
@@ -7,10 +10,11 @@ The more data you send Akismet about each comment, the greater the accuracy. We 
 Future<CheckResult> Client.checkComment(Comment comment)
 ```
 
-!!! tip "Testing your data"
-    It is important to test Akismet with a significant amount of real, live data in order to draw any conclusions on accuracy.
-    Akismet works by comparing content to genuine spam activity happening right now (and this is based on more than just the content itself),
-    so artificially generating spam comments is not a viable approach.
+It is important to [test Akismet](testing.md) with a significant amount of real, live data in order to draw any conclusions on accuracy.
+Akismet works by comparing content to genuine spam activity happening right now (and this is based on more than just the content itself),
+so artificially generating spam comments is not a viable approach.
+
+See the [Akismet API documentation](https://akismet.com/development/api/#comment-check) for more information.
 
 ## Parameters
 
@@ -46,3 +50,5 @@ Future<void> main() async {
   }
 }
 ```
+
+See the [API reference](https://pub.dev/documentation/akismet) of this library for detailed information about the `Comment` and `Author` classes, and their properties and methods.
