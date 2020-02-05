@@ -21,4 +21,4 @@ dev_dependencies:
   grinder: ^0.8.3
   grinder_coveralls: ^2.1.0
   json_serializable: ^3.2.5
-  test: ^1.11.1
+  test: ^1.12.0
