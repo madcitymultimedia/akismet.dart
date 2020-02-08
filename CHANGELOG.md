@@ -1,17 +1,13 @@
 # Changelog
 
 ## Version [4.0.0](https://github.com/cedx/akismet.dart/compare/v3.2.0...v4.0.0)
-- Breaking change: changed the signature of the `Client` events.
 - Breaking change: starting to use and support the [Dart 2 SDK](https://dart.dev/tools/sdk).
-- Breaking change: the `httpClient` property is now private.
 - Added a user guide based on [MkDocs](http://www.mkdocs.org).
 - Added an example code.
-- Added the `ClientException` and `RequestEvent` classes.
-- Improved support for browser platform.
-- Replaced [Travis CI](https://travis-ci.com) by [GitHub Actions](https://github.com/features/actions) for the continuous integration.
+- Added support for the `X-akismet-pro-tip` HTTP header.
+- Added the `ClientException` class.
 - Using optional `const` and `new`.
 - Updated the package dependencies.
-- Updated the URL of the default API endpoint.
 
 ## Version [3.2.0](https://github.com/cedx/akismet.dart/compare/v3.1.0...v3.2.0)
 - Added support for browser platform.
