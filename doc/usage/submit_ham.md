@@ -2,7 +2,7 @@
 This call is intended for the submission of false positives - items that were incorrectly classified as spam by Akismet.
 It takes identical arguments as [comment check](comment_check.md) and [submit spam](submit_spam.md).
 
-```
+```dart
 Future<void> Client.submitHam(Comment comment)
 ```
 
