@@ -24,6 +24,9 @@ The `Comment` providing the user message to be checked.
 ## Return value
 A `Future` that completes with a `CheckResult` value indicating whether the given `Comment` is ham, spam or pervasive spam.
 
+!!! tip
+    A comment classified as pervasive spam can be safely discarded.
+
 The future completes with a `ClientException` when an error occurs.
 The exception `message` usually includes some debug information, provided by the `X-akismet-debug-help` HTTP header, about what exactly was invalid about the call.
 

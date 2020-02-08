@@ -1,5 +1,8 @@
+path: blob/master
+source: lib/src/http/client.dart
+
 # Events
-The `Client` entry class, used to query the Akismet service, triggers some events during its life cycle:
+The `Client` class, used to query the Akismet service, triggers some events during its life cycle:
 
 - `request` : emitted every time a request is made to the remote service.
 - `response` : emitted every time a response is received from the remote service.
