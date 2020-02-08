@@ -2,7 +2,6 @@
 library akismet.http;
 
 import 'dart:async';
-import 'dart:io' show HttpHeaders; // TODO: avoid and use `http_parser` package ?
 import 'package:http/http.dart' as http;
 
 import 'core.dart';

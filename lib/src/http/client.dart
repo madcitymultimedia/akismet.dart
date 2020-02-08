@@ -42,10 +42,8 @@ class Client {
   Future<CheckResult> checkComment(Comment comment) async {
     final url = Uri.parse('${endPoint.scheme}://$apiKey.${endPoint.host}:${endPoint.port}${endPoint.path}');
     final response = await _fetch(url.resolve('comment-check'), comment.toJson());
-    if (response.body != 'true') return CheckResult.isHam;
-    return response.headers.containsKey('X-akismet-pro-tip') && response.headers['X-akismet-pro-tip'] == 'discard'
-      ? CheckResult.isPervasiveSpam
-      : CheckResult.isSpam;
+    if (response.body == 'false') return CheckResult.isHam;
+    return response.headers['X-akismet-pro-tip'] == 'discard' ? CheckResult.isPervasiveSpam : CheckResult.isSpam;
   }
 
   /// Submits the specified [comment] that was incorrectly marked as spam but should not have been.
@@ -72,16 +70,21 @@ class Client {
     final httpClient = http.Client();
     final request = http.Request('POST', endPoint)
       ..bodyFields = Map<String, String>.from(bodyFields)
-      ..headers[HttpHeaders.userAgentHeader] = userAgent;
+      ..headers['User-Agent'] = userAgent;
 
-    _onRequest.add(request);
-    final response = await httpClient.post(request.url, body: request.bodyFields, headers: request.headers);
-    _onResponse.add(response);
-    httpClient.close();
+    try {
+      _onRequest.add(request);
+      final response = await httpClient.post(request.url, body: request.bodyFields, headers: request.headers);
+      _onResponse.add(response);
 
-    if ((response.statusCode ~/ 100) != 2) throw http.ClientException('An error occurred while querying the end point.', endPoint);
-    if (response.headers.containsKey('X-akismet-debug-help')) throw http.ClientException(response.headers['X-akismet-debug-help'], endPoint);
-    return response;
+      if ((response.statusCode ~/ 100) != 2) throw http.ClientException(response.body, request.url);
+      if (response.headers.containsKey('X-akismet-debug-help')) throw http.ClientException(response.headers['X-akismet-debug-help'], request.url);
+      return response;
+    }
+
+    finally {
+      httpClient.close();
+    }
   }
 }
 
