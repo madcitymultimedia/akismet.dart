@@ -2,10 +2,11 @@
 
 ## Version [4.0.0](https://github.com/cedx/akismet.dart/compare/v3.2.0...v4.0.0)
 - Breaking change: starting to use and support the [Dart 2 SDK](https://dart.dev/tools/sdk).
+- Added support for the `X-akismet-pro-tip` HTTP header.
+- Added the `CheckResult` enumeration.
+- Added the `ClientException` class.
 - Added a user guide based on [MkDocs](http://www.mkdocs.org).
 - Added an example code.
-- Added support for the `X-akismet-pro-tip` HTTP header.
-- Added the `ClientException` class.
 - Using optional `const` and `new`.
 - Updated the package dependencies.
 
