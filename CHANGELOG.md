@@ -5,6 +5,7 @@
 - Added support for the `X-akismet-pro-tip` HTTP header.
 - Added the `CheckResult` enumeration.
 - Added the `ClientException` class.
+- Added the `Comment.recheckReason` property.
 - Added a user guide based on [MkDocs](http://www.mkdocs.org).
 - Added an example code.
 - Using optional `const` and `new`.
