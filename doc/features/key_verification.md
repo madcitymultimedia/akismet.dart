@@ -5,7 +5,7 @@ source: lib/src/http/client.dart
 Key verification authenticates your key before calling the [comment check](comment_check.md), [submit spam](submit_spam.md), 
 or [submit ham](submit_ham.md) methods.
 
-```dart
+```
 Future<bool> Client.verifyKey()
 ```
 

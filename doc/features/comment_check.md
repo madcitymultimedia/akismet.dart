@@ -6,7 +6,7 @@ This is the call you will make the most. It takes a number of arguments and char
 and then returns a thumbs up or thumbs down. **Performance can drop dramatically if you choose to exclude data points.**
 The more data you send Akismet about each comment, the greater the accuracy. We recommend erring on the side of including too much data.
 
-```dart
+```
 Future<CheckResult> Client.checkComment(Comment comment)
 ```
 

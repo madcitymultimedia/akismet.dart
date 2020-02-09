@@ -1,7 +1,7 @@
 # Submit spam
 This call is for submitting comments that weren't marked as spam but should have been.
 
-```dart
+```
 Future<void> Client.submitSpam(Comment comment)
 ```
 
