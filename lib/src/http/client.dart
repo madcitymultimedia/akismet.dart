@@ -82,6 +82,11 @@ class Client {
       return response;
     }
 
+    on Exception catch (err) {
+      if (err is http.ClientException) rethrow;
+      throw http.ClientException(err.toString(), request.url);
+    }
+
     finally {
       httpClient.close();
     }
