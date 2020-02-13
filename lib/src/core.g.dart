@@ -75,6 +75,7 @@ Comment _$CommentFromJson(Map<String, dynamic> json) {
     postModified: json['comment_post_modified_gmt'] == null
         ? null
         : DateTime.parse(json['comment_post_modified_gmt'] as String),
+    recheckReason: json['recheck_reason'] as String,
     referrer:
         json['referrer'] == null ? null : Uri.parse(json['referrer'] as String),
     type: json['comment_type'] as String,
@@ -96,6 +97,7 @@ Map<String, dynamic> _$CommentToJson(Comment instance) {
   writeNotNull('permalink', instance.permalink?.toString());
   writeNotNull(
       'comment_post_modified_gmt', instance.postModified?.toIso8601String());
+  writeNotNull('recheck_reason', instance.recheckReason);
   writeNotNull('referrer', instance.referrer?.toString());
   writeNotNull('comment_type', instance.type);
   return val;
