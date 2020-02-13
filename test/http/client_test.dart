@@ -1,10 +1,11 @@
+import 'dart:io';
 import 'package:akismet/akismet.dart';
 import 'package:test/test.dart';
 
 /// Tests the features of the [Client] class.
 void main() => group('Client', () {
   final _client = Client(
-    const String.fromEnvironment('api_key'),
+    Platform.environment['AKISMET_API_KEY'],
     Blog(Uri.https('dev.belin.io', '/akismet.dart')),
     isTest: true
   );

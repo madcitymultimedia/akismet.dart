@@ -2,7 +2,6 @@ import 'dart:async';
 import 'dart:io';
 import 'package:code_builder/code_builder.dart';
 import 'package:grinder/grinder.dart';
-import 'package:grinder_coveralls/grinder_coveralls.dart';
 
 /// Starts the build system.
 Future<void> main(List<String> args) => grind(args);
@@ -14,12 +13,16 @@ void build() => Pub.run('build_runner', arguments: ['build', '--delete-conflicti
 @Task('Deletes all generated files and reset any saved state')
 void clean() {
   defaultClean();
-  ['.dart_tool/build', 'doc/api', webDir.path].map(getDir).forEach(delete);
-  FileSet.fromDir(getDir('var'), pattern: '!.*', recurse: true).files.forEach(delete);
+  delete(getFile('var/lcov.info'));
+  ['.dart_tool/build', 'var/test', webDir.path].map(getDir).forEach(delete);
 }
 
 @Task('Uploads the results of the code coverage')
-Future<void> coverage() async => uploadCoverage(await getFile('var/lcov.info').readAsString());
+void coverage() {
+  final arguments = ['--in=var/test', '--lcov', '--out=var/lcov.info', '--packages=.packages', '--report-on=lib'];
+  Pub.run('coverage', script: 'format_coverage', arguments: arguments);
+  Pub.run('coveralls', arguments: ['var/lcov.info']);
+}
 
 @Task('Builds the documentation')
 Future<void> doc() async {
@@ -39,9 +42,8 @@ void lint() => Analyzer.analyze(existingSourceDirs);
 void publish() => run('pub', arguments: ['publish', '--force'], runOptions: RunOptions(runInShell: true));
 
 @Task('Runs the test suites')
-Future<void> test() => collectCoverage('test/**_test.dart', reportOn: [libDir.path], saveAs: 'var/lcov.info', environment: {
-  'api_key': Platform.environment['AKISMET_API_KEY']
-});
+@Depends(build)
+void test() => Pub.run('test', arguments: ['--coverage=var']);
 
 @Task('Upgrades the project to the latest revision')
 void upgrade() {
