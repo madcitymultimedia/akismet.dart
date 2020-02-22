@@ -76,8 +76,8 @@
 - Using [Gulp.js](https://gulpjs.com) as build system.
 
 ## Version 0.5.0
-- Breaking change: renamed `Server.start` method to `bind`.
-- Added `Server.bindSecure` method to support SSL protocol.
+- Breaking change: renamed `Server.start()` method to `bind`.
+- Added `Server.bindSecure()` method to support SSL protocol.
 - Updated the package dependencies.
 
 ## Version 0.4.0
@@ -85,7 +85,7 @@
 - Added `Blog` class to support the latest Akismet APIs.
 - Added `Server` events: you can listen to `onClose`, `onError`, `onListening` and `onRequest` streams.
 - Added `--silent` option to server CLI.
-- Breaking change: renamed `Server.stop` method to `close`.
+- Breaking change: renamed `Server.stop()` method to `close`.
 - Breaking change: renamed `HTTPHeaders` constants by using `X_` as prefix.
 - Breaking change: removed `Client.useSecureRequests` property.
 
