@@ -37,11 +37,8 @@ import 'package:akismet/akismet.dart';
 
 Future<void> main() async {
   try {
-    final comment = Comment(
-      Author('127.0.0.1', 'Mozilla/5.0'),
-      content: 'A user comment',
-      date: DateTime.now()
-    );
+    final author = Author('127.0.0.1', 'Mozilla/5.0');
+    final comment = Comment(author, content: 'A user comment', date: DateTime.now());
 
     final client = Client('123YourAPIKey', Blog(Uri.https('www.yourblog.com', '/')));
     final result = await client.checkComment(comment);

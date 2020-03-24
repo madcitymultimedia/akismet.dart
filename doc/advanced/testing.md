@@ -49,7 +49,9 @@ Future<void> main() async {
   final author = Author('127.0.0.1', 'Mozilla/5.0');
   final comment = Comment(author, content: 'A user comment');
 
-  final client = Client('123YourAPIKey', Blog(Uri.https('www.yourblog.com', '/')), isTest: true);
+  final blog = Blog(Uri.https('www.yourblog.com', '/'));
+  final client = Client('123YourAPIKey', blog, isTest: true);
+
   print('It should not influence subsequent calls.');
   await client.checkComment(comment);
 }
