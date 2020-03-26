@@ -10,12 +10,12 @@ Add Akismet to your [Dart](https://dart.dev) applications so you don't have to w
 ## Quick start
 
 ### Get a developer key
-You first need to [sign up for a developer key](https://akismet.com/signup/?connect=yes&plan=developer).
+You first need to [sign up for a developer key](https://akismet.com/signup/?plan=developer).
 This will give you access to the API and will allow Akismet to monitor its results to make sure things are running as smoothly as possible.
 
 !!! warning
     All Akismet endpoints require an API key. If you are not already registered,
-    [join the developer program](https://akismet.com/signup/?connect=yes&plan=developer).
+    [join the developer program](https://akismet.com/signup/?plan=developer).
 
 ### Get the library
 Append the following line to your project's `pubspec.yaml` file:
