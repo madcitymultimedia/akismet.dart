@@ -1,12 +1,9 @@
-import 'dart:io';
-import 'package:code_builder/code_builder.dart';
 import 'package:grinder/grinder.dart';
 
 /// Starts the build system.
 Future<void> main(List<String> args) => grind(args);
 
 @DefaultTask('Builds the project')
-@Depends(version)
 void build() => Pub.run('build_runner', arguments: ['build', '--delete-conflicting-outputs']);
 
 @Task('Deletes all generated files and reset any saved state')
@@ -50,23 +47,6 @@ void upgrade() {
   run('git', arguments: ['fetch', '--all', '--prune']);
   run('git', arguments: ['pull', '--rebase']);
   Pub.upgrade();
-}
-
-@Task('Builds the version file')
-Future<void> version() async {
-  final library = Library((builder) => builder.body.addAll([
-    Method((builder) => builder
-      ..docs.add('/// The version of the current platform.')
-      ..name = 'platformVersion'
-      ..type = MethodType.getter
-      ..returns = const Reference('String')
-      ..body = literalString(Platform.version.split(' ').first).code
-    )
-  ]));
-
-  final output = joinFile(libDir, ['src', 'io', 'browser.dart']);
-  await output.writeAsString(library.accept(DartEmitter()).toString());
-  DartFmt.format(output);
 }
 
 @Task('Watches for file changes')

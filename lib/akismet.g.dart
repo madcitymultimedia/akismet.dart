@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of akismet.core;
+part of akismet;
 
 // **************************************************************************
 // JsonSerializableGenerator

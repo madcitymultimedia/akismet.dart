@@ -57,12 +57,6 @@
       "type": "shell"
     },
     {
-      "command": "grind version",
-      "label": "grind: version",
-      "problemMatcher": [],
-      "type": "shell"
-    },
-    {
       "command": "grind watch",
       "label": "grind: watch",
       "problemMatcher": [],
