@@ -40,7 +40,7 @@ class Client {
 
   /// Checks the specified [comment] against the service database, and returns a value indicating whether it is spam.
   Future<CheckResult> checkComment(Comment comment) async {
-    final url = Uri.parse('${endPoint.scheme}://$apiKey.${endPoint.host}:${endPoint.port}${endPoint.path}');
+    final url = Uri.parse('${endPoint.scheme}://$apiKey.${endPoint.authority}${endPoint.path}');
     final response = await _fetch(url.resolve('comment-check'), comment.toJson());
     if (response.body == 'false') return CheckResult.isHam;
     return response.headers['X-akismet-pro-tip'] == 'discard' ? CheckResult.isPervasiveSpam : CheckResult.isSpam;
@@ -48,13 +48,13 @@ class Client {
 
   /// Submits the specified [comment] that was incorrectly marked as spam but should not have been.
   Future<void> submitHam(Comment comment) {
-    final url = Uri.parse('${endPoint.scheme}://$apiKey.${endPoint.host}:${endPoint.port}${endPoint.path}');
+    final url = Uri.parse('${endPoint.scheme}://$apiKey.${endPoint.authority}${endPoint.path}');
     return _fetch(url.resolve('submit-ham'), comment.toJson());
   }
 
   /// Submits the specified [comment] that was not marked as spam but should have been.
   Future<void> submitSpam(Comment comment) {
-    final url = Uri.parse('${endPoint.scheme}://$apiKey.${endPoint.host}:${endPoint.port}${endPoint.path}');
+    final url = Uri.parse('${endPoint.scheme}://$apiKey.${endPoint.authority}${endPoint.path}');
     return _fetch(url.resolve('submit-spam'), comment.toJson());
   }
 
