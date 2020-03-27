@@ -1,2 +1,2 @@
 /// The version of the current platform.
-String get platformVersion => '2.7.1';
+String get platformVersion => '2.7.2';
