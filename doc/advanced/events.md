@@ -1,5 +1,5 @@
 path: blob/master
-source: lib/src/http/client.dart
+source: lib/src/client.dart
 
 # Events
 The `Client` class, used to query the Akismet service, triggers some events during its life cycle:
@@ -10,11 +10,17 @@ The `Client` class, used to query the Akismet service, triggers some events duri
 These events are exposed as [`Stream`](https://api.dart.dev/stable/dart-async/Stream-class.html), you can listen to them using the `on<EventName>` properties:
 
 ```dart
-client.onRequest.listen(
-  (request) => print('Client request: ${request.url}')
-);
+import 'package:akismet/akismet.dart';
 
-client.onResponse.listen(
-  (response) => print('Server response: ${response.statusCode}')
-);
+void main() {
+  final client = Client('123YourAPIKey', Blog(Uri.https('www.yourblog.com', '/')));
+
+  client.onRequest.listen(
+    (request) => print('Client request: ${request.url}')
+  );
+
+  client.onResponse.listen(
+    (response) => print('Server response: ${response.statusCode}')
+  );
+}
 ```
