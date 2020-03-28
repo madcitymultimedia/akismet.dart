@@ -58,7 +58,7 @@ void main() => group('Client', () {
     });
 
     test('should return `false` for an invalid API key', () async {
-      final client = Client('0123456789-ABCDEF', _client.blog, isTest: _client.isTest);
+      final client = Client('0123456789-ABCDEF', _client.blog, isTest: true);
       expect(await client.verifyKey(), isFalse);
     });
   });
