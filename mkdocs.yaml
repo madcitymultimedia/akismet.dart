@@ -39,8 +39,8 @@ nav:
       - Events: advanced/events.md
       - Testing: advanced/testing.md
   - About:
-      - Changelog: about/changelog.md
-      - License: about/license.md
+      # - Changelog: about/changelog.md
+      # - License: about/license.md
       - See also: about/see_also.md
 
 theme:
