@@ -3,7 +3,7 @@ site_description: Prevent comment spam using the Akismet service, in Dart.
 site_author: Cédric Belin - cedric@belin.io
 site_url: https://dev.belin.io/akismet.dart
 
-docs_dir: .
+# docs_dir: .
 # site_dir: ../www
 
 repo_name: GitHub
