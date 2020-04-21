@@ -4,7 +4,7 @@
 Prevent comment spam using the [Akismet](https://akismet.com) service, in [Dart](https://dart.dev).
 
 ## Documentation
-- [User guide](https://dev.belin.io/akismet.dart)
+- [User guide](https://akismetdart.readthedocs.io)
 - [API reference](https://pub.dev/documentation/akismet)
 
 ## Development
@@ -13,4 +13,4 @@ Prevent comment spam using the [Akismet](https://akismet.com) service, in [Dart]
 - [Submit an issue](https://github.com/cedx/akismet.dart/issues)
 
 ## License
-[Akismet for Dart](https://dev.belin.io/akismet.dart) is distributed under the MIT License.
+[Akismet for Dart](https://akismetdart.readthedocs.io) is distributed under the MIT License.

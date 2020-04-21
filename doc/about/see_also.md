@@ -11,5 +11,5 @@
 - [Code coverage](https://coveralls.io/github/cedx/akismet.dart)
 
 ## Other implementations
-- JavaScript: [Akismet for JS](https://dev.belin.io/akismet.js)
-- PHP: [Akismet for PHP](https://dev.belin.io/akismet.php)
+- JavaScript: [Akismet for JS](https://akismetjs.readthedocs.io)
+- PHP: [Akismet for PHP](https://akismetphp.readthedocs.io)

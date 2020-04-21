@@ -1,7 +1,9 @@
 site_name: Akismet for Dart
-site_description: Prevent comment spam using the Akismet service, in Dart.
+site_description: >
+  Prevent comment spam using the Akismet service, in Dart.
+  Add Akismet to your Dart applications so you don't have to worry about spam again.
 site_author: Cédric Belin - cedric@belin.io
-site_url: https://dev.belin.io/akismet.dart
+site_url: https://akismetdart.readthedocs.io
 
 docs_dir: doc
 site_dir: www
