@@ -1,6 +1,4 @@
 version: 2
-mkdocs:
-  configuration: mkdocs.yaml
 python:
   install:
     - requirements: doc/requirements.txt

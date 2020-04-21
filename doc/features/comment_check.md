@@ -1,5 +1,7 @@
+---
 path: blob/master
 source: lib/src/comment.dart
+---
 
 # Comment check
 This is the call you will make the most. It takes a number of arguments and characteristics about the submitted content

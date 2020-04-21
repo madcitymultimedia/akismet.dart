@@ -1,5 +1,7 @@
+---
 path: blob/master
 source: lib/src/client.dart
+---
 
 # Events
 The `Client` class, used to query the Akismet service, triggers some events during its life cycle:
