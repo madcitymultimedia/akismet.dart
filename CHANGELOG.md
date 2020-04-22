@@ -1,5 +1,9 @@
 # Changelog
 
+## Version [4.1.0](https://git.belin.io/cedx/akismet.dart/compare/v4.0.1...v4.1.0)
+- Updated the documentation.
+- Updated the package dependencies.
+
 ## Version [4.0.1](https://git.belin.io/cedx/akismet.dart/compare/v4.0.0...v4.0.1)
 - Fixed the [issue #1](https://git.belin.io/cedx/akismet.dart/issues/1): the `recheck_reason` field is not sent.
 

@@ -8,7 +8,7 @@ site_url: https://docs.belin.io/akismet.dart
 docs_dir: doc
 site_dir: www
 
-repo_name: GitHub
+repo_name: git.belin.io
 repo_url: https://git.belin.io/cedx/akismet.dart
 edit_uri: ''
 
