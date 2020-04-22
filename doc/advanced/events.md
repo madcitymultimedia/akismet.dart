@@ -1,5 +1,5 @@
 ---
-path: blob/master
+path: src/branch/master
 source: lib/src/client.dart
 ---
 

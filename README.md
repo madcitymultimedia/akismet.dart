@@ -8,9 +8,9 @@ Prevent comment spam using the [Akismet](https://akismet.com) service, in [Dart]
 - [API reference](https://pub.dev/documentation/akismet)
 
 ## Development
-- [Git repository](https://github.com/cedx/akismet.dart)
+- [Git repository](https://git.belin.io/cedx/akismet.dart)
 - [Pub package](https://pub.dev/packages/akismet)
-- [Submit an issue](https://github.com/cedx/akismet.dart/issues)
+- [Submit an issue](https://git.belin.io/cedx/akismet.dart/issues)
 
 ## License
 [Akismet for Dart](https://docs.belin.io/akismet.dart) is distributed under the MIT License.

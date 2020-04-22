@@ -1,9 +1,9 @@
 # Changelog
 
-## Version [4.0.1](https://github.com/cedx/akismet.dart/compare/v4.0.0...v4.0.1)
-- Fixed the [issue #1](https://github.com/cedx/akismet.dart/issues/1): the `recheck_reason` field is not sent.
+## Version [4.0.1](https://git.belin.io/cedx/akismet.dart/compare/v4.0.0...v4.0.1)
+- Fixed the [issue #1](https://git.belin.io/cedx/akismet.dart/issues/1): the `recheck_reason` field is not sent.
 
-## Version [4.0.0](https://github.com/cedx/akismet.dart/compare/v3.2.0...v4.0.0)
+## Version [4.0.0](https://git.belin.io/cedx/akismet.dart/compare/v3.2.0...v4.0.0)
 - Breaking change: starting to use and support the [Dart 2 SDK](https://dart.dev/tools/sdk).
 - Added support for the `X-akismet-pro-tip` HTTP header.
 - Added the `CheckResult` enumeration.
@@ -14,13 +14,13 @@
 - Using optional `const` and `new`.
 - Updated the package dependencies.
 
-## Version [3.2.0](https://github.com/cedx/akismet.dart/compare/v3.1.0...v3.2.0)
+## Version [3.2.0](https://git.belin.io/cedx/akismet.dart/compare/v3.1.0...v3.2.0)
 - Added support for browser platform.
 
-## Version [3.1.0](https://github.com/cedx/akismet.dart/compare/v3.0.0...v3.1.0)
+## Version [3.1.0](https://git.belin.io/cedx/akismet.dart/compare/v3.0.0...v3.1.0)
 - Updated the package dependencies.
 
-## Version [3.0.0](https://github.com/cedx/akismet.dart/compare/v2.1.0...v3.0.0)
+## Version [3.0.0](https://git.belin.io/cedx/akismet.dart/compare/v2.1.0...v3.0.0)
 - Breaking change: changed the signature of most class constructors.
 - Breaking change: most class properties are now `final`.
 - Breaking change: raised the required [Dart](https://dart.dev) version.
@@ -30,10 +30,10 @@
 - Changed licensing for the [MIT License](https://opensource.org/licenses/MIT).
 - Updated the package dependencies.
 
-## Version [2.1.0](https://github.com/cedx/akismet.dart/compare/v2.0.0...v2.1.0)
+## Version [2.1.0](https://git.belin.io/cedx/akismet.dart/compare/v2.0.0...v2.1.0)
 - Updated the package dependencies.
 
-## Version [2.0.0](https://github.com/cedx/akismet.dart/compare/v1.0.0...v2.0.0)
+## Version [2.0.0](https://git.belin.io/cedx/akismet.dart/compare/v1.0.0...v2.0.0)
 - Breaking change: changed the signature of all constructors.
 - Breaking change: raised the required [Dart](https://dart.dev) version.
 - Breaking change: renamed the `Client.serviceUrl` constant to `defaultEndPoint`.
