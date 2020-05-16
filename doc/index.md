@@ -1,5 +1,5 @@
 # Akismet <small>for Dart</small>
-![Runtime](https://badgen.net/badge/dart/%3E%3D2.8/green) ![Release](https://img.shields.io/pub/v/akismet.svg) ![License](https://badgen.net/badge/license/MIT/blue) ![Coverage](https://badgen.net/coveralls/c/github/cedx/akismet.dart) ![Build](https://badgen.net/github/checks/cedx/akismet.dart)
+![Runtime](https://badgen.net/badge/dart/%3E%3D2.8.0/green) ![Release](https://img.shields.io/pub/v/akismet.svg) ![License](https://badgen.net/badge/license/MIT/blue) ![Coverage](https://badgen.net/coveralls/c/github/cedx/akismet.dart) ![Build](https://badgen.net/github/checks/cedx/akismet.dart)
 
 ![Akismet](img/akismet.png)
 
