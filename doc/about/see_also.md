@@ -9,7 +9,3 @@
 ## Testing
 - [Continuous integration](https://github.com/cedx/akismet.dart/actions)
 - [Code coverage](https://coveralls.io/github/cedx/akismet.dart)
-
-## Other implementations
-- JavaScript: [Akismet for JS](https://docs.belin.io/akismet.js)
-- PHP: [Akismet for PHP](https://docs.belin.io/akismet.php)

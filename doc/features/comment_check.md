@@ -27,29 +27,29 @@ The `Comment` providing the user message to be checked.
 A `Future` that completes with a `CheckResult` value indicating whether the given `Comment` is ham, spam or pervasive spam.
 
 !!! tip
-    A comment classified as pervasive spam can be safely discarded.
+	A comment classified as pervasive spam can be safely discarded.
 
 The future completes with a `ClientException` when an error occurs.
 The exception `message` usually includes some debug information, provided by the `X-akismet-debug-help` HTTP header, about what exactly was invalid about the call.
 
 ## Example
 
-```dart
-import 'package:akismet/akismet.dart';
+``` dart
+import "package:akismet/akismet.dart";
 
 Future<void> main() async {
-  try {
-    final author = Author('127.0.0.1', 'Mozilla/5.0');
-    final comment = Comment(author, content: 'A user comment', date: DateTime.now());
+	try {
+		final author = Author("127.0.0.1", "Mozilla/5.0");
+		final comment = Comment(author, content: "A user comment", date: DateTime.now());
 
-    final client = Client('123YourAPIKey', Blog(Uri.https('www.yourblog.com', '/')));
-    final result = await client.checkComment(comment);
-    print(result == CheckResult.isHam ? 'The comment is ham.' : 'The comment is spam.');
-  }
+		final client = Client("123YourAPIKey", Blog(Uri.https("www.yourblog.com", "/")));
+		final result = await client.checkComment(comment);
+		print(result == CheckResult.isHam ? "The comment is ham." : "The comment is spam.");
+	}
 
-  on ClientException catch (err) {
-    print('An error occurred: ${err.message}');
-  }
+	on ClientException catch (err) {
+		print("An error occurred: ${err.message}");
+	}
 }
 ```
 

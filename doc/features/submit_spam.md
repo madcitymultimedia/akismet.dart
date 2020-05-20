@@ -19,7 +19,7 @@ See the [Akismet API documentation](https://akismet.com/development/api/#submit-
 The user `Comment` to be submitted, incorrectly classified as ham.
 
 !!! tip
-    Ideally, it should be the same object as the one passed to the original [comment check](comment_check.md) API call.
+	Ideally, it should be the same object as the one passed to the original [comment check](comment_check.md) API call.
 
 ## Return value
 A `Future` that completes when the given `Comment` has been submitted.
@@ -29,24 +29,24 @@ The exception `message` usually includes some debug information, provided by the
 
 ## Example
 
-```dart
-import 'package:akismet/akismet.dart';
+``` dart
+import "package:akismet/akismet.dart";
 
 Future<void> main() async {
-  try {
-    final author = Author('127.0.0.1', 'Mozilla/5.0');
-    final comment = Comment(author, content: 'An invalid user comment (spam)');
-    
-    final client = Client('123YourAPIKey', Blog(Uri.https('www.yourblog.com', '/')));
-    final result = await client.checkComment(comment);
-    // Got `CheckResult.isHam`, but `CheckResult.isSpam` expected.
-    
-    print('The comment was incorrectly classified as ham.');
-    await client.submitSpam(comment);
-  }
+	try {
+		final author = Author("127.0.0.1", "Mozilla/5.0");
+		final comment = Comment(author, content: "An invalid user comment (spam)");
+		
+		final client = Client("123YourAPIKey", Blog(Uri.https("www.yourblog.com", "/")));
+		final result = await client.checkComment(comment);
+		// Got `CheckResult.isHam`, but `CheckResult.isSpam` expected.
+		
+		print("The comment was incorrectly classified as ham.");
+		await client.submitSpam(comment);
+	}
 
-  on ClientException catch (err) {
-    print('An error occurred: ${err.message}');
-  }
+	on ClientException catch (err) {
+		print("An error occurred: ${err.message}");
+	}
 }
 ```

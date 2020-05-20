@@ -11,18 +11,18 @@ The `Client` class, used to query the Akismet service, triggers some events duri
 
 These events are exposed as [`Stream`](https://api.dart.dev/stable/dart-async/Stream-class.html), you can listen to them using the `on<EventName>` properties:
 
-```dart
-import 'package:akismet/akismet.dart';
+``` dart
+import "package:akismet/akismet.dart";
 
 void main() {
-  final client = Client('123YourAPIKey', Blog(Uri.https('www.yourblog.com', '/')));
+	final client = Client("123YourAPIKey", Blog(Uri.https("www.yourblog.com", "/")));
 
-  client.onRequest.listen(
-    (request) => print('Client request: ${request.url}')
-  );
+	client.onRequest.listen(
+		(request) => print("Client request: ${request.url}")
+	);
 
-  client.onResponse.listen(
-    (response) => print('Server response: ${response.statusCode}')
-  );
+	client.onResponse.listen(
+		(response) => print("Server response: ${response.statusCode}")
+	);
 }
 ```

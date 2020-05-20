@@ -27,19 +27,19 @@ The exception `message` usually includes some debug information, provided by the
 
 ## Example
 
-```dart
-import 'package:akismet/akismet.dart';
+``` dart
+import "package:akismet/akismet.dart";
 
 Future<void> main() async {
-  try {
-    final client = Client('123YourAPIKey', Blog(Uri.https('www.yourblog.com', '/')));
-    final isValid = await client.verifyKey();
-    print(isValid ? 'The API key is valid.' : 'The API key is invalid.');
-  }
+	try {
+		final client = Client("123YourAPIKey", Blog(Uri.https("www.yourblog.com", "/")));
+		final isValid = await client.verifyKey();
+		print(isValid ? "The API key is valid." : "The API key is invalid.");
+	}
 
-  on ClientException catch (err) {
-    print('An error occurred: ${err.message}');
-  }
+	on ClientException catch (err) {
+		print("An error occurred: ${err.message}");
+	}
 }
 ```
 
