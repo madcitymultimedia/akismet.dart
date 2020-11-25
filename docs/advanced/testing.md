@@ -6,7 +6,7 @@ Make a [comment check](../features/comment_check.md) API call with the `Author.n
 
 The Akismet API will always return a `CheckResult.isSpam` response to a valid request with one of those values. If you receive anything else, something is wrong in your client, data, or communications.
 
-``` dart
+```dart
 import "package:akismet/akismet.dart";
 
 Future<void> main() async {
@@ -24,7 +24,7 @@ Make a [comment check](../features/comment_check.md) API call with the `Author.r
 
 The Akismet API will always return a `CheckResult.isHam` response. Any other response indicates a data or communication problem.
 
-``` dart
+```dart
 import "package:akismet/akismet.dart";
 
 Future<void> main() async {
@@ -42,7 +42,7 @@ Enable the `Client.isTest` option in your tests.
 
 That will tell Akismet not to change its behaviour based on those API calls: they will have no training effect. That means your tests will be somewhat repeatable, in the sense that one test won't influence subsequent calls.
 
-``` dart
+```dart
 import "package:akismet/akismet.dart";
 
 Future<void> main() async {

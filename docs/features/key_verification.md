@@ -1,13 +1,8 @@
----
-path: src/branch/main
-source: lib/src/client.dart
----
-
 # Key verification
 Key verification authenticates your key before calling the [comment check](comment_check.md),
 [submit spam](submit_spam.md) or [submit ham](submit_ham.md) methods.
 
-```
+```dart
 Future<bool> Client.verifyKey()
 ```
 
@@ -27,7 +22,7 @@ The exception `message` usually includes some debug information, provided by the
 
 ## Example
 
-``` dart
+```dart
 import "package:akismet/akismet.dart";
 
 Future<void> main() async {

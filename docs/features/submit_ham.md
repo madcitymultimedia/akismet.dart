@@ -2,7 +2,7 @@
 This call is intended for the submission of false positives - items that were incorrectly classified as spam by Akismet.
 It takes identical arguments as [comment check](comment_check.md) and [submit spam](submit_spam.md).
 
-```
+```dart
 Future<void> Client.submitHam(Comment comment)
 ```
 
@@ -16,8 +16,7 @@ See the [Akismet API documentation](https://akismet.com/development/api/#submit-
 ### Comment **comment**
 The user `Comment` to be submitted, incorrectly classified as spam.
 
-!!! tip
-	Ideally, it should be the same object as the one passed to the original [comment check](comment_check.md) API call.
+?> Ideally, it should be the same object as the one passed to the original [comment check](comment_check.md) API call.
 
 ## Return value
 A `Future` that completes when the given `Comment` has been submitted.
@@ -27,7 +26,7 @@ The exception `message` usually includes some debug information, provided by the
 
 ## Example
 
-``` dart
+```dart
 import "package:akismet/akismet.dart";
 
 Future<void> main() async {

@@ -1,7 +1,7 @@
 # Submit spam
 This call is for submitting comments that weren't marked as spam but should have been.
 
-```
+```dart
 Future<void> Client.submitSpam(Comment comment)
 ```
 
@@ -18,8 +18,7 @@ See the [Akismet API documentation](https://akismet.com/development/api/#submit-
 ### Comment **comment**
 The user `Comment` to be submitted, incorrectly classified as ham.
 
-!!! tip
-	Ideally, it should be the same object as the one passed to the original [comment check](comment_check.md) API call.
+?> Ideally, it should be the same object as the one passed to the original [comment check](comment_check.md) API call.
 
 ## Return value
 A `Future` that completes when the given `Comment` has been submitted.
@@ -29,7 +28,7 @@ The exception `message` usually includes some debug information, provided by the
 
 ## Example
 
-``` dart
+```dart
 import "package:akismet/akismet.dart";
 
 Future<void> main() async {
