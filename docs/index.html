@@ -25,7 +25,7 @@
 				loadSidebar: true,
 				name: "Akismet for Dart",
 				repo: "https://git.belin.io/cedx/akismet.dart",
-				routerMode: location.hostname == "localhost" ? "hash" : "history",
+				routerMode: ["cedx.github.io", "localhost"].includes(location.hostname) ? "hash" : "history",
 				themeColor: "#0175c2"
 			};
 		</script>
