@@ -1,6 +1,6 @@
 # Key verification
-Key verification authenticates your key before calling the [comment check](comment_check.md),
-[submit spam](submit_spam.md) or [submit ham](submit_ham.md) methods.
+Key verification authenticates your key before calling the [comment check](features/comment_check.md),
+[submit spam](features/submit_spam.md) or [submit ham](features/submit_ham.md) methods.
 
 ```dart
 Future<bool> Client.verifyKey()
