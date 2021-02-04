@@ -38,4 +38,4 @@ Future<void> main() async {
 }
 ```
 
-See the [API reference](https://api.belin.io/akismet.dart) for detailed information about the `Client` and `Blog` classes, and their properties and methods.
+See the [API reference](https://pub.dev/documentation/akismet) for detailed information about the `Client` and `Blog` classes, and their properties and methods.

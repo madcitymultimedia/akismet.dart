@@ -47,4 +47,4 @@ Future<void> main() async {
 }
 ```
 
-See the [API reference](https://api.belin.io/akismet.dart) of this library for detailed information about the `Author` and `Comment` classes, and their properties.
+See the [API reference](https://pub.dev/documentation/akismet) of this library for detailed information about the `Author` and `Comment` classes, and their properties.

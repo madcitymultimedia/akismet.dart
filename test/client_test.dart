@@ -6,7 +6,7 @@ import "package:test/test.dart";
 void main() => group("Client", () {
 	final _client = Client(
 		Platform.environment["AKISMET_API_KEY"],
-		Blog(Uri.https("docs.belin.io", "/akismet.dart")),
+		Blog(Uri.https("cedx.github.io", "/akismet.dart")),
 		isTest: true
 	);
 
@@ -16,7 +16,7 @@ void main() => group("Client", () {
       "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:79.0) Gecko/20100101 Firefox/79.0",
 			name: "Akismet",
 			role: "administrator",
-			url: Uri.https("docs.belin.io", "/akismet.dart")
+			url: Uri.https("cedx.github.io", "/akismet.dart")
 		),
 		content: "I'm testing out the Service API.",
 		referrer: Uri.https("pub.dev", "/packages/akismet"),

@@ -4,9 +4,9 @@ version: 4.1.0
 description: >
   Prevent comment spam using the Akismet service.
   Add Akismet to your applications so you don't have to worry about spam again.
-homepage: https://docs.belin.io/akismet.dart
-issue_tracker: https://git.belin.io/cedx/akismet.dart/issues
-repository: https://git.belin.io/cedx/akismet.dart
+homepage: https://cedx.github.io/akismet.dart
+issue_tracker: https://github.com/cedx/akismet.dart/issues
+repository: https://github.com/cedx/akismet.dart
 
 environment:
   sdk: ">=2.10.0 <3.0.0"
