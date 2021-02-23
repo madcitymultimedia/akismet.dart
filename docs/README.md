@@ -1,9 +1,11 @@
 # Akismet <small>for Dart</small>
 ![Runtime](https://badgen.net/pub/sdk-version/akismet) ![Release](https://badgen.net/pub/v/akismet) ![License](https://badgen.net/pub/license/akismet) ![Likes](https://badgen.net/pub/likes/akismet) ![Coverage](https://badgen.net/coveralls/c/github/cedx/akismet.dart) ![Build](https://badgen.net/github/checks/cedx/akismet.dart/main)
 
+!> WARNING: this package is **abandoned** and no longer maintained.
+
 ## Stop spam
-> Used by millions of websites, [Akismet](https://akismet.com) filters out hundreds of millions of spam comments from the Web every day.
-> Add Akismet to your [Dart](https://dart.dev) applications so you don't have to worry about spam again.
+Used by millions of websites, [Akismet](https://akismet.com) filters out hundreds of millions of spam comments from the Web every day.
+Add Akismet to your [Dart](https://dart.dev) applications so you don't have to worry about spam again.
 
 ## Quick start
 
